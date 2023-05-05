@@ -1,1 +1,0 @@
-{"name":"Local: T-primes","url":"c:\\Users\\Usuario\\OneDrive\\Documentos\\USACO GUIDE\\T-primes.py","tests":[{"id":1681611313124,"input":"3\n4 5 6","output":"YES\nNO\nNO"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\Usuario\\OneDrive\\Documentos\\USACO GUIDE\\T-primes.py","group":"local","local":true}

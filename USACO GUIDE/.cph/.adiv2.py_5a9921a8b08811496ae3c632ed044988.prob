@@ -1,1 +1,0 @@
-{"name":"Local: adiv2","url":"c:\\Users\\Usuario\\OneDrive\\Documentos\\USACO GUIDE\\adiv2.py","tests":[{"id":1680448731724,"input":"5\n3\n1 2 5\n3\n1 2 3\n4\n0 1 2 3\n4\n1 2 2 3\n1\n1","output":"6\n0\n3\n-1\n1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\Usuario\\OneDrive\\Documentos\\USACO GUIDE\\adiv2.py","group":"local","local":true}
