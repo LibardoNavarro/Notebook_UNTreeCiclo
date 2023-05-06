@@ -8,16 +8,16 @@ vector<int> dfs_num(vertices+1, -1); //Vector del estado de cada vertice (visita
 const int NO_VISITADO = -1;
 const int VISITADO = 1;
 
-vector<vector<int>> adjList(vertices + 1); //Lista adjunta del grafo
+vector<vector<int>> adj(vertices + 1); //Lista adjunta del grafo
 
 // Complejidad O(V + E)
 void dfs(int v){
     dfs_num[v] = VISITADO;
     //Se recorren los vecinos
-    for (int i = 0; i < (int) adjList[v].size(); i++){ 
+    for (int i = 0; i < (int) adj[v].size(); i++){ 
 
-        if (dfs_num[adjList[v][i]] == NO_VISITADO){
-            dfs(adjList[v][i]);
+        if (dfs_num[adj[v][i]] == NO_VISITADO){
+            dfs(adj[v][i]);
         }
 
     }
