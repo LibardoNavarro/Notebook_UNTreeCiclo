@@ -5,7 +5,8 @@ typedef pair<int, int> ii;
 typedef vector<ii> vii;
 typedef vector<int> vi;
 typedef vector<long long> vl;
-#define INF 1000000000;
+int dr[] = {1, 1, 0, -1, -1, -1, 0, 1};
+int dc[] = {0, 1, 1, 1, 0, -1, -1, -1};
 
 int main() {
     freopen("file.in", "r", stdin);

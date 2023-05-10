@@ -10,17 +10,7 @@ typedef vector<long long> vl;
 int dr[] = {1, 1, 0, -1, -1, -1, 0, 1};     //Truco para explorar rejilla 2d
 int dc[] = {0, 1, 1, 1, 0, -1, -1, -1};     // vecinos S,SE,E,NE,N,NO,O,SO
 
-vector<string> grid = {
-    "LLLLLLLLL",
-    "LLWWLLWLL",
-    "LWWLLLLLL",
-    "LWWWLWWLL",
-    "LLLWWWLLL",
-    "LLLLLLLLL",
-    "LLLWWLLWL",
-    "LLWLWLLLL",
-    "LLLLLLLLL"
-}; 
+vector<string> grid; 
 
 int R, C, ans;
 
@@ -38,6 +28,6 @@ int floodfill(int r, int c, char c1, char c2){          //Devuelve tamaño de CC
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(0);
-    R = 9; C = 9;
+    cin >> R; cin >> C;
     cout << floodfill(2, 1, 'W', '.');
 }

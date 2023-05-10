@@ -10,23 +10,36 @@ vector<vi> adj;
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(0);
-    ll n, m; cin >> n >> m;
+    int n, k; cin >> n >> k;
     adj.resize(n+1);
-    for (int i = 0; i<m; i++){
+    for (int i = 0; i<n-1; i++){
         int x, y; cin >> x >> y;
         adj[x].push_back(y);
         adj[y].push_back(x);
     }
-    //BFS, complejidad O(V + E)
-    queue<int> q; q.push(adj[1][0]);    //Origen
-    vi d(n+1, INT_MAX); d[adj[1][0]] = 0;   //La distancia del vertice a el mismo es cero
+    
+    queue<int> q; q.push(1);
+    vi d(n+1, INT_MAX); d[1] = 0;
+    d[0] = 0;
     while(!q.empty()){
         int nodo = q.front(); q.pop();
         for (int i = 0; i<(int)adj[nodo].size(); i++){
-            if (d[adj[nodo][i]] == INT_MAX){   //Si el vecino no visitado y alcanzable
-                d[adj[nodo][i]] = d[nodo] + 1;    //Hacer d[adj[u][i]] != INT_MAX para etiquetarlo
-                q.push(adj[nodo][i]);          //Añadiendo a la cola para siguiente iteracion
+            if (d[adj[nodo][i]] == INT_MAX){
+                d[adj[nodo][i]] = d[nodo] + 1;
+                q.push(adj[nodo][i]);
             }
         }
     }
+
+    sort(d.begin(), d.end());
+
+    reverse(d.begin(), d.end());
+
+    int suma = 0;
+
+    for (int i = 0; i<k; i++){
+        suma += d[i];
+    }
+
+    cout << suma;
 }
