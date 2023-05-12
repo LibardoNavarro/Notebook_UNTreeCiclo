@@ -39,7 +39,7 @@ int main() {
     for (int z = 0; z<q; z++){
         int n; cin >> n;
         dias = 0;
-        adj.resize(n+1);
+        adj = vector<vi>(n+1);
         dfs_num.resize(n+1);
         ans = vi(n+1);
         vi libros(n+1);
@@ -48,24 +48,16 @@ int main() {
             int a; cin >> a;
             adj[i].push_back(a);
             libros[i] = a;
+            dfs_num[i] = 0;
         }
         for (int i = 1; i<=n; i++){
             if (ans[i] == 0){
                 x++;
-                dias = 0;
-                dfs_num = vi(n+1);
+                dias = 0;   
                 dfs(libros[i], libros[i]);
-                // for (int k = 1; k<=dias; k++){
-                //     ans[ciclo[k-1]] = dias;
-                // }
-                // ciclo = vi();
             }
         }
         for (int i = 1; i<=n; i++) cout << dic[ans[i]] << " ";
         cout << "\n";
-
-        for (int i = 1; i<=n; i++){
-            adj[i] = vi();
-        }
     }
 }
