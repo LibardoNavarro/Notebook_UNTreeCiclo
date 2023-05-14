@@ -13,13 +13,17 @@ string abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 vector<string> grid; int n, m;
 string ans1;
 
-int floodfill(int r, int c, char c1, char c2){
-    if (r < 0 || r >= n || c< 0 || c >= m) return "";
-    if (grid[r][c] != c1) return "";
-    string ans = string::s(1, c1);
-    grid[r][c] = c2;
+int floodfill(int r, int c, char c1){
+    if (grid[r][c] != c1 || (ans1.find(c1) != string::npos)) return 0;
+    int ans = 1;
+    ans1 += c1;
+    string ans2 = ans1;
     for (int d = 0; d < 8; d++){
-        ans += (floodfill(r + dr[d], c + dc[d], abc[(int) (abc.find(c1)) + 1], c2) + floodfill(r + dr[d], c + dc[d], abc[(int) (abc.find(c1)) - 1], c2));
+
+        int f = r + dr[d]; int g = c + dc[d];
+        ans1 = ans2;
+        if (f < 0 || f >= n || g< 0 || g >= m) continue;
+        ans += floodfill(f, g, c1 +1);
     }
     return ans;
 }
@@ -33,15 +37,15 @@ int main() {
     for (int i = 0; i<n; i++){
         cin >> grid[i];
     }
-    string max = "";
-
+    int max = 0;
     for (int i = 0; i<n; i++){
         for (int j = 0; j<m; j++){
-            string z =  floodfill(i, j, grid[i][j], '.');
-            if (z.) {
+            ans1 = "";
+            int z =  floodfill(i, j, grid[i][j]);
+            if (z > max) {
                 max = z;
             }
         }
     }
-    cout << max << " " << ans1;
+    cout << max;
 }
