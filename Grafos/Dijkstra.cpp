@@ -6,7 +6,7 @@ typedef vector<ii> vii;
 typedef vector<int> vi;
 typedef vector<long long> vl;
 
-vi dijkstra(vector<vii> adj, int s, int V){
+vi dijkstra(vector<vii> &adj, int s, int V){
     vi dist(V+1, INT_MAX); dist[s] = 0;
     priority_queue<ii, vii, greater<ii> > pq; pq.push(ii(0, s));
     while(!pq.empty()){
