@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#define int long long
 using namespace std;
 typedef long long ll;
 typedef pair<int, int> ii;
@@ -32,7 +33,7 @@ void printPath(int u, int s, vi &p){
     cout << u << " ";
 }
 
-int main(){
+signed main(){
     ios::sync_with_stdio(false);
     cin.tie(0);
     int n, m; cin >> n >> m;

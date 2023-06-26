@@ -14,7 +14,7 @@ vector<string> grid;
 
 int R, C, ans;
 
-int floodfill(int r, int c, char c1, char c2){          //Devuelve tamaño de CC
+int floodfill(int r, int c, char c1, char c2){          //Devuelve tamano de CC
     if (r < 0 || r >= R || c< 0 || c >= C) return 0;    //fuera de la rejilla
     if (grid[r][c] != c1) return 0;                     //No tiene color c1
     int ans = 1;                 //suma 1 a ans porque el vertice (r, c) tiene color c1

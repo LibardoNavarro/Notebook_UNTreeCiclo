@@ -25,7 +25,7 @@ int main(){
         for (int i = 0; i<(int)adj[nodo].size(); i++){
             if (d[adj[nodo][i]] == INT_MAX){   //Si el vecino no visitado y alcanzable
                 d[adj[nodo][i]] = d[nodo] + 1;    //Hacer d[adj[u][i]] != INT_MAX para etiquetarlo
-                q.push(adj[nodo][i]);          //Añadiendo a la cola para siguiente iteracion
+                q.push(adj[nodo][i]);          //Anadiendo a la cola para siguiente iteracion
             }
         }
     }

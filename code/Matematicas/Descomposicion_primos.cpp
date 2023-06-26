@@ -50,7 +50,7 @@ int main(){
 
 //Variantes del algoritmo
 
-//Contar el número de factores primos de N
+//Contar el numero de factores primos de N
 int numPF(ll N) {
     int ans = 0;
     for (int i = 0; (i < (int)p.size()) && (p[i]*p[i] <= N); ++i)
@@ -85,7 +85,7 @@ ll sumDiv(ll N) {
     return ans;
 }
 
-//EulerPhi(N): contar el número de enteros positivos < N que son primos relativos a N.
+//EulerPhi(N): contar el numero de enteros positivos < N que son primos relativos a N.
 ll EulerPhi(ll N) {
     ll ans = N; // start from ans = N
     for (int i = 0; (i < (int)p.size()) && (p[i]*p[i] <= N); ++i) {
