@@ -15,8 +15,6 @@ int dr[] = {1, 1, 0, -1, -1, -1, 0, 1};
 int dc[] = {0, 1, 1, 1, 0, -1, -1, -1};
 
 int main() {
-    freopen("file.in", "r", stdin);
-    freopen("file.out", "w", stdout);
     ios::sync_with_stdio(false);
     cin.tie(0);
     
