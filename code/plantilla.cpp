@@ -19,5 +19,6 @@ int main() {
     cin.tie(0);
     // freopen("file.in", "r", stdin);
     // freopen("file.out", "w", stdout);
-    
+
+    return 0;
 }

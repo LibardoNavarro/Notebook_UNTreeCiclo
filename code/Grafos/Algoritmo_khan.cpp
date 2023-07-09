@@ -1,17 +1,9 @@
-#include <bits/stdc++.h>
-using namespace std;
-typedef long long ll;
-typedef pair<int, int> ii;
-typedef vector<ii> vii;
-typedef vector<int> vi;
-typedef vector<long long> vl;
-
 int n, m;
 vector<vi> adj;
 vi grado;
 vi orden;
 
-void bfs(){
+void khan(){
     queue<int> q;
 
     for (int i = 1; i<=n; i++){
@@ -42,7 +34,7 @@ int main() {
         grado[y]++;
     }
     
-    bfs();
+    khan();
 
     if (orden.size() == n){
         for (int i : orden) cout << i;
