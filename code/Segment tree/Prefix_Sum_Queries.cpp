@@ -14,13 +14,13 @@ int diry[4] = {-1,0,0,1};
 int dr[] = {1, 1, 0, -1, -1, -1, 0, 1};
 int dc[] = {0, 1, 1, 1, 0, -1, -1, -1};
 
-int nullValue = 0;
+ll nullValue = -INFL;
 
 struct nodeST{
     nodeST *left, *right;
     int l, r; ll value, lazy;
 
-    nodeST(vi &v, int l, int r) : l(l), r(r){
+    nodeST(vl &v, int l, int r) : l(l), r(r){
         int m = (l+r)>>1;
         lazy = 0;
         if (l!=r){
@@ -34,12 +34,12 @@ struct nodeST{
     }
 
     ll opt(ll leftValue, ll rightValue){
-        return max(leftValue, rightValue);
+        return max(leftValue,rightValue);
     }
 
     void propagate(){
         if (lazy){
-            value += lazy * (r-l+1);
+            value += lazy;
             if (l!=r){
                 left->lazy += lazy, right->lazy += lazy;
             }
@@ -47,24 +47,15 @@ struct nodeST{
         }
     }
 
-    ll get(int rooms){
+    ll get(int i, int j){
+        propagate();
+        if (l>=i && r<=j) return value;
+        if (l>j  || r<i) return nullValue;
 
-        if(rooms > value) return -1;
-        
-        if(l == r){
-			value -= rooms;
-			return l;
-		}
-		
-		int vhijo;
-        if (rooms > left->value && rooms <= right->value) vhijo = right->get(rooms);
-        else vhijo = left->get(rooms);
-		
-		value = max(left->value, right->value);
-		return vhijo;
+        return opt(left->get(i, j), right->get(i, j));
     }
 
-    void upd(int i, int j, int nv){
+    void upd(int i, int j, ll nv){
         propagate();
         if (l>j  || r<i) return;
         if (l>=i && r<=j){
@@ -100,15 +91,29 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(0);
 
-    int n, m; cin >> n >> m;
+    int n, q; cin >> n >> q;
 
-    vi h(n);
-    for (int i = 0; i<n; i++) cin >> h[i];
+    vi x(n);
+    for (int i = 0; i<n; i++) cin >> x[i];
 
-    nodeST st(h, 0, n-1);
+    vl prefix(n+1);
+    prefix[0] = 0;
+    ll suma = 0;
+    for (int i = 0; i<n; i++){suma += x[i]; prefix[i+1] = suma;}
 
-    for(int i = 0; i < m; i++){
-		int r; cin >> r;
-		cout << st.get(r) + 1 << " ";
-	}
+    nodeST st(prefix, 0, n);
+
+    for (int i = 0; i<q; i++){
+        int o; cin >> o;
+        if (o == 1){
+            ll k, u; cin >> k >> u;
+            ll v = u - x[k-1];
+            x[k-1] = u; 
+            st.upd(k, n, v);
+        }
+        else{
+            int a, b; cin >> a >> b;
+            cout << st.get(a-1, b) - st.get(a-1, a-1) << "\n";
+        }
+    }
 }

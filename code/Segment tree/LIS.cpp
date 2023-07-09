@@ -14,7 +14,7 @@ int diry[4] = {-1,0,0,1};
 int dr[] = {1, 1, 0, -1, -1, -1, 0, 1};
 int dc[] = {0, 1, 1, 1, 0, -1, -1, -1};
 
-int nullValue = 0;
+int nullValue = -INF;
 
 struct nodeST{
     nodeST *left, *right;
@@ -47,21 +47,12 @@ struct nodeST{
         }
     }
 
-    ll get(int rooms){
+    ll get(int i, int j){
+        propagate();
+        if (l>=i && r<=j) return value;
+        if (l>j  || r<i) return nullValue;
 
-        if(rooms > value) return -1;
-        
-        if(l == r){
-			value -= rooms;
-			return l;
-		}
-		
-		int vhijo;
-        if (rooms > left->value && rooms <= right->value) vhijo = right->get(rooms);
-        else vhijo = left->get(rooms);
-		
-		value = max(left->value, right->value);
-		return vhijo;
+        return opt(left->get(i, j), right->get(i, j));
     }
 
     void upd(int i, int j, int nv){
@@ -78,7 +69,6 @@ struct nodeST{
         right->upd(i, j, nv);
 
         value = opt(left->value, right->value);
-        
     }
 
     void upd(int k, int nv){
@@ -92,23 +82,42 @@ struct nodeST{
         right->upd(k, nv);
 
         value = opt(left->value, right->value);
-        
     }
 };
 
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(0);
+    
+    int n; cin >> n;
+    vi v(n);
+    for (int i = 0; i<n; i++) cin >> v[i];
+    vi v1 = v;
 
-    int n, m; cin >> n >> m;
+    sort(v1.begin(), v1.end());
+    map<int, int> m;
+    for (int i = 0; i<n; i++) m[v1[i]] = i;
 
-    vi h(n);
-    for (int i = 0; i<n; i++) cin >> h[i];
+    vi l(n, 0);
 
-    nodeST st(h, 0, n-1);
+    nodeST st(l, 0, n-1);
 
-    for(int i = 0; i < m; i++){
-		int r; cin >> r;
-		cout << st.get(r) + 1 << " ";
-	}
+    ll ans = 0;
+
+    for (int i = 0; i<n; i++){
+        int a = v[i];
+        if (m[a] == 0){
+            st.upd(m[a], 1);
+            ans = max(ans, 1LL);
+        }
+        else{
+            ll v = st.get(0, m[a]-1) + 1;
+            ans = max(ans, v);
+            st.upd(m[a], v);
+        }
+    }
+
+    cout << ans << "\n";
+    
+    return 0;
 }
