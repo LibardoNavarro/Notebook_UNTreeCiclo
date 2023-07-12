@@ -1,3 +1,19 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define sz(arr) ((int) arr.size())
+typedef long long ll;
+typedef pair<int, int> ii;
+typedef vector<ii> vii;
+typedef vector<int> vi;
+typedef vector<long long> vl;
+const int INF = 1e9;
+const ll INFL = 1e18;
+const int MOD = 1e9+7;
+int dirx[4] = {0,-1,1,0};
+int diry[4] = {-1,0,0,1};
+int dr[] = {1, 1, 0, -1, -1, -1, 0, 1};
+int dc[] = {0, 1, 1, 1, 0, -1, -1, -1};
+
 int nullValue = 0;
 
 struct nodeST{
@@ -97,3 +113,32 @@ struct nodeST{
         value = opt(left->value, right->value);
     }
 };
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+
+    int n, q; cin >> n >> q;
+
+    vi v(n);
+    for (int i = 0; i<n; i++) cin >> v[i];
+    
+    nodeST st(v, 0, n-1);
+    for (int i = 0; i<q; i++){
+        int o; cin >> o;
+        if (o == 1){
+            int a, b, x; cin >> a >> b >> x;
+            st.upd(a-1, b-1, x);
+        }
+        else if (o == 2){
+            int a, b, x; cin >> a >> b >> x;
+            st.upd1(a-1, b-1, x);
+        }
+        else{
+            int a, b; cin >> a >> b;
+            cout << st.get(a-1, b-1) << "\n";
+        }
+    }
+    
+    return 0;
+}
