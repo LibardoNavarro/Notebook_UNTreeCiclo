@@ -9,6 +9,7 @@ typedef vector<long long> vl;
 const int INF = 1e9;
 const ll INFL = 1e18;
 const int MOD = 1e9+7;
+const double EPS  = 1e-9;
 int dirx[4] = {0,-1,1,0};
 int diry[4] = {-1,0,0,1};
 int dr[] = {1, 1, 0, -1, -1, -1, 0, 1};
