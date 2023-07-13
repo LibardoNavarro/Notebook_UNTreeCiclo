@@ -15,10 +15,11 @@ int main() {
 
     //Ingresar strings con cin no es adecuado cuando se requiere strings con espacios
     //Para leer estos tipos de string se usa getline()
-    string nombre {};
+    string nombre;
     cout << "Ingresa tu nombre: " << "\n";
-    getline( cin >> ws, nombre);
+    getline(cin, nombre);
     cout << nombre << "\n";
+    cout << nombre.find("Libardo", 0) << "\n";
 
     //Tamaño de una string
     name.length();
