@@ -1,3 +1,5 @@
+//ALgoritmo de orden topologico
+//DAG: Grafo aciclico dirigido
 int n, m;
 vector<vi> adj;
 vi grado;

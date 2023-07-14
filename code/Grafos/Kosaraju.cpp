@@ -1,3 +1,6 @@
+//Encontrar las componentes fuertemente conexas en un grafo dirigido
+//Componente fuertemente conexa: es un grupo de nodos en el que hay 
+//un camino dirigido desde cualquier nodo hasta cualquier otro nodo dentro del grupo.
 void Kosaraju(int u, int pass) {
     dfs_num[u] = 1;
     vii &neighbor = (pass == 1) ? AL[u] : AL_T[u];

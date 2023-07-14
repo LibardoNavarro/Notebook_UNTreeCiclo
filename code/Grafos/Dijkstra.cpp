@@ -1,11 +1,6 @@
-#include <bits/stdc++.h>
-using namespace std;
-typedef long long ll;
-typedef pair<int, int> ii;
-typedef vector<ii> vii;
-typedef vector<int> vi;
-typedef vector<long long> vl;
-
+//Camino mas cortos
+//NO USAR CON PESOS NEGATIVOS, usar Bellman Ford o SPFA(mas rapido)
+// O ((V+E)*log V)
 vi dijkstra(vector<vii> &adj, int s, int V){
     vi dist(V+1, INT_MAX); dist[s] = 0;
     priority_queue<ii, vii, greater<ii> > pq; pq.push(ii(0, s));

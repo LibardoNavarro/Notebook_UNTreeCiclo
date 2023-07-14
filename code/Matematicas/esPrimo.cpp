@@ -1,11 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-typedef long long ll;
-typedef pair<int, int> ii;
-typedef vector<ii> vii;
-typedef vector<int> vi;
-typedef vector<long long> vl;
-
 ll _sieve_size;
 bitset<10000010> bs;
 vl primos;
@@ -27,7 +19,4 @@ bool isPrime(ll N) {
 }
 int main(){
     sieve(10000000);
-    cout << isPrime(2147483647) << "\n";
-    cout << isPrime(136117223861LL) << "\n";
-    cout << isPrime(1e9 + 7) << "\n";
 }

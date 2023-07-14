@@ -1,6 +1,4 @@
-#include <bits/stdc++.h>
-using namespace std;
-
+//O(V+E)
 int vertices, aristas;
 
 vector<int> dfs_num(vertices+1, -1); //Vector del estado de cada vertice (visitado o no visitado)

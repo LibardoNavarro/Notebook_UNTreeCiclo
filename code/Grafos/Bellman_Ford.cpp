@@ -1,3 +1,5 @@
+//Lo mismo que dijkstra pero con pesos negativos
+//O(E*V)
 void bellman_ford(){
     vi dist(V, INF); dist[s] = 0;
     for (int i = 0; i < V-1; ++i)

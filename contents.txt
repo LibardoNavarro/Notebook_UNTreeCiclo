@@ -25,8 +25,20 @@ Grafos/Kruskal.cpp	MST Kruskal
 Grafos/Shortest_Path_Faster_Algorithm.cpp	Shortest Path Faster Algorithm
                                         
 [Matematicas]
-Matematicas/Descomposicion_primos.cpp	Descomposicion primos
-Matematicas/esPrimo.cpp	Comprobar primos
+Matematicas/Criba_de_Eratostenes.cpp	Criba de Eratostenes
+Matematicas/Descomposicion_primos.cpp	Descomposicion en primos (y mas cosas)
+Matematicas/esPrimo.cpp	Prueba de primalidad
+Matematicas/Criba_modificada.cpp	Criba Modificada
+Matematicas/Eulerphi.cpp	Funcion Totient de Euler
+Matematicas/Exponenciacion_binaria.cpp	Exponenciacion binaria
+Matematicas/Fibonacci_matriz.py	Fibonacci Matriz
 Matematicas/gcd_y_lcm.cpp	GCD y LCM
+
+[Geometria]
+Geometria/Puntos.cpp	Puntos
+Geometria/Lineas.cpp	Lineas
+Geometria/Vectores.cpp	Vectores
+Geometria/Poligonos.cpp	Poligonos
+Geometria/Convex_Hull.cpp	Convex Hull
 
 [Fin]

@@ -1,11 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-typedef long long ll;
-typedef pair<int, int> ii;
-typedef vector<ii> vii;
-typedef vector<int> vi;
-typedef vector<long long> vl;
-
 ll _sieve_size;
 bitset<10000010> bs;
 vl p;
@@ -31,21 +23,6 @@ vl primeFactors(ll N) {
 }
 int main(){
     sieve(10000000);
-    vl r;
-    r = primeFactors((1LL<<31)-1);
-    for (auto &pf : r) cout << "> " << pf << "\n";
-    cout << "\n";
-    r = primeFactors(136117223861LL);
-    for (auto &pf : r) cout << "> " << pf << "\n";
-    cout << "\n";
-    r = primeFactors(5000000035LL);
-    for (auto &pf : r) cout << "> " << pf << "\n";
-    cout << "\n";
-    r = primeFactors(142391208960LL);
-    for (auto &pf : r) cout << "> " << pf << "\n";
-    cout << "\n";
-    r = primeFactors(100000380000361LL);
-    for (auto &pf : r) cout << "> " << pf << "\n";
 }
 
 //Variantes del algoritmo
@@ -84,33 +61,3 @@ ll sumDiv(ll N) {
     if (N != 1) ans *= (N+1); // N^2-1/N-1 = N+1
     return ans;
 }
-
-//EulerPhi(N): contar el numero de enteros positivos < N que son primos relativos a N.
-ll EulerPhi(ll N) {
-    ll ans = N; // start from ans = N
-    for (int i = 0; (i < (int)p.size()) && (p[i]*p[i] <= N); ++i) {
-        if (N%p[i] == 0) ans -= ans/p[i]; // count unique
-        while (N%p[i] == 0) N /= p[i]; // prime factor
-    }
-    if (N != 1) ans -= ans/N; // last factor
-    return ans;
-}
-
-//Criba modificada
-/*
-Si hay que determinar el numero de factores primos para muchos (o un rango) de enteros.
-La mejor solucion es el algoritmo de criba modificada O(N log log N)
-*/
-int numDiffPFarr[MAX_N+10] = {0}; // e.g., MAX_N = 10^7
-for (int i = 2; i <= MAX_N; ++i)
-    if (numDiffPFarr[i] == 0) // i is a prime number
-        for (int j = i; j <= MAX_N; j += i)
-            ++numDiffPFarr[j]; // j is a multiple of i
-
-//Similar para EulerPhi
-int EulerPhi[MAX_N+10];
-for (int i = 1; i <= MAX_N; ++i) EulerPhi[i] = i;
-for (int i = 2; i <= MAX_N; ++i)
-    if (EulerPhi[i] == i) // i is a prime number
-        for (int j = i; j <= MAX_N; j += i)
-            EulerPhi[j] = (EulerPhi[j]/i) * (i-1);

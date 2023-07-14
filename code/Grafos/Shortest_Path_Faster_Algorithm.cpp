@@ -1,3 +1,5 @@
+//Algoritmo mas rapido de ruta minima
+//O(V*E) peor caso, O(E) en promedio.
 ll spfa(vector<vii>& adj, ll s, ll n) {
     vl d(n+1, INFL);
     vector<bool> inqueue(n, false);

@@ -1,3 +1,7 @@
+//Puntos de articulacion: son vertices que desconectan el grafo
+//Puentes: son aristas que desconectan el grafo
+//Usar para grafos dirigidos
+//O(V+E)
 vi dfs_num, dfs_low, dfs_parent, articulation_vertex;
 int dfsNumberCounter, dfsRoot, rootChildren;
 vector<vii> adj;
@@ -5,18 +9,18 @@ void articulationPointAndBridge(int u) {
     dfs_num[u] = dfsNumberCounter++;
     dfs_low[u] = dfs_num[u]; // dfs_low[u]<=dfs_num[u]
     for (auto &[v, w] : adj[u]) {
-        if (dfs_num[v] == -1) { // a tree edge
+        if (dfs_num[v] == -1) { // una arista de arbol
             dfs_parent[v] = u;
-            if (u == dfsRoot) ++rootChildren; // special case, root
+            if (u == dfsRoot) ++rootChildren; // vaso especial, raiz
             articulationPointAndBridge(v);
-            if (dfs_low[v] >= dfs_num[u]) // for articulation point
-                articulation_vertex[u] = 1; // store this info first
-            if (dfs_low[v] > dfs_num[u]) // for bridge
+            if (dfs_low[v] >= dfs_num[u]) // para puntos de articulacion
+                articulation_vertex[u] = 1;
+            if (dfs_low[v] > dfs_num[u]) // para puentes
                 printf(" (%d, %d) is a bridge\n", u, v);
-            dfs_low[u] = min(dfs_low[u], dfs_low[v]); // subtree, always update
+            dfs_low[u] = min(dfs_low[u], dfs_low[v]); //
         }
-        else if (v != dfs_parent[u]) // if a non-trivial cycle
-            dfs_low[u] = min(dfs_low[u], dfs_num[v]); // then can update
+        else if (v != dfs_parent[u]) // si es ciclo no trivial
+            dfs_low[u] = min(dfs_low[u], dfs_num[v]); // entonces actualizar
     }
 }
 int main(){
@@ -30,7 +34,7 @@ int main(){
         if (dfs_num[u] == -1) {
             dfsRoot = u; rootChildren = 0;
             articulationPointAndBridge(u);
-            articulation_vertex[dfsRoot] = (rootChildren > 1); // special case
+            articulation_vertex[dfsRoot] = (rootChildren > 1); // caso especial
         }
     printf("Articulation Points:\n");
     for (int u = 0; u < V; ++u)
