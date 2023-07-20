@@ -11,7 +11,7 @@ void sieve(ll upperbound) {
     }
 }
 bool isPrime(ll N) {
-    if (N < _sieve_size) return bs[N]; // O(1) primos pequeños
+    if (N < _sieve_size) return bs[N]; // O(1) primos pequenos
     for (int i = 0; i < (int)p.size() && p[i]*p[i] <= N; ++i)
         if (N%p[i] == 0)
             return false;
