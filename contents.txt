@@ -8,6 +8,7 @@ plantilla.cpp	C++ plantilla
 
 [Estructuras de Datos]
 Estructuras de datos/Disjoint_set_union.cpp	Disjoint Set Union
+Estructuras de datos/fenwick_tree.cpp	Fenwick Tree
 Estructuras de datos/segment_tree.cpp	Segment Tree
 
 [Grafos]
