@@ -34,6 +34,9 @@ Matematicas/Eulerphi.cpp	Funcion Totient de Euler
 Matematicas/Exponenciacion_binaria.cpp	Exponenciacion binaria
 Matematicas/Fibonacci_matriz.py	Fibonacci Matriz
 Matematicas/gcd_y_lcm.cpp	GCD y LCM
+Matematicas/Algoritmo_Euclideo_Extendido.cpp	Algoritmo Euclideo Extendido
+Matematicas/Inverso_modular.cpp	Inverso modular
+Matematicas/Coeficientes_binomiales.cpp	Coeficientes binomiales
 
 [Geometria]
 Geometria/Puntos.cpp	Puntos
