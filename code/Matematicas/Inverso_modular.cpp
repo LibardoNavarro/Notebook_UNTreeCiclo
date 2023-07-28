@@ -9,3 +9,9 @@ ll modInverse(ll b, ll m){
     // b*x + m*y == 1, ahora aplicamos (mod m) para obtener b*x == 1 (mod m)
     return mod(x, m);
 }
+
+// Otra forma
+// O(log MOD)
+ll inv (ll a){
+    return binpow(a, MOD-2, MOD);
+}

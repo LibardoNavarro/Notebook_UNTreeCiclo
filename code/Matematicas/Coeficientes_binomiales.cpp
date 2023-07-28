@@ -1,10 +1,11 @@
-const int MAX_N = 100010;
-
+const int MAX_N = 100010;   // MOD > MAX_N
+// O (log MOD)
 ll inv (ll a){
     return binpow(a, MOD-2, MOD);
 }
 
 ll fact[MAX_N];
+// O(log MOD)
 ll C(int n, int k){
     if (n < k) return 0;
     return (((fact[n] * inv(fact[k])) % MOD) * inv(fact[n-k])) % MOD;
