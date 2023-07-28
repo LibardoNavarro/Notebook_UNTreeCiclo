@@ -32,6 +32,7 @@ Matematicas/esPrimo.cpp	Prueba de primalidad
 Matematicas/Criba_modificada.cpp	Criba Modificada
 Matematicas/Eulerphi.cpp	Funcion Totient de Euler
 Matematicas/Exponenciacion_binaria.cpp	Exponenciacion binaria
+Matematicas/Exponenciacion_Matricial.cpp	Exponenciacion matricial
 Matematicas/Fibonacci_matriz.py	Fibonacci Matriz
 Matematicas/gcd_y_lcm.cpp	GCD y LCM
 Matematicas/Algoritmo_Euclideo_Extendido.cpp	Algoritmo Euclideo Extendido
