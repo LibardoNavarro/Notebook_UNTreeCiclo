@@ -1,10 +1,23 @@
-//Lo mismo que dijkstra pero con pesos negativos
-//O(E*V)
-void bellman_ford(){
-    vi dist(V, INF); dist[s] = 0;
-    for (int i = 0; i < V-1; ++i)
-        for (int u = 0; u < V; ++u)
+vi bellman_ford(vector<vii> &adj, int s, int n){
+    vi dist(n, INF); dist[s] = 0;
+    for (int i = 0; i<n-1; i++){
+        bool modified = false;
+        for (int u = 0; u<n; u++)
             if (dist[u] != INF)
-            for (auto &[v, w] : adj[u])
-                dist[v] = min(dist[v], dist[u]+w);
+                for (auto &[v, w] : adj[u]){
+                    if (dist[v] <= dist[u] + w) continue; 
+                    dist[v] = dist[u] + w;
+                    modified = true;
+                }
+        if (!modified) break;
+    }
+
+    bool negativeCicle = false;
+    for (int u = 0; u<n; u++)
+        if (dist[u] != INF)
+            for (auto &[v, w] : adj[u]){
+                if (dist[v] > dist[u] + w) negativeCicle = true;
+            }
+
+    return dist;
 }
