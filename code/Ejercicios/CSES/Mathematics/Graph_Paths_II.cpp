@@ -24,9 +24,8 @@ struct matrix {
         matrix ans(this->r, b.c, vector<vl>(this->r, vl(b.c, INFL)));
 
         for (int i = 0; i<this->r; i++) {
-            for (int j = 0; j<b.r; j++){
-                for (int k = 0; k<b.c; k++){
-                    if (m[i][k] == INFL || b.m[k][j] == INFL) continue;
+            for (int k = 0; k<b.r; k++){
+                for (int j = 0; j<b.c; j++){
                     ans.m[i][j] = min(ans.m[i][j], m[i][k] + b.m[k][j]);
                 }
             }
