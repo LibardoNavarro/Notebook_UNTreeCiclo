@@ -5,11 +5,18 @@
 
 [C++]
 plantilla.cpp	C++ plantilla
+librerias.cpp	Librerias
 
 [Estructuras de Datos]
 Estructuras de datos/Disjoint_set_union.cpp	Disjoint Set Union
 Estructuras de datos/fenwick_tree.cpp	Fenwick Tree
 Estructuras de datos/segment_tree.cpp	Segment Tree
+
+[Programacion dinamica]
+Programacion dinamica/LIS.cpp	LIS
+Programacion dinamica/Knapsack.cpp	Knapsack
+Programacion dinamica/Cambio_de_monedas.cpp	Cambio de monedas
+Programacion dinamica/Algoritmo_de_Kadane_2D.cpp	Algoritmo de Kadane 2D
 
 [Grafos]
 Grafos/DFS.cpp	DFS
@@ -23,7 +30,9 @@ Grafos/Dijkstra.cpp	Dijkstra
 Grafos/Bellman_Ford.cpp	Bellman Ford
 Grafos/Floyd_Warshall.cpp	Floyd Warshall
 Grafos/Kruskal.cpp	MST Kruskal
+Grafos/Prim.cpp	MST Prim
 Grafos/Shortest_Path_Faster_Algorithm.cpp	Shortest Path Faster Algorithm
+Grafos/Camino_mas_corto_de_longitud_fija.cpp	Camino mas corto de longitud fija
                                         
 [Matematicas]
 Matematicas/Criba_de_Eratostenes.cpp	Criba de Eratostenes
@@ -33,7 +42,7 @@ Matematicas/Criba_modificada.cpp	Criba Modificada
 Matematicas/Eulerphi.cpp	Funcion Totient de Euler
 Matematicas/Exponenciacion_binaria.cpp	Exponenciacion binaria
 Matematicas/Exponenciacion_Matricial.cpp	Exponenciacion matricial
-Matematicas/Fibonacci_matriz.py	Fibonacci Matriz
+Matematicas/Fibonacci_matriz.cpp	Fibonacci Matriz
 Matematicas/gcd_y_lcm.cpp	GCD y LCM
 Matematicas/Algoritmo_Euclideo_Extendido.cpp	Algoritmo Euclideo Extendido
 Matematicas/Inverso_modular.cpp	Inverso modular
@@ -45,5 +54,8 @@ Geometria/Lineas.cpp	Lineas
 Geometria/Vectores.cpp	Vectores
 Geometria/Poligonos.cpp	Poligonos
 Geometria/Convex_Hull.cpp	Convex Hull
+
+[Teoria y miscelanea]
+Teoria y miscelanea/Teorema_de_Pick.txt	Teorema de Pick
 
 [Fin]

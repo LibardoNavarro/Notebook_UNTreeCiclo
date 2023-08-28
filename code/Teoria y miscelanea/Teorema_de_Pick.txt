@@ -1,0 +1,7 @@
+Teorema de Pick
+Sea un poligono simple cuyos vertices tienen coordenadas enteras.
+Si B es el numero de puntos enteros en el borde, I el numero de 
+puntos enteros en el interior del poligono, entonces el area A 
+del poligono se puede calcular con la formula:
+
+A = I+(B/2)-1
