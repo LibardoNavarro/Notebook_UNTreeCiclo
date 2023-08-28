@@ -1,0 +1,46 @@
+\section{Teoría y miscelánea}
+
+\subsection{Sumatorias}
+\begin{multicols}{2}
+\begin{itemize}
+    \item $\sum_{i=1}^{n} i^2 = \frac{n(n+1)(2n+1)}{6}$
+    \item $\sum_{i=1}^{n} i^3 = \left(\frac{n(n+1)}{2}\right)^2$
+    \item $\sum_{i=1}^{n} i^4 = \frac{n(n+1)(2n+1)(3n^2+3n-1)}{30}$
+    \item $\sum_{i=1}^{n} i^5 = \frac{(n(n+1))^2(2n^2+2n-1)}{12}$
+    \item $\sum_{i=0}^{n} x^i = \frac{x^{n+1}-1}{x-1}$ para $x \neq 1$
+\end{itemize}
+\end{multicols}
+
+\subsection{Teoría de Grafos}
+\subsubsection{Teorema de Euler}
+En un grafo conectado planar, se cumple que $V - E + F = 2$, donde $V$ es el número de vértices, $E$ es el número de aristas y $F$ es el número de caras.
+
+\subsubsection{Planaridad de Grafos}
+Un grafo es planar si y solo si no contiene un subgrafo homeomorfo a $K_5$ (grafo completo con 5 vértices) ni a $K_{3,3}$ (grafo bipartito completo con 3 vértices en cada conjunto).
+
+\subsection{Teoría de Números}
+\subsubsection{Ecuaciones Diofánticas Lineales}
+Una ecuación diofántica lineal es una ecuación en la que se buscan soluciones enteras $x$ e $y$ que satisfagan la relación lineal $ax + by = c$, donde $a$, $b$ y $c$ son constantes dadas.
+
+Para encontrar soluciones enteras positivas en una ecuación diofántica lineal, podemos seguir el siguiente proceso:
+
+1. Encontrar una solución particular: Encuentra una solución particular $(x_0, y_0)$ de la ecuación. Esto puede hacerse utilizando el algoritmo de Euclides extendido.
+
+2. Encontrar la solución general: Una vez que tengas una solución particular, puedes obtener la solución general utilizando la fórmula:
+\[ x = x_0 + \frac{b}{\text{mcd}(a, b)} \cdot t \]
+\[ y = y_0 - \frac{a}{\text{mcd}(a, b)} \cdot t \]
+donde $t$ es un parámetro entero.
+
+3. Restringir a soluciones positivas: Si deseas soluciones positivas, asegúrate de que las soluciones generales satisfagan $x \geq 0$ y $y \geq 0$. Puedes ajustar el valor de $t$ para cumplir con estas restricciones.
+
+\subsubsection{Pequeño Teorema de Fermat}
+Si $p$ es un número primo y $a$ es un entero no divisible por $p$, entonces $a^{p-1} \equiv 1 \pmod{p}$.
+
+\subsubsection{Teorema de Euler}
+Para cualquier número entero positivo $n$ y un entero $a$ coprimo con $n$, se cumple que $a^{\phi(n)} \equiv 1 \pmod{n}$, donde $\phi(n)$ es la función phi de Euler, que representa la cantidad de enteros positivos menores que $n$ y coprimos con $n$.
+
+\subsection{Teorema de Pick}
+
+Sea un poligono simple cuyos vertices tienen coordenadas enteras. Si B es el numero de puntos enteros en el borde, I el numero de puntos enteros en el interior del poligono, entonces el area A del poligono se puede calcular con la formula:
+
+\[ A = I + \frac{B}{2} - 1 \]   

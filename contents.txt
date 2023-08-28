@@ -6,6 +6,7 @@
 [C++]
 plantilla.cpp	C++ plantilla
 librerias.cpp	Librerias
+Bitmask.cpp	Bitmask
 
 [Estructuras de Datos]
 Estructuras de datos/Disjoint_set_union.cpp	Disjoint Set Union
@@ -54,8 +55,5 @@ Geometria/Lineas.cpp	Lineas
 Geometria/Vectores.cpp	Vectores
 Geometria/Poligonos.cpp	Poligonos
 Geometria/Convex_Hull.cpp	Convex Hull
-
-[Teoria y miscelanea]
-Teoria y miscelanea/Teorema_de_Pick.txt	Teorema de Pick
 
 [Fin]
