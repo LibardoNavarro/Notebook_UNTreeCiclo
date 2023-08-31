@@ -43,4 +43,42 @@ Para cualquier número entero positivo $n$ y un entero $a$ coprimo con $n$, se c
 
 Sea un poligono simple cuyos vertices tienen coordenadas enteras. Si B es el numero de puntos enteros en el borde, I el numero de puntos enteros en el interior del poligono, entonces el area A del poligono se puede calcular con la formula:
 
-\[ A = I + \frac{B}{2} - 1 \]   
+\[ A = I + \frac{B}{2} - 1 \]
+
+\subsection{Combinatoria}
+\subsubsection{Permutaciones}
+El número de permutaciones de $n$ objetos distintos tomados de a $r$ a la vez (sin repetición) se denota como $P(n, r)$ y se calcula mediante:
+\[ P(n, r) = \frac{n!}{(n - r)!} \]
+
+\subsubsection{Combinaciones}
+El número de combinaciones de $n$ objetos distintos tomados de a $r$ a la vez (sin repetición) se denota como $C(n, r)$ o $\binom{n}{r}$ y se calcula mediante:
+\[ C(n, r) = \binom{n}{r} = \frac{n!}{r!(n - r)!} \]
+
+\subsubsection{Permutaciones con Repetición}
+El número de permutaciones de $n$ objetos tomando en cuenta repeticiones se denota como $P_{\text{rep}}(n; n_1, n_2, \ldots, n_k)$ y se calcula mediante:
+\[ P_{\text{rep}}(n; n_1, n_2, \ldots, n_k) = \frac{n!}{n_1!n_2!\cdots n_k!} \]
+
+\subsubsection{Combinaciones con Repetición}
+El número de combinaciones de $n$ objetos tomando en cuenta repeticiones se denota como $C_{\text{rep}}(n; n_1, n_2, \ldots, n_k)$ y se calcula mediante:
+\[ C_{\text{rep}}(n; n_1, n_2, \ldots, n_k) = \binom{n + k - 1}{n} = \binom{n + k - 1}{k - 1} \]
+
+\subsubsection{Números de Catalan}
+\[ C_n = \frac{1}{n+1} \binom{2n}{n} \]
+Los números de Catalan también pueden calcularse utilizando la siguiente fórmula recursiva:
+\[ C_0 = 1 \]
+\[ C_{n+1} = \frac{4n+2}{n+2} C_n \]
+Usos:
+\begin{itemize}
+    \item  Cat($n$) cuenta el número de árboles binarios distintos con $n$ vértices.
+
+    \item  Cat($n$) cuenta el número de expresiones que contienen $n$ pares de paréntesis correctamente emparejados.
+
+    \item  Cat($n$) cuenta el número de formas diferentes en que se pueden colocar $n+1$ factores entre paréntesis, por ejemplo, para $n=3$ y $3+1=4$ factores: ${a, b, c, d}$, tenemos: $(ab)(cd), a(b(cd)), ((ab)c)d$ y $a((bc)d)$.
+    
+    \item  Los números de Catalan cuentan la cantidad de caminos no cruzados en una rejilla $n$ x $n$ que se pueden trazar desde una esquina de un cuadrado o rectángulo a la esquina opuesta, moviéndose solo hacia arriba y hacia la derecha.
+    
+    \item  Los números de Catalan representan el número de árboles binarios completos con $n+1$ hojas.
+    
+    \item  Cat($n$) cuenta el número de formas en que se puede triangular un poligono convexo de $n+2$ lados. Otra forma de decirlo es como la cantidad de formas de dividir un polígono convexo en triángulos utilizando diagonales no cruzadas.
+    
+\end{itemize}

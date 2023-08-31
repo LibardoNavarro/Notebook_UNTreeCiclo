@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define sz(arr) ((int) arr.size())
+#define all(v) v.begin(), v.end()
 typedef long long ll;
 typedef pair<int, int> ii;
 typedef vector<ii> vii;
@@ -14,10 +15,13 @@ int dirx[4] = {0,-1,1,0};
 int diry[4] = {-1,0,0,1};
 int dr[] = {1, 1, 0, -1, -1, -1, 0, 1};
 int dc[] = {0, 1, 1, 1, 0, -1, -1, -1};
+const string ABC = "abcdefghijklmnopqrstuvwxyz";
+const char ln = '\n';
 
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(0);
+    cout << setprecision(20) << fixed;
     // freopen("file.in", "r", stdin);
     // freopen("file.out", "w", stdout);
 
