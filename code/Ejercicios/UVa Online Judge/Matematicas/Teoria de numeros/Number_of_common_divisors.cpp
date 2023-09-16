@@ -2,22 +2,30 @@
 using namespace std;
 
 #define sz(arr) ((int) arr.size())
+#define all(v) v.begin(), v.end()
 typedef long long ll;
 typedef pair<int, int> ii;
 typedef vector<ii> vii;
 typedef vector<int> vi;
 typedef vector<long long> vl;
+
 const int INF = 1e9;
 const ll INFL = 1e18;
 const int MOD = 1e9+7;
 const double EPS = 1e-9;
+
 int dirx[4] = {0, -1, 1, 0};
 int diry[4] = {-1, 0, 0, 1};
 int dr[] = {1, 1, 0, -1, -1, -1, 0, 1};
 int dc[] = {0, 1, 1, 1, 0, -1, -1, -1};
 
+const string ABC = "abcdefghijklmnopqrstuvwxyz";
+const char ln = '\n';
+
+ll gcd(ll a, ll b) { return b == 0 ? a : gcd(b, a%b); }
+
 vl p;
-bitset<10001001> bs;
+bitset<1000010> bs;
 void sieve(ll n){
     bs.set();
     bs[0] = bs[1] = 0;
@@ -29,41 +37,31 @@ void sieve(ll n){
     }
 }
 
-vl factores(ll n){
-    vl fact;
+ll div(ll n){
+    ll ans = 1LL;
     for (ll i = 0; i<sz(p) && p[i]*p[i]<=n; i++){
+        ll e = 1;
         while(n % p[i] == 0){
-            fact.push_back(p[i]);
+            e++;
             n /= p[i];
         }
+        ans *= e;
     }
-    if (n != 1) fact.push_back(n);
-    return fact;
+    if (n != 1) ans*= 2LL;
+    return ans;
 }
-
-bool isPrime(ll N) {
-    if (N < 10001001) return bs[N];
-    for (int i = 0; i < (int)p.size() && p[i]*p[i] <= N; ++i)
-        if (N%p[i] == 0)
-            return false;
-    return true;
-} 
 
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(0);
+    cout << setprecision(20) << fixed;
+    sieve(1e6);
+    int t; cin >> t;
 
-    sieve(10001000);
-    // cout << p.back() << "\n";
-
-    while (true){
-        ll n; cin >> n;
-        if (!n) break;
-        n = abs(n);
-        if (isPrime(n) || n==1) {cout << -1 << "\n"; continue;}
-        vl ans = factores(n);
-        if (ans[0] == ans[sz(ans)-1]) cout << -1 << "\n";
-        else cout << ans.back() << "\n";
+    while (t--){
+        ll a, b; cin >> a >> b;
+        ll g = gcd(a, b);
+        cout << div(g) << "\n";
     }
     
     return 0;
