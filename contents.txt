@@ -34,6 +34,10 @@ Grafos/Kruskal.cpp	MST Kruskal
 Grafos/Prim.cpp	MST Prim
 Grafos/Shortest_Path_Faster_Algorithm.cpp	Shortest Path Faster Algorithm
 Grafos/Camino_mas_corto_de_longitud_fija.cpp	Camino mas corto de longitud fija
+
+[Flujos]
+Flujos/Edmonds_Karp_algorithm.cpp	Edmonds-Karp
+
                                         
 [Matematicas]
 Matematicas/Criba_de_Eratostenes.cpp	Criba de Eratostenes
