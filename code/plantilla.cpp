@@ -7,6 +7,8 @@ typedef pair<int, int> ii;
 typedef vector<ii> vii;
 typedef vector<int> vi;
 typedef vector<long long> vl;
+typedef pair<ll, ll> pll;
+typedef vector<pll> vll;
 const int INF = 1e9;
 const ll INFL = 1e18;
 const int MOD = 1e9+7;
