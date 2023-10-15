@@ -18,6 +18,7 @@ Programacion dinamica/LIS.cpp	LIS
 Programacion dinamica/Knapsack.cpp	Knapsack
 Programacion dinamica/Cambio_de_monedas.cpp	Cambio de monedas
 Programacion dinamica/Algoritmo_de_Kadane_2D.cpp	Algoritmo de Kadane 2D
+Programacion dinamica/Knuth_clasico.cpp	Knuth Clasico
 
 [Grafos]
 Grafos/DFS.cpp	DFS
@@ -37,6 +38,8 @@ Grafos/Camino_mas_corto_de_longitud_fija.cpp	Camino mas corto de longitud fija
 
 [Flujos]
 Flujos/Edmonds_Karp_algorithm.cpp	Edmonds-Karp
+Flujos/Dinic.cpp	Dinic
+Flujos/Maximum_Bipartite_Matching.cpp	Maximum Bipartite Matching
 
                                         
 [Matematicas]
@@ -52,6 +55,32 @@ Matematicas/gcd_y_lcm.cpp	GCD y LCM
 Matematicas/Algoritmo_Euclideo_Extendido.cpp	Algoritmo Euclideo Extendido
 Matematicas/Inverso_modular.cpp	Inverso modular
 Matematicas/Coeficientes_binomiales.cpp	Coeficientes binomiales
+
+[Strings]
+Strings/funcion-z.cpp	Funcion Z
+Strings/algoritmo-z.cpp	Algoritmo Z
+Strings/funcion-phi.cpp	Funcion Phi
+Strings/kmp.cpp	Kmp
+Strings/aho-corasick.cpp	Aho-Corasick
+Strings/hashing.cpp	Hashing
+Strings/manacher.cpp	Manacher
+Strings/minimal-rotation.cpp	Minimal-Rotation
+Strings/rabin-karp.cpp	Rabin-Karp
+Strings/kmp-automata.cpp	Kmp-Automata
+Strings/suffix-array-forma-1.cpp	Suffix Array Forma 1
+Strings/suffix-array-forma-2.cpp	Suffix Array Forma 2
+Strings/suffix-automata-forma-1.cpp	Suffix Automata Forma 1
+Strings/suffix-automata-forma-2.cpp	Suffix Automata Forma 2
+Strings/longest-common-subsequence.cpp	Longest Common Subsequence
+Strings/longest-common-substring.cpp	Longest Common Substring
+Strings/lyndon-factorization.cpp	Lyndon Factorization
+Strings/cantidad-substring-por-len.cpp	Cantidad Substring por len
+Strings/cantidad-substrings.cpp	Cantidad Substrings
+Strings/kth-substring-con-repeticiones.cpp	Kth-Substring con repeticiones
+Strings/kth-substring-sin-repeticiones.cpp	Kth-substring sin repeticiones
+Strings/primera-aparicion-patrones.cpp	Primera aparicion patrones
+Strings/repetitions.cpp	Repetitions
+Strings/substring-mas-largo-repetido.cpp	Substring mas largo repetido
 
 [Geometria]
 Geometria/Puntos.cpp	Puntos
