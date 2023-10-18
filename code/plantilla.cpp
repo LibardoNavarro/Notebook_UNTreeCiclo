@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
+#define watch(x) cout<<#x<<"="<<x<<'\n'
 #define sz(arr) ((int) arr.size())
 #define all(v) v.begin(), v.end()
 typedef long long ll;
