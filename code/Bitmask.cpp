@@ -47,7 +47,7 @@ ll n = 3; // el tamanio del set de bits
 S = 0;
 S = (1<<n) - 1; // 7 (111)
 
-// n es el tamaño de la mask (Alternativa)
+// n es el tamanio de la mask (Alternativa)
 // ll n = 64;
 // for (ll subset = 0; subset < (1<<n); ++subset){
 

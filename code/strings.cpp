@@ -1,4 +1,4 @@
-// Función para convertir un caracter a un entero
+// Funcion para convertir un caracter a un entero
 int conv(char ch) { 
   return ((ch >= 'a' && ch <= 'z') ? ch-'a' : ch-'A'+26);
 }

@@ -7,6 +7,7 @@
 plantilla.cpp	C++ plantilla
 librerias.cpp	Librerias
 Bitmask.cpp	Bitmask
+strings.cpp	Cosas de strings
 
 [Estructuras de Datos]
 Estructuras de datos/Disjoint_set_union.cpp	Disjoint Set Union
@@ -20,6 +21,8 @@ Programacion dinamica/Cambio_de_monedas.cpp	Cambio de monedas
 Programacion dinamica/Algoritmo_de_Kadane_2D.cpp	Algoritmo de Kadane 2D
 Programacion dinamica/Knuth_clasico.cpp	Knuth Clasico
 Programacion dinamica/Edit_Distances.cpp	Edit Distances
+Programacion dinamica/Divide_Conquer_Base.cpp	Divide Conquer
+Programacion dinamica/Knuth_Base.cpp	Knuth
 
 [Grafos]
 Grafos/DFS.cpp	DFS
@@ -59,9 +62,12 @@ Matematicas/Algoritmo_Euclideo_Extendido.cpp	Algoritmo Euclideo Extendido
 Matematicas/Inverso_modular.cpp	Inverso modular
 Matematicas/Coeficientes_binomiales.cpp	Coeficientes binomiales
 
+[Metodos numericos]
+Algoritmos de busqueda/Ternary_Search.cpp	Ternary Search
+Matematicas/Integral_Definida.cpp	Regla de Simpson
+
 [Strings]
 Strings/funcion-z.cpp	Funcion Z
-Strings/algoritmo-z.cpp	Algoritmo Z
 Strings/funcion-phi.cpp	Funcion Phi
 Strings/kmp.cpp	Kmp
 Strings/aho-corasick.cpp	Aho-Corasick
