@@ -11,7 +11,7 @@ int main() {
         }
     }
 
-    ll maxGlobal=-LONG_LONG_MAX;
+    ll maxGlobal = LONG_LONG_MIN;
     for(int l=0;l<col;l++){
         for(int r=l;r<col;r++){
             ll maxLoc=0;
