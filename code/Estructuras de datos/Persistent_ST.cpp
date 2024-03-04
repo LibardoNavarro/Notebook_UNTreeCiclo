@@ -21,7 +21,7 @@ struct perST{
     vector<Vertex*> rts;
     
     // Creacion de la root inicial y asignacion de 
-    // tamaño de la base de PerST
+    // tamano de la base de PerST
     perST(vl& a): n(a.size()) { 
         rts.pb(build(a, 0, n - 1)); 
     }
