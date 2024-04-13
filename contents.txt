@@ -57,6 +57,8 @@ Matematicas/gcd_y_lcm.cpp	GCD y LCM
 Matematicas/Algoritmo_Euclideo_Extendido.cpp	Algoritmo Euclideo Extendido
 Matematicas/Inverso_modular.cpp	Inverso modular
 Matematicas/Coeficientes_binomiales.cpp	Coeficientes binomiales
+Matematicas/Logaritmo_Discreto.cpp	Logaritmo Discreto
+Matematicas/Freivalds_algorithm.cpp	Freivalds algorithm
 
 [Metodos numericos]
 Algoritmos de busqueda/Ternary_Search.cpp	Ternary Search
