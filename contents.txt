@@ -29,10 +29,8 @@ Programacion dinamica/Knuth_Base.cpp	Knuth
 Grafos/Puentes.cpp	Puentes
 Grafos/Puntos_de_Articulacion.cpp	Puntos de Articulacion
 Grafos/Puntos_de_articulacion_y_puentes.cpp	Puntos de articulacion y puentes (dirigidos)
-Grafos/Orden_Topologico.cpp	Orden Topologico
-Grafos/Algoritmo_khan.cpp	Algoritmo de Khan
-Grafos/floodfill.cpp	Floodfill
 Grafos/Kosaraju.cpp	Algoritmo Kosajaru
+Grafos/Tarjan.cpp	Tarjan
 Grafos/Dijkstra.cpp	Dijkstra
 Grafos/Bellman_Ford.cpp	Bellman Ford
 Grafos/Floyd_Warshall.cpp	Floyd Warshall
@@ -45,12 +43,11 @@ Grafos/Camino_mas_corto_de_longitud_fija.cpp	Camino mas corto de longitud fija
 Flujos/Edmonds_Karp_algorithm.cpp	Edmonds-Karp
 Flujos/Dinic.cpp	Dinic
 Flujos/Maximum_Bipartite_Matching.cpp	Maximum Bipartite Matching
+Flujos/Minimum_cost_flow.cpp	Minimum cost flow
 
                                         
 [Matematicas]
-Matematicas/Criba_de_Eratostenes.cpp	Criba de Eratostenes
 Matematicas/Descomposicion_primos.cpp	Descomposicion en primos (y mas cosas)
-Matematicas/esPrimo.cpp	Prueba de primalidad
 Matematicas/Criba_modificada.cpp	Criba Modificada
 Matematicas/Eulerphi.cpp	Funcion Totient de Euler
 Matematicas/Exponenciacion_binaria.cpp	Exponenciacion binaria
