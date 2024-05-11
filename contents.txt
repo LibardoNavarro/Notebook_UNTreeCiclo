@@ -10,6 +10,7 @@ Bitmask.cpp	Bitmask
 strings.cpp	Cosas de strings
 
 [Estructuras de Datos]
+Estructuras de datos/ordered_set.cpp	Ordered set
 Estructuras de datos/Disjoint_set_union.cpp	Disjoint Set Union
 Estructuras de datos/fenwick_tree.cpp	Fenwick Tree
 Estructuras de datos/segtree.cpp	ST iterativo
