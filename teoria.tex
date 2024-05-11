@@ -14,6 +14,7 @@
 \subsection{Teoría de Grafos}
 \subsubsection{Teorema de Euler}
 En un grafo conectado planar, se cumple que $V - E + F = 2$, donde $V$ es el número de vértices, $E$ es el número de aristas y $F$ es el número de caras.
+Para varios componentes la formula es: $V - E + F = 1 + C$, siendo C el número de componentes.
 
 \subsubsection{Planaridad de Grafos}
 Un grafo es planar si y solo si no contiene un subgrafo homeomorfo a $K_5$ (grafo completo con 5 vértices) ni a $K_{3,3}$ (grafo bipartito completo con 3 vértices en cada conjunto).
@@ -39,11 +40,25 @@ Si $p$ es un número primo y $a$ es un entero no divisible por $p$, entonces $a^
 \subsubsection{Teorema de Euler}
 Para cualquier número entero positivo $n$ y un entero $a$ coprimo con $n$, se cumple que $a^{\phi(n)} \equiv 1 \pmod{n}$, donde $\phi(n)$ es la función phi de Euler, que representa la cantidad de enteros positivos menores que $n$ y coprimos con $n$.
 
-\subsection{Teorema de Pick}
+\subsection{Geometría}
+
+\subsubsection{Teorema de Pick}
 
 Sea un poligono simple cuyos vertices tienen coordenadas enteras. Si B es el numero de puntos enteros en el borde, I el numero de puntos enteros en el interior del poligono, entonces el area A del poligono se puede calcular con la formula:
 
 \[ A = I + \frac{B}{2} - 1 \]
+
+\subsubsection{Fórmula de Herón}
+
+Si los lados del triángulo tienen longitudes \(a\), \(b\) y \(c\), y \(s\) es el semiperímetro (es decir, \(s = \frac{a + b + c}{2}\)), entonces el área \(A\) del triángulo está dada por:
+
+\[ A = \sqrt{s(s - a)(s - b)(s - c)} \]
+
+\subsubsection{Relación de Existencia Triangular}
+
+Para un triángulo con lados de longitud \(a\), \(b\), y \(c\), la relación de existencia triangular se expresa como:
+
+\[ b - c < a < b + c, \quad a - c < b < a + c, \quad a - b < c < a + b \]
 
 \subsection{Combinatoria}
 \subsubsection{Permutaciones}
@@ -82,6 +97,37 @@ Usos:
     \item  Cat($n$) cuenta el número de formas en que se puede triangular un poligono convexo de $n+2$ lados. Otra forma de decirlo es como la cantidad de formas de dividir un polígono convexo en triángulos utilizando diagonales no cruzadas.
     
 \end{itemize}
+
+\subsubsection{Estrellas y barras}
+
+Número de soluciones de la ecuación \(x_1 + x_2 + \dots + x_k = n\).
+
+\begin{itemize}
+    \item Con \(x_i \ge 0\): \(\binom{n+k-1}{n}\)
+    \item Con \(x_i \ge 1\): \(\binom{n-1}{k-1}\)
+\end{itemize}
+
+Número de sumas de enteros con límite inferior:
+
+Esto se puede extender fácilmente a sumas de enteros con diferentes límites inferiores. Es decir, queremos contar el número de soluciones para la ecuación:
+
+\[
+x_1 + x_2 + \dots + x_k = n
+\]
+
+con \(x_i \ge a_i\).
+
+Después de sustituir \(x_i' := x_i - a_i\) recibimos la ecuación modificada:
+
+\[
+(x_1' + a_i) + (x_2' + a_i) + \dots + (x_k' + a_k) = n
+\]
+
+\[
+\Leftrightarrow \quad x_1' + x_2' + \dots + x_k' = n - a_1 - a_2 - \dots - a_k
+\]
+
+con \(x_i' \ge 0\). Así que hemos reducido el problema al caso más simple con \(x_i' \ge 0\) y nuevamente podemos aplicar el teorema de estrellas y barras.
 
 \subsection{DP Optimization Theory}
 \begin{tabular}{|p{0.8cm}| p{4.5cm}| p{3.3cm}|p{0.9cm}| p{1.3cm}|}
