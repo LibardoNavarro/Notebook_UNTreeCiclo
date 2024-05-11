@@ -12,6 +12,7 @@ strings.cpp	Cosas de strings
 [Estructuras de Datos]
 Estructuras de datos/Disjoint_set_union.cpp	Disjoint Set Union
 Estructuras de datos/fenwick_tree.cpp	Fenwick Tree
+Estructuras de datos/segtree.cpp	ST iterativo
 Estructuras de datos/segment_tree.cpp	Segment Tree
 Estructuras de datos/Persistent_ST.cpp	Persistent ST
 Estructuras de datos/Uso_PerST(DVQ).cpp	Distinct Values Queries
@@ -90,10 +91,14 @@ Strings/repetitions.cpp	Repetitions
 Strings/substring-mas-largo-repetido.cpp	Substring mas largo repetido
 
 [Geometria]
-Geometria/Puntos.cpp	Puntos
-Geometria/Lineas.cpp	Lineas
+Geometria/Point.cpp	Puntos
+Geometria/line.cpp	Lineas
 Geometria/Vectores.cpp	Vectores
-Geometria/Poligonos.cpp	Poligonos
+Geometria/polygon.cpp	Poligonos
+Geometria/Angle.cpp	Angulos
+Geometria/circle.cpp	Circulos
+Geometria/halfplanes.cpp	Semiplanos
+Geometria/segment.cpp	Segmentos
 Geometria/Convex_Hull.cpp	Convex Hull
 
 [Fin]
