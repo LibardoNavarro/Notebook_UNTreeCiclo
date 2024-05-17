@@ -61,6 +61,7 @@ Matematicas/Inverso_modular.cpp	Inverso modular
 Matematicas/Coeficientes_binomiales.cpp	Coeficientes binomiales
 Matematicas/Logaritmo_Discreto.cpp	Logaritmo Discreto
 Matematicas/Freivalds_algorithm.cpp	Freivalds algorithm
+Matematicas/Miller_Rabin.cpp	Miller Rabin
 Matematicas/pollard_rho.cpp	Pollard	Rho
 Matematicas/Gauss_Jordan.cpp	Gauss Jordan
 Matematicas/Gauss_xor.cpp	Gauss Jordan mod 2
