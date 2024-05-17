@@ -62,6 +62,8 @@ Matematicas/Coeficientes_binomiales.cpp	Coeficientes binomiales
 Matematicas/Logaritmo_Discreto.cpp	Logaritmo Discreto
 Matematicas/Freivalds_algorithm.cpp	Freivalds algorithm
 Matematicas/pollard_rho.cpp	Pollard	Rho
+Matematicas/Gauss_Jordan.cpp	Gauss Jordan
+Matematicas/Gauss_xor.cpp	Gauss Jordan mod 2
 
 [Metodos numericos]
 Algoritmos de busqueda/Ternary_Search.cpp	Ternary Search
