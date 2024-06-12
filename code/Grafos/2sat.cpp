@@ -59,20 +59,17 @@ struct sat2 {
 	}
 };
 
-int main(){
-	int m,n;cin>>m>>n;
-	sat2 s(n);
-	char c1,c2;
-	for(int a,b,i=0;i<m;++i){
-		cin>>c1>>a>>c2>>b;
-		a--;b--;
-		if(c1=='-')a=s.neg(a);
-		if(c2=='-')b=s.neg(b);
-		s.add_or(a,b);
-	}
-	if(s.check()){
-		for(int i=0;i<n;++i)cout<<(s.val[i]?'+':'-')<<" ";
-		cout<<"\n";
-	}else cout<<"IMPOSSIBLE\n";
-	return 0;
+int m,n;
+sat2 s(n);
+char c1,c2;
+for(int a,b,i=0;i<m;++i){
+	cin>>c1>>a>>c2>>b;
+	a--;b--;
+	if(c1=='-')a=s.neg(a);
+	if(c2=='-')b=s.neg(b);
+	s.add_or(a,b);
 }
+if(s.check()){
+	for(int i=0;i<n;++i)cout<<(s.val[i]?'+':'-')<<" ";
+	cout<<"\n";
+}else cout<<"IMPOSSIBLE\n";

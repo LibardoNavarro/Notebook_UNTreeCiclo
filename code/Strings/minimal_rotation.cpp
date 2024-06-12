@@ -1,13 +1,3 @@
-// Autor: Mateo Álvarez Murillo
-// Fecha de creación: 2023
-
-// Este código se proporciona bajo la Licencia MIT.
-// Para más información, consulta el archivo LICENSE en la raíz del repositorio.
-
-#include <bits/stdc++.h>
-using namespace std;
-#define sz(arr) ((int) arr.size())
-
 // Encuentra la rotación lexicográficamente menor de un string
 int minExp(string &t) {
 	int i=0,j=1,k=0,n=sz(t),x,y;
