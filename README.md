@@ -14,8 +14,8 @@ Varios de los algoritmos aquí planteados son implementados/adaptados gracias a 
 * Steven Halim: [Competitive Programming 3](http://cpbook.net/).
 * [CP-Algorithms](https://cp-algorithms.com/) (traducción de [MAXimal](http://e-maxx.ru/algo/) a inglés).
 * Blogs en [Codeforces](http://codeforces.com/).
-* Notebook de la Universidad de Francisco de Paula Santander: [notebook_ufps](https://github.com/ProgramacionCompetitivaUFPS/notebook)
-* Notebook del equipo "DescomUNAL": [notebook_descomUNAL](https://github.com/mavd09/notebook_unal).
+* Notebook de la universidad de Francisco de Paula Santander: [notebook_ufps](https://github.com/ProgramacionCompetitivaUFPS/notebook)
+* Notebook del equipo "DescomUNAL": [notebook_descomUNAL](https://github.com/ahoraSoyPeor/notebook_descomUNAL).
 * Notebook del equipo "Fast and Fourier": [notebook_eafit](https://github.com/scanof/Competitive-Programming-Notebook)
 
 ## Licencia
