@@ -1,5 +1,5 @@
 struct Node{int sum,l,r,ptr,ptrl,ptrr;};
-struct SegTree{
+struct SegTree{ // q*log(n) memory
 	vector<Node> vals;
 	vi lazy;
 	int null=0;
