@@ -1,13 +1,12 @@
 // O(1) update
-// O(n/sqrt(n)+sqrt(n)) query [0, r)
-// O(n/sqrt(n)+sqrt(n)) query [l, r)
+// O(n/sqrt(n)+sqrt(n)) query
 struct Sqrt {
 	int block_size;
 	vi nums;vl blocks;
 	Sqrt(vi &arr){
 		block_size=(int)ceil(sqrt(sz(arr)));
-        blocks.assign(block_size, 0);
-        nums=arr;
+		blocks.assign(block_size, 0);
+		nums=arr;
 		for(int i=0;i<sz(nums);++i){
 			blocks[i/block_size]+=nums[i];
 		}
@@ -26,7 +25,5 @@ struct Sqrt {
 		return res;
 	}
 
-    ll query(int l, int r){
-        return query(r)-query(l-1); 
-    }
+	ll query(int l, int r){return query(r)-query(l-1);}
 };

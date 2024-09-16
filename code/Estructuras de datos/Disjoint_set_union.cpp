@@ -1,12 +1,11 @@
 struct dsu{
-    vi p, size;
-    int num_sets;
-    int maxSize;
+    vi p,size;
+    int sets,maxSize;
 
     dsu(int n){
-        p.assign(n, 0);
-        size.assign(n, 1);
-        num_sets = n;
+        p.assign(n,0);
+        size.assign(n,1);
+        sets = n;
         for (int i = 0; i<n; i++) p[i] = i;
     }
 
@@ -22,7 +21,7 @@ struct dsu{
                 p[b] = a;
                 size[a] += size[b];
                 maxSize = max(size[a], maxSize);
-                num_sets--;
+                sets--;
             }
         }
 };
