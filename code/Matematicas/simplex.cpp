@@ -2,15 +2,12 @@
 // Restricciones a11*x1 + a12*x2 <= b1, a22*x2 + a23*x3 <= b2 ...
 // Retorna valor optimo y valores de las variables
 
-// O(c^2*b)
-// numero de variables c, numero de restricciones b
+// O(c^2*b) - numero de variables c, numero de restricciones b
 struct Simplex {
-	vi X, Y;
 	vector<vector<double>> a;
 	vector<double> b, c;
-	double z;
-	int n, m;
-
+	double z;int n, m;
+	vi X, Y;
 	void pivot(int x, int y){
 		swap(X[y], Y[x]);
 		b[x]/=a[x][y];
@@ -33,14 +30,12 @@ struct Simplex {
 		}
 		c[y]=-c[y]*a[x][y];
 	}
-
 	Simplex(vector<vector<double>> &A,vector<double> &B,vector<double> &C){
 		a=A;b=B;c=C;
 		n=b.size();m=c.size();z= 0.0;
 		X.resize(m);iota(X.begin(),X.end(),0);
 		Y.resize(n);iota(Y.begin(),Y.end(),m);
 	}
-
 	// {z, {x1,x2,x3...}}
 	pair<double, vector<double>> maximize(){
 		while(true){
