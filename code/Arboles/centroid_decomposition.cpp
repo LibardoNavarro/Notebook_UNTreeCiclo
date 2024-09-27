@@ -2,7 +2,6 @@ const int maxn = 1e5+1;
 struct CentroidDecomposition{ // O(nlogn)
 	int dad[maxn],sz[maxn];
 	set<int> adj[maxn]; // check, processed
-
 	void dfs1(int v, int p);
 	void dfs2(int v, int p);
 	int operator[](int i){return dad[i];}
@@ -22,7 +21,6 @@ struct CentroidDecomposition{ // O(nlogn)
 		}
 		adj[centroid].clear();
 	}
-
 	int dfsSz(int v,int p){
 		sz[v]=1;
 		for(int u:adj[v]){
@@ -31,7 +29,6 @@ struct CentroidDecomposition{ // O(nlogn)
 		}
 		return sz[v];
 	}
-
 	int dfsCentroid(int v, int p, int n){
 		for(int u:adj[v]){
 			if(u==p)continue;

@@ -16,21 +16,16 @@ void prepare(){ // Acordate del prepare()!!
 	for(int i=1;i<=MAXN;i++)p[i]=p[i-1]*BASE;
 }
 
+ii combine(ii a, ii b, int lenb){return a*p[lenb]+b;}
 template <class type> 
 struct hashing{
 	vector<ii> h;
 	hashing(type &t){
-		h.resize((int)t.size()+1);
+		h.resize(sz(t)+1);
 		h[0]=ZERO;
-		for(int i=1;i<(int)h.size();++i)
-			h[i]=h[i-1]*BASE + ii{t[i-1], t[i-1]};
+		for(int i=1;i<sz(h);++i)
+			h[i]=h[i-1]*BASE+ii{t[i-1], t[i-1]};
 	}
 
-	ii get(int l, int r){
-		return h[r+1]-h[l]*p[r-l+1];
-	}
+	ii get(int l, int r){return h[r+1]-h[l]*p[r-l+1];}
 };
-
-ii combine(ii a, ii b, int lenb){
-	return a*p[lenb]+b;
-}

@@ -1,25 +1,17 @@
-typedef long long T;
-typedef unsigned long long u64;
-mt19937_64 rng (chrono::steady_clock::now().time_since_epoch().count());
-
-// T null = ;
 // treap => order asc, implicit treap => order array
+typedef long long T;
 struct Treap{
 	Treap *l,*r,*dad;
 	u64 prior;
 	T sz,value,sum,lz;
 	Treap(T v){
 		l=r=nullptr;
-		lz=0;
+		lz=0;sz=1;
 		prior=rng();
-		sz=1;
 		value=sum=v;
 	}
 
-	~Treap(){
-		delete l;
-		delete r;
-	}
+	~Treap(){delete l;delete r;}
 };
 
 typedef Treap* PTreap;
@@ -114,9 +106,7 @@ pair<int, T> lower_bound(PTreap x, T key){ // index, value
 void dfs(PTreap x){
 	if(!x)return;
 	propagate(x);
-	dfs(x->l);
-	cout<<x->value<<" ";
-	dfs(x->r);
+	dfs(x->l);cout<<x->value<<" ";dfs(x->r);
 }
 
 // PTreap root=nullptr;

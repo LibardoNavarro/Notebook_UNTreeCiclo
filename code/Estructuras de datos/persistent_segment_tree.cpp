@@ -8,9 +8,7 @@ struct SegTree{
 
 	T null=0;
 	T oper(T a, T b);
-	void update(int x){
-		ns[x].val=oper(ns[ns[x].l].val, ns[ns[x].r].val);
-	}
+	void update(int x){ns[x].val=oper(ns[ns[x].l].val, ns[ns[x].r].val);}
 	int newNode(T x){
 		Node tmp={x,-1,-1};
 		ns.push_back(tmp);
@@ -27,14 +25,12 @@ struct SegTree{
 		int m=(l+r)/2;
 		return newNode(build(a, l, m),build(a, m, r));
 	}
-
 	int set(int x, int i, T v, int l, int r){
 		if(r-l==1)return newNode(v);
 		int m=(l+r)/2;
 		if(i<m)return newNode(set(ns[x].l, i, v, l, m), ns[x].r);
 		else return newNode(ns[x].l, set(ns[x].r, i, v, m, r));
 	}
-
 	T get(int x, int lx, int rx, int l, int r){
 		if(lx>=r || l>=rx)return null;
 		if(lx>=l && rx<=r)return ns[x].val;
@@ -43,7 +39,6 @@ struct SegTree{
 		T v2=get(ns[x].r, m, rx, l, r);
 		return oper(v1,v2);
 	}
-
 	T get(int l, int r, int time){return get(roots[time], 0, size, l, r+1);}
 	void set(int i, T v, int time){roots.push_back(set(roots[time], i, v, 0, size));}
 	void build(vector<T>& a, int n){size=n;roots.push_back(build(a, 0, size));}

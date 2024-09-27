@@ -1,16 +1,13 @@
 ll null=LLONG_MIN;
 ll oper(ll a, ll b){return max(a,b);}
 // segtree build, set, upd, get
-
 const int maxn=100000+1; 
 bool VALS_IN_EDGES=false; // modifica arista padre
 struct HLD{
 	int par[maxn], root[maxn], dep[maxn];
-	int sz[maxn], pos[maxn];
-	vector<int> adj[maxn];
+	int sz[maxn], pos[maxn], ti;
+	vi adj[maxn];
 	SegTree st;
-	int ti;
-
 	void addEdge(int x, int y){adj[x].push_back(y);adj[y].push_back(x);}
 	void dfsSz(int x){ 
 		sz[x]=0; 

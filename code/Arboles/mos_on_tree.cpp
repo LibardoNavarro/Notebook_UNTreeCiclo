@@ -1,8 +1,6 @@
-const int maxn = 1e5+5;
-const int maxq = 1e4+5;
-vector<int> adj[maxn];
+const int maxn = 1e5+5, maxq = 1e4+5;
 int ri[maxn],li[maxn],id[maxn*2],n,q,pos=0; 
-
+vector<int> adj[maxn];
 void dfs(int v=0, int p=-1){
 	id[pos]=v;
 	ri[v]=pos++;
@@ -13,10 +11,8 @@ void dfs(int v=0, int p=-1){
 	id[pos]=v;
 	li[v]=pos++;
 }
-
 int lca(int a, int b);
 bool vis[maxn];ll act=0;
-
 void add(int v, bool left);
 void remove(int v, bool left);
 void ask(int v, bool left){
@@ -24,7 +20,6 @@ void ask(int v, bool left){
 	else remove(v, left);
 	vis[v]=!vis[v];
 }
-
 int sqrtn;
 struct query {
 	int l, r, id;
@@ -33,7 +28,6 @@ struct query {
 		return l/sqrtn<x.l/sqrtn;
 	}
 };
-
 query queries[maxq];ll ans[maxq];
 void solve(){
 	int l=0,r=-1;
@@ -56,16 +50,15 @@ void solve(){
 		// if(c!=b && c!=a)ask(c);
 	}
 }
-
-// memset(vis, 0, sizeof(vis));
-// sqrtn=(int)ceil(sqrt(n));dfs();
-// for(int u,v,i=0;i<q;++i){
-// 	cin>>u>>v;u--;v--;
-// 	if(ri[u]>ri[v])swap(u,v);
-// 	int lc=lca(u,v);
-// 	queries[i].l=(lc==u?ri[u]:li[u]);
-// 	queries[i].r=ri[v];
-// 	queries[i].id=i;
-// }
-// sort(queries, queries+q);
-// solve();
+memset(vis, 0, sizeof(vis));
+sqrtn=(int)ceil(sqrt(n));dfs();
+for(int u,v,i=0;i<q;++i){
+	cin>>u>>v;u--;v--;
+	if(ri[u]>ri[v])swap(u,v);
+	int lc=lca(u,v);
+	queries[i].l=(lc==u?ri[u]:li[u]);
+	queries[i].r=ri[v];
+	queries[i].id=i;
+}
+sort(queries, queries+q);
+solve();
