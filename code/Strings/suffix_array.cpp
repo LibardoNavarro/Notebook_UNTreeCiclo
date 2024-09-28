@@ -4,8 +4,8 @@ struct SuffixArray{ // ojo, char separadores
 	vector<int> sa,rnk,lcp;
 	string s;int n;
 
-	void build(const string &_s){
-		s=_s;s.push_back((char)32); // check
+	void build(string &_s){
+		s=_s;s.push_back('$'); // check
 		n=(int)s.size();
 		sa.assign(n, 0);
 		rnk.assign(n, 0);

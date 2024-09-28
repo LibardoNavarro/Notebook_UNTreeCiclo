@@ -1,7 +1,7 @@
 // O(n)
-vector<int> phi(string &s){
-	int n=(int)s.size();
-	vector<int> tmp(n);
+vi phi(string& s){
+	int n=sz(s);
+	vi tmp(n);
 	for(int i=1,j=0;i<n;++i){
 		while(j>0 && s[j]!=s[i])j=tmp[j-1];
 		if(s[i]==s[j])j++;
@@ -12,8 +12,8 @@ vector<int> phi(string &s){
 
 // O(n+m)
 int kmp(string& s, string& p){
-	int n=(int)s.size(),m=(int)p.size(),cnt=0;
-	vector<int> pi=phi(p);
+	int n=sz(s),m=sz(p),cnt=0;
+	vi pi=phi(p);
 	for(int i=0,j=0;i<n;++i){
 		while(j && s[i]!=p[j])j=pi[j-1];
 		if(s[i]==p[j])j++;

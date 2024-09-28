@@ -4,7 +4,7 @@ Notebook de programación competitiva del equipo UNTreeCiclo de la Universidad N
 
 Este repositorio contiene implementaciones de algoritmos de programación competitiva en C++. Los algoritmos están divididos por categorías y se encuentran en la carpeta `code`.
 
-Las categorías que abarca este notebook son: Algoritmos de búsqueda, Estructuras de datos, Flujos, Geometría, Grafos, Matemáticas, Programación dinámica y Strings.
+Las categorías que abarca este notebook son: Estructuras de datos, Flujos, Geometría, Grafos, Matemáticas, Programación dinámica y Strings.
 
 ## Agradecimientos y créditos:
 

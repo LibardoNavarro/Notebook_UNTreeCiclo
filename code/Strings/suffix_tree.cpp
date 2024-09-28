@@ -37,14 +37,14 @@ struct SuffixTree{
 		}
 	}
 
-	void build(const string& _s){
+	void build(string& _s){
 		make(-1,0);int p=0,lef=0;
 		for(char c:_s)add(p,lef,c);
 		add(p,lef,'$');
 		s.pop_back();
 	}
 
-	int query(const string& p){
+	int query(string& p){
 		for(int i=0,u=0,n=sz(p);;){
 			if(i==n || !to[u].count(p[i]))return i;
 			u=to[u][p[i]];

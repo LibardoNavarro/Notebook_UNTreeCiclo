@@ -1,9 +1,7 @@
-const int maxlog = 20+5; 
-const int maxn = 2e5+5;
+const int maxlog = 20+5, maxn = 2e5+5;
 bool important[maxn];
 vector<int> adjVT[maxn],adj[maxn];
 int st[maxn], ft[maxn],up[maxn][maxlog],dep[maxn],n,q,pos=0; 
-
 void dfs(int v, int p=-1){
 	up[v][0]=p;
 	st[v]=++pos;
@@ -14,7 +12,6 @@ void dfs(int v, int p=-1){
 	}
 	ft[v]=pos;
 }
-
 int lca(int a, int b);
 bool upper(int v, int u){return st[v]<=st[u] && ft[v]>=ft[u];}
 bool cmp(int v, int u){return st[v]<st[u];}
@@ -47,11 +44,10 @@ int virtualTree(vector<int> nodes){	// O(klogk)
 	}
 	return s[0];
 }
-
-// int k;cin>>k;
-// vector<int> nodes(k);
-// for(int& x:nodes)important[x]=true;
-// int root=virtualTree(nodes);
-// dp(root);
+int k;cin>>k;
+vector<int> nodes(k);
+for(int& x:nodes)important[x]=true;
+int root=virtualTree(nodes);
+dp(root);
 // output answer
 // reset

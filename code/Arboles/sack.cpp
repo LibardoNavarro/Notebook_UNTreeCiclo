@@ -1,10 +1,8 @@
 const int maxn = 1e5+5;
 vector<int> adj[maxn];
 int nodes[maxn],ver[2*maxn],dep[maxn],st[maxn],ft[maxn],n,pos=0;
-
 void prec(int v=0, int p=-1){
-	nodes[v]=1;
-	ver[pos]=v;
+	nodes[v]=1;ver[pos]=v;
 	st[v]=pos++;
 	for(int u:adj[v]){
 		if(u==p)continue;
@@ -15,18 +13,11 @@ void prec(int v=0, int p=-1){
 	ver[pos]=v;
 	ft[v]=pos++;
 }
-
 bool vis[maxn];
 void ask(int v, bool add){
-	if(vis[v] && !add){
-		vis[v]=false;
-		// delete node
-	}else if(!vis[v] && add){
-		vis[v]=true;
-		// add node
-	}
+	if(vis[v] && !add)// delete node
+	else if(!vis[v] && add)// add node
 }
-
 void dfs(int v=0, int p=-1, bool keep=true){
 	int mx=0,id=-1;
 	for(int u:adj[v]){
@@ -47,7 +38,6 @@ void dfs(int v=0, int p=-1, bool keep=true){
 	}
 	ask(v, 1);
 	// answer queries
-	if(keep==0){
-		for(int p=st[v];p<ft[v];++p)ask(ver[p], 0);
-	}
+	if(keep)continue;
+	for(int p=st[v];p<ft[v];++p)ask(ver[p], 0);
 }

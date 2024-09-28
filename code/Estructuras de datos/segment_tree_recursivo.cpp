@@ -1,99 +1,66 @@
-int nullValue = 0;
-
-struct nodeST{
-    nodeST *left, *right;
-    int l, r; ll value, lazy, lazy1;
-
-    nodeST(vi &v, int l, int r) : l(l), r(r){
-        int m = (l+r)>>1;
-        lazy = 0;
-        lazy1 = 0;
-        if (l!=r){
-            left = new nodeST(v, l, m);
-            right = new nodeST(v, m+1, r);
-            value = opt(left->value, right->value);
-        }
-        else{
-            value = v[l];
-        }
-    }
-
-    ll opt(ll leftValue, ll rightValue){
-        return leftValue + rightValue;
-    }
-
-    void propagate(){
-        if(lazy1){
-            value = lazy1 * (r-l+1);
-            if (l != r){
-                left->lazy1 = lazy1, right->lazy1 = lazy1;
-                left->lazy = 0, right->lazy = 0;
-            }
-            lazy1 = 0;
-            lazy = 0;
-        }
-        else{
-            value += lazy * (r-l+1);
-            if (l != r){
-                if(left->lazy1) left->lazy1 += lazy;
-                else left->lazy += lazy;
-                if(right->lazy1) right->lazy1 += lazy;
-                else right->lazy += lazy;
-            }
-            lazy = 0;
-        }    
-    }
-
-    ll get(int i, int j){
-        propagate();
-        if (l>=i && r<=j) return value;
-        if (l>j  || r<i) return nullValue;
-
-        return opt(left->get(i, j), right->get(i, j));
-    }
-
-    void upd(int i, int j, int nv){
-        propagate();
-        if (l>j  || r<i) return;
-        if (l>=i && r<=j){
-            lazy += nv;
-            propagate();
-            // value = nv;
-            return;
-        }
-
-        left->upd(i, j, nv);
-        right->upd(i, j, nv);
-
-        value = opt(left->value, right->value);
-    }
-
-    void upd(int k, int nv){
-        if (l>k  || r<k) return;
-        if (l>=k && r<=k){
-            value = nv;
-            return;
-        }
-
-        left->upd(k, nv);
-        right->upd(k, nv);
-
-        value = opt(left->value, right->value);
-    }
-
-    void upd1(int i, int j, int nv){
-        propagate();
-        if (l>j  || r<i) return;
-        if (l>=i && r<=j){
-            lazy = 0;
-            lazy1 = nv;
-            propagate();
-            return;
-        }
-
-        left->upd1(i, j, nv);
-        right->upd1(i, j, nv);
-
-        value = opt(left->value, right->value);
-    }
+typedef long long T;
+struct SegTree{
+	vector<T> vals,lazy;
+	T null=0,noVal=0;
+	int size;
+	T oper(T a, T b);
+	void build(vector<T>& a, int x, int lx, int rx){
+		if(rx-lx==1){
+			if(lx<sz(a))vals[x]=a[lx];
+			return;
+		}
+		int m=(lx+rx)/2;
+		build(a, 2*x+1, lx, m);
+		build(a, 2*x+2, m, rx);
+		vals[x]=oper(vals[2*x+1], vals[2*x+2]);
+	}
+	void build(vector<T>& a,int n){
+		size=1;
+		while(size<n)size*=2;
+		vals.resize(2*size);
+		lazy.assign(2*size, noVal);
+		build(a, 0, 0, size);
+	}
+	void propagate(int x, int lx, int rx){
+		if(rx-lx==1)return;
+		if(lazy[x]==noVal)return;
+		int m=(lx+rx)/2;
+		// 2*x+1, 2*x+2 (lazy, vals)
+		lazy[x]=noVal;
+	}
+	void upd(int l, int r, T v,int x, int lx, int rx){
+		if(lx>=r || l>=rx)return;
+		if(lx>=l && rx<=r){
+			// lazy, vals
+			return;
+		}
+		propagate(x,lx,rx);
+		int m=(lx+rx)/2;
+		upd(l,r,v,2*x+1,lx,m);
+		upd(l,r,v,2*x+2,m,rx);
+		vals[x]=oper(vals[2*x+1], vals[2*x+2]);
+	}
+	void set(int i, T v, int x, int lx, int rx){
+		if(rx-lx==1){
+			vals[x]=v;
+			return;
+		}
+		propagate(x,lx,rx);
+		int m=(lx+rx)/2;
+		if(i<m)set(i,v,2*x+1,lx,m);
+		else set(i,v,2*x+2,m,rx);
+		vals[x]=oper(vals[2*x+1], vals[2*x+2]);
+	}
+	T get(int l, int r, int x, int lx, int rx){
+		if(lx>=r || l>=rx)return null;
+		if(lx>=l && rx<=r)return vals[x];
+		propagate(x,lx,rx);
+		int m=(lx+rx)/2;
+		T v1=get(l,r,2*x+1,lx,m);
+		T v2=get(l,r,2*x+2,m,rx);
+		return oper(v1,v2);
+	}
+	T get(int l, int r){return get(l,r+1,0,0,size);}
+	void upd(int l, int r, T v){upd(l,r+1,v,0,0,size);}
+	void set(int i, T val){set(i,val,0,0,size);}
 };
