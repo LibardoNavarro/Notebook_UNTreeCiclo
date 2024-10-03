@@ -26,7 +26,7 @@ int add(string& s){
 vector<int> adj[maxn]; // dad or suf
 int dad[maxn],suf[maxn];
 
-// O(sum(|s|)*alpha)
+// O(sum(n)*alpha)
 void build(){
 	queue<int> q{{0}};
 	while(!q.empty()){

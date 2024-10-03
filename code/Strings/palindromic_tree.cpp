@@ -3,7 +3,10 @@ const char fc = 'a';
 
 // tree suf is the longest suffix palindrome
 // tree dad is the palindrome add c to the right and left
-struct Node{int next[alpha],len,suf,dep,cnt,dad;};
+struct Node{
+	int next[alpha];
+	int len,suf,dep,cnt,dad;
+};
 
 // O(nlogn)
 struct PalindromicTree{

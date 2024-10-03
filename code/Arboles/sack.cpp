@@ -1,29 +1,34 @@
 const int maxn = 1e5+5;
-vector<int> adj[maxn];
-int nodes[maxn],ver[2*maxn],dep[maxn],st[maxn],ft[maxn],n,pos=0;
+int ver[2*maxn],st[maxn],ft[maxn];
+int len[maxn],dep[maxn];
+vi adj[maxn];
+int n,pos=0;
+
 void prec(int v=0, int p=-1){
-	nodes[v]=1;ver[pos]=v;
+	len[v]=1;ver[pos]=v;
 	st[v]=pos++;
 	for(int u:adj[v]){
 		if(u==p)continue;
 		dep[u]=dep[v]+1;
 		prec(u,v);
-		nodes[v]+=nodes[u];
+		len[v]+=len[u];
 	}
 	ver[pos]=v;
 	ft[v]=pos++;
 }
+
 bool vis[maxn];
 void ask(int v, bool add){
 	if(vis[v] && !add)// delete node
 	else if(!vis[v] && add)// add node
 }
+
 void dfs(int v=0, int p=-1, bool keep=true){
 	int mx=0,id=-1;
 	for(int u:adj[v]){
 		if(u==p)continue;
-		if(nodes[u]>mx){
-			mx=nodes[u];
+		if(len[u]>mx){
+			mx=len[u];
 			id=u;
 		}
 	}
@@ -38,6 +43,6 @@ void dfs(int v=0, int p=-1, bool keep=true){
 	}
 	ask(v, 1);
 	// answer queries
-	if(keep)continue;
+	if(keep)return;
 	for(int p=st[v];p<ft[v];++p)ask(ver[p], 0);
 }

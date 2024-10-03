@@ -1,10 +1,10 @@
 typedef long long T;
 T oper(T a, T b); // max, min, gcd ...
-struct RMQ { // O(n)/O(1)
+struct RMQ {
 	vector<vector<T>> table;
 	void build(vector<T>& v){
 		int n=v.size();
-		table.assign(20, vector<T>(n));
+		table.assign(20, vector<T>(n)); // log2(n)
 		for(int i=0;i<n;++i)table[0][i]=v[i];
 		for(int j=1;(1<<j)<=n;++j)
 			for(int i=0;i+(1<<(j-1))<n;++i)

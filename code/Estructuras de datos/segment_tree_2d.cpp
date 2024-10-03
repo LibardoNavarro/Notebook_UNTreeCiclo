@@ -3,20 +3,24 @@ ll st[2*N][2*N];
 struct SegTree{
 	int n,m,neutro=0;
 	inline ll op(ll a, ll b){return a+b;}
+
 	SegTree(int n, int m): n(n), m(m){ 
 		for(int i=0;i<2*n;++i)for(int j=0;j<2*m;++j)st[i][j]=neutro; 
 	}
 	SegTree(vector<vi>& a): n(sz(a)), m(n ? sz(a[0]) : 0){ build(a); } 
+	
 	void build(vector<vi>& a){
 		for(int i=0;i<n;++i)for(int j=0;j<m;++j)st[i+n][j+m]=a[i][j];
 		for(int i=0;i<n;++i)for(int j=m-1;j>=1;--j)st[i+n][j]=op(st[i+n][j<<1], st[i+n][j<<1|1]);
 		for(int i=n-1;i>=1;--i)for(int j=0;j<2*m;++j)st[i][j]=op(st[i<<1][j], st[i<<1|1][j]);
 	}
+
 	void upd(int x, int y, ll v){
 		st[x+n][y+m]=v;
 		for(int j=y+m;j>1;j>>=1)st[x+n][j>>1]=op(st[x+n][j], st[x+n][j^1]);
 		for(int i=x+n;i>1;i>>=1)for(int j=y+m;j;j>>=1)st[i>>1][j]=op(st[i][j], st[i^1][j]);
 	}
+
 	ll get(int x0, int y0, int x1, int y1){
 		ll r=neutro;
 		for(int i0=x0+n,i1=x1+n+1;i0<i1;i0>>=1,i1>>=1){

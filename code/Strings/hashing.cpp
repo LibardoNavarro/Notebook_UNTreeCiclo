@@ -1,4 +1,5 @@
-const int MOD[2] = { 1001864327, 1001265673 }; // 1000234999, 1000567999, 1000111997, 1000777121, 1001265673, 1001864327, 999727999, 1070777777
+// 1000234999, 1000567999, 1000111997, 1000777121, 1001265673, 1001864327, 999727999, 1070777777
+const int MOD[2] = { 1001864327, 1001265673 }; 
 const ii BASE(257, 367), ZERO(0, 0), ONE(1, 1);
 const int MAXN = 1e6;
 
@@ -20,7 +21,7 @@ ii combine(ii a, ii b, int lenb){return a*p[lenb]+b;}
 template <class type> 
 struct hashing{
 	vector<ii> h;
-	hashing(type &t){
+	hashing(type& t){
 		h.resize(sz(t)+1);
 		h[0]=ZERO;
 		for(int i=1;i<sz(h);++i)

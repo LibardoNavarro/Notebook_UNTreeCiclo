@@ -5,9 +5,8 @@ struct dsu{
 		sets=n;
 		p.assign(n,0);
 		rank.assign(n,1);
-		iota(p.begin(), p.end(), 0);
+		for(int i=0;i<n;++i)p[i]=i;
 	}
-
 	int get(int a){return (a==p[a]?a:get(p[a]));}
 	void unite(int a, int b){
 		a=get(a);b=get(b);
@@ -17,7 +16,6 @@ struct dsu{
 		h.push_back(a);
 		p[a]=b;sets--;
 	}
-
 	void rollback(int x){
 		int len=h.size();
 		while(len>x){

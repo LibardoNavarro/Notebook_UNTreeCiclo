@@ -1,6 +1,8 @@
 const int maxn = 2e5+5, maxlog = 20+5; 
-int up[maxn][maxlog],dep[maxn],n;
+int up[maxn][maxlog],dep[maxn]; // memset -1, 0
 vi adj[maxn];
+int n; // <-
+
 void dfs(int v, int p=-1){
 	up[v][0]=p;
 	for(int u:adj[v]){
@@ -10,6 +12,7 @@ void dfs(int v, int p=-1){
 		}
 	}
 }
+
 void build(){
 	for(int l=1;l<maxlog;++l){
 		for(int i=0;i<n;++i){
@@ -18,6 +21,7 @@ void build(){
 		}
 	} 
 }
+
 int kth(int node, int k){
 	for(int l=maxlog-1;l>=0;--l){
 		if(node!=-1 && k&(1<<l)){
@@ -26,6 +30,7 @@ int kth(int node, int k){
 	}
 	return node;
 }
+
 int lca(int a, int b){
 	a=kth(a, dep[a]-min(dep[a], dep[b]));
 	b=kth(b, dep[b]-min(dep[a], dep[b]));

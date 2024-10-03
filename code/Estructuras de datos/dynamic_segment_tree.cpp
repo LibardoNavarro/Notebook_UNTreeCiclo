@@ -1,11 +1,11 @@
-T null=0,noVal=0;
+T null=0,nolz=0;
 T oper(T a, T b);
 struct Node{
 	T val,lz;
 	int l,r;
 	Node *pl,*pr;
 	Node(int ll, int rr){
-		val=null;lz=noVal;
+		val=null;lz=nolz;
 		pl=pr=nullptr;
 		l=ll;r=rr;
 	}
@@ -27,10 +27,10 @@ void extends(PNode x){
 
 void propagate(PNode x){
 	if(x->r-x->l==1)return;
-	if(x->lz==noVal)return;
+	if(x->lz==nolz)return;
 	int m=(x->r+x->l)/2;
 	// pl, pr
-	x->lz=noVal;
+	x->lz=nolz;
 }
 
 struct SegTree{

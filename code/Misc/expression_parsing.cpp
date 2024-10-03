@@ -2,12 +2,14 @@
 bool delim(char c){return c==' ';}
 bool is_op(char c){return c=='+' || c=='-' || c=='*' || c=='/';}
 bool is_unary(char c){return c=='+' || c=='-';}
+
 int priority(char op){
 	if(op<0)return 3;
 	if(op=='+' || op=='-')return 1;
 	if(op=='*' || op=='/')return 2;
 	return -1;
 }
+
 void process_op(stack<int>& st, char op){
 	if(op<0){
 		int l=st.top();st.pop();
@@ -26,6 +28,7 @@ void process_op(stack<int>& st, char op){
 		}
 	}
 }
+
 int evaluate(string& s){
 	stack<int> st;
 	stack<char> op;

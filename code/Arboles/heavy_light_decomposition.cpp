@@ -1,8 +1,9 @@
 ll null=LLONG_MIN;
 ll oper(ll a, ll b){return max(a,b);}
 // segtree build, set, upd, get
-const int maxn=100000+1; 
-bool VALS_IN_EDGES=false; // modifica arista padre
+
+const int maxn=1e5+1; 
+bool VALS_IN_EDGES=false; // arista padre
 struct HLD{
 	int par[maxn], root[maxn], dep[maxn];
 	int sz[maxn], pos[maxn], ti;
