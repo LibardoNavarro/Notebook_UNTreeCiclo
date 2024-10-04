@@ -4,14 +4,9 @@ const lf E0 = 0.0L; //Keep = 0 for integer coordinates, otherwise = EPS
 const lf PI = acos(-1);
 
 struct pt {
-    lf x, y;
-
-    int ty;
-    pt(lf a, lf b, int ty): x(a), y(b), ty(ty){}
-    
+    lf x, y;   
     pt(){}
     pt(lf a, lf b): x(a), y(b){}
-
     pt operator - (const pt &q ) const { return {x - q.x , y - q.y }; }
     pt operator + (const pt &q ) const { return {x + q.x , y + q.y }; }
     pt operator * (const lf &t ) const { return {x * t , y * t }; }
@@ -22,7 +17,6 @@ struct pt {
         if(fabsl(x - q.x) > E0) return x < q.x;
         return y < q.y;
     }
-
     void print(){ cout << x << " " << y << "\n"; } 
 };
 
@@ -49,7 +43,7 @@ lf arg(pt a){return atan2(a.y, a.x); } // ang(RAD) a x-pos
 lf dot(pt a, pt b){ return a.x * b.x + a.y * b.y; } // x = 90 -> cos = 0
 lf cross(pt a, pt b){ return a.x * b.y - a.y * b.x; } // x = 180 -> sin = 0
 lf orient(pt a, pt b, pt c){ return cross(b - a, c - a); } // clockwise = -
-int sign(lf x) { return (lf(0) < x) - (x < lf(0)); }
+int sign(lf x){ return (lf(0) < x) - (x < lf(0)); }
 
 // x inside angle abc (center in a)
 bool in_angle(pt a, pt b, pt c, pt p) {
