@@ -8,15 +8,87 @@ plantilla.cpp	C++ plantilla
 librerias.cpp	Librerias
 Bitmask.cpp	Bitmask
 strings.cpp	Cosas de strings
+custom_hashing.cpp	Custom Hashing
+random.cpp	Random
+
+[Arboles]
+Arboles/centroid_decomposition.cpp	Centroid Decomposition
+Arboles/heavy_light_decomposition.cpp	Heavy Light Decomposition
+Arboles/lca.cpp	LCA
+Arboles/sack.cpp	Sack
+Arboles/virtual_tree.cpp	Virtual Tree
 
 [Estructuras de Datos]
-Estructuras de datos/ordered_set.cpp	Ordered set
 Estructuras de datos/Disjoint_set_union.cpp	Disjoint Set Union
+Estructuras de datos/dynamic_connectivity_offline.cpp	Dynamic Connectivity Offline
+Estructuras de datos/dynamic_segment_tree.cpp	Dynamic Segment Tree
 Estructuras de datos/fenwick_tree.cpp	Fenwick Tree
-Estructuras de datos/segtree.cpp	ST iterativo
-Estructuras de datos/segment_tree.cpp	Segment Tree
-Estructuras de datos/Persistent_ST.cpp	Persistent ST
-Estructuras de datos/Uso_PerST(DVQ).cpp	Distinct Values Queries
+Estructuras de datos/link_cut_tree.cpp	Link Cut Tree
+Estructuras de datos/mos_algorithm.cpp	Mos Algorithm
+Estructuras de datos/ordered_set.cpp	Ordered set
+Estructuras de datos/persistent_segment_tree.cpp	Persistent Segment Tree
+Estructuras de datos/rmq.cpp	RMQ
+Estructuras de datos/segment_tree_iterativo.cpp	Segment Tree Iterativo
+Estructuras de datos/segment_tree_recursivo.cpp	Segment Tree Recursivo
+Estructuras de datos/segment_tree_2d.cpp	Segment Tree 2D
+Estructuras de datos/segment_tree_beats.cpp	Segment Tree Beats
+Estructuras de datos/sqrt_descomposition.cpp	Sqrt Descomposition
+Estructuras de datos/treap.cpp	Treap
+Estructuras de datos/two_stacks.cpp	Two Stacks
+Estructuras de datos/wavelet_tree.cpp	Wavelet Tree
+
+[Flujos]
+Flujos/dinic.cpp	Dinic
+Flujos/Edmonds_Karp_algorithm.cpp	Edmonds Karp
+Flujos/hopcroft_karp.cpp	Hopcroft Karp
+Flujos/maximum_bipartite_matching.cpp	Maximum Bipartite Matching
+Flujos/minimum_cost_maximum_flow.cpp	Minimum Cost Maximum Flow
+Flujos/weighted_matching.cpp	Weighted Matching
+
+[Geometria]
+Geometria/Points.cpp	Puntos
+Geometria/line.cpp	Lineas
+Geometria/polygon.cpp	Poligonos
+Geometria/circle.cpp	Circulos
+Geometria/halfplanes.cpp	Semiplanos
+Geometria/segment.cpp	Segmentos
+
+[Grafos]
+Grafos/Puentes.cpp	Puentes
+Grafos/Puntos_de_Articulacion.cpp	Puntos de Articulacion
+Grafos/Kosaraju.cpp	Kosajaru
+Grafos/Tarjan.cpp	Tarjan
+Grafos/Dijkstra.cpp	Dijkstra
+Grafos/Bellman_Ford.cpp	Bellman Ford
+Grafos/Floyd_Warshall.cpp	Floyd Warshall
+Grafos/Kruskal.cpp	MST Kruskal
+Grafos/Prim.cpp	MST Prim
+Grafos/Shortest_Path_Faster_Algorithm.cpp	Shortest Path Faster Algorithm
+Grafos/Camino_mas_corto_de_longitud_fija.cpp	Camino mas corto de longitud fija
+Grafos/2sat.cpp	2sat
+                               
+[Matematicas]
+Matematicas/Coeficientes_binomiales.cpp	Coeficientes binomiales
+Matematicas/Criba_modificada.cpp	Criba Modificada
+Matematicas/Ecuaciones_diofanticas.cpp	Ecuaciones Diofanticas
+Matematicas/Eulerphi.cpp	Funcion Totient de Euler
+Matematicas/Exponenciacion_binaria.cpp	Exponenciacion binaria
+Matematicas/Exponenciacion_Matricial.cpp	Exponenciacion matricial
+Matematicas/Fibonacci.cpp	Fibonacci Fast Doubling
+Matematicas/Freivalds_algorithm.cpp	Freivalds algorithm
+Matematicas/Gauss_Jordan.cpp	Gauss Jordan
+Matematicas/Gauss_xor.cpp	Gauss Jordan mod 2
+Matematicas/gcd_y_lcm.cpp	GCD y LCM
+Matematicas/Integral_Definida.cpp	Integral Definida
+Matematicas/Inverso_modular.cpp	Inverso modular
+Matematicas/Logaritmo_Discreto.cpp	Logaritmo Discreto
+Matematicas/Miller_Rabin.cpp	Miller Rabin
+Matematicas/miller_rabin_prob.cpp	Miller Rabin Probabilistico
+Matematicas/mobius.cpp	Mobius
+Matematicas/pollard_rho.cpp	Pollard	Rho
+Matematicas/simplex.cpp	Simplex
+Matematicas/FFT.cpp	Fast Fourier Transform
+Matematicas/NTT.cpp	Number Theoretic Transform
 
 [Programacion dinamica]
 Programacion dinamica/LIS.cpp	LIS
@@ -27,83 +99,22 @@ Programacion dinamica/Edit_Distances.cpp	Edit Distances
 Programacion dinamica/Divide_Conquer_Base.cpp	Divide Conquer
 Programacion dinamica/Knuth_Base.cpp	Knuth
 
-[Grafos]
-Grafos/Puentes.cpp	Puentes
-Grafos/Puntos_de_Articulacion.cpp	Puntos de Articulacion
-Grafos/Puntos_de_articulacion_y_puentes.cpp	Puntos de articulacion y puentes (dirigidos)
-Grafos/Kosaraju.cpp	Algoritmo Kosajaru
-Grafos/Tarjan.cpp	Tarjan
-Grafos/Dijkstra.cpp	Dijkstra
-Grafos/Bellman_Ford.cpp	Bellman Ford
-Grafos/Floyd_Warshall.cpp	Floyd Warshall
-Grafos/Kruskal.cpp	MST Kruskal
-Grafos/Prim.cpp	MST Prim
-Grafos/Shortest_Path_Faster_Algorithm.cpp	Shortest Path Faster Algorithm
-Grafos/Camino_mas_corto_de_longitud_fija.cpp	Camino mas corto de longitud fija
-
-[Flujos]
-Flujos/Edmonds_Karp_algorithm.cpp	Edmonds-Karp
-Flujos/Dinic.cpp	Dinic
-Flujos/Maximum_Bipartite_Matching.cpp	Maximum Bipartite Matching
-Flujos/Minimum_cost_flow.cpp	Minimum cost flow
-
-                                        
-[Matematicas]
-Matematicas/Descomposicion_primos.cpp	Descomposicion en primos (y mas cosas)
-Matematicas/Criba_modificada.cpp	Criba Modificada
-Matematicas/Eulerphi.cpp	Funcion Totient de Euler
-Matematicas/Exponenciacion_binaria.cpp	Exponenciacion binaria
-Matematicas/Exponenciacion_Matricial.cpp	Exponenciacion matricial
-Matematicas/Fibonacci_matriz.cpp	Fibonacci Matriz
-Matematicas/gcd_y_lcm.cpp	GCD y LCM
-Matematicas/Algoritmo_Euclideo_Extendido.cpp	Algoritmo Euclideo Extendido
-Matematicas/Inverso_modular.cpp	Inverso modular
-Matematicas/Coeficientes_binomiales.cpp	Coeficientes binomiales
-Matematicas/Logaritmo_Discreto.cpp	Logaritmo Discreto
-Matematicas/Freivalds_algorithm.cpp	Freivalds algorithm
-Matematicas/Miller_Rabin.cpp	Miller Rabin
-Matematicas/pollard_rho.cpp	Pollard	Rho
-Matematicas/Gauss_Jordan.cpp	Gauss Jordan
-Matematicas/Gauss_xor.cpp	Gauss Jordan mod 2
-
-[Metodos numericos]
-Algoritmos de busqueda/Ternary_Search.cpp	Ternary Search
-Matematicas/Integral_Definida.cpp	Regla de Simpson
-
 [Strings]
-Strings/funcion-z.cpp	Funcion Z
-Strings/funcion-phi.cpp	Funcion Phi
-Strings/kmp.cpp	Kmp
-Strings/aho-corasick.cpp	Aho-Corasick
 Strings/hashing.cpp	Hashing
+Strings/kmp.cpp	KMP
+Strings/kmp_automaton.cpp	KMP Automaton
 Strings/manacher.cpp	Manacher
-Strings/minimal-rotation.cpp	Minimal-Rotation
-Strings/rabin-karp.cpp	Rabin-Karp
-Strings/kmp-automata.cpp	Kmp-Automata
-Strings/suffix-array-forma-1.cpp	Suffix Array Forma 1
-Strings/suffix-array-forma-2.cpp	Suffix Array Forma 2
-Strings/suffix-automata-forma-1.cpp	Suffix Automata Forma 1
-Strings/suffix-automata-forma-2.cpp	Suffix Automata Forma 2
-Strings/longest-common-subsequence.cpp	Longest Common Subsequence
-Strings/longest-common-substring.cpp	Longest Common Substring
-Strings/lyndon-factorization.cpp	Lyndon Factorization
-Strings/cantidad-substring-por-len.cpp	Cantidad Substring por len
-Strings/cantidad-substrings.cpp	Cantidad Substrings
-Strings/kth-substring-con-repeticiones.cpp	Kth-Substring con repeticiones
-Strings/kth-substring-sin-repeticiones.cpp	Kth-substring sin repeticiones
-Strings/primera-aparicion-patrones.cpp	Primera aparicion patrones
-Strings/repetitions.cpp	Repetitions
-Strings/substring-mas-largo-repetido.cpp	Substring mas largo repetido
+Strings/minimum_expression.cpp	Minimum Expression
+Strings/palindromic_tree.cpp	Palindromic Tree
+Strings/suffix_array.cpp	Suffix Array
+Strings/suffix_automaton.cpp	Suffix Automaton
+Strings/suffix_tree.cpp	Suffix Tree
+Strings/trie.cpp	Trie
+Strings/z_algorithm.cpp	Z Algorithm
 
-[Geometria]
-Geometria/Point.cpp	Puntos
-Geometria/line.cpp	Lineas
-Geometria/Vectores.cpp	Vectores
-Geometria/polygon.cpp	Poligonos
-Geometria/Angle.cpp	Angulos
-Geometria/circle.cpp	Circulos
-Geometria/halfplanes.cpp	Semiplanos
-Geometria/segment.cpp	Segmentos
-Geometria/Convex_Hull.cpp	Convex Hull
+[Misc]
+Misc/counting_sort.cpp	Counting Sort
+Misc/expression_parsing.cpp	Expression Parsing
+Misc/ternary_search.cpp	Ternary Search
 
 [Fin]

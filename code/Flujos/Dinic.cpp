@@ -1,83 +1,72 @@
-//O(V^2 * E)
-//En redes unitarias: O(E * sqrt(V))
-struct FlowEdge {
-    int v, u;
-    ll cap, flow = 0;
-    FlowEdge(int v, int u, ll cap) : v(v), u(u), cap(cap) {}
-};
-
-struct Dinic {
-    const ll flow_inf = INFL;
-    vector<FlowEdge> edges;
-    vector<vi> adj;
-    int n, m = 0;
-    int s, t;
-    vi level, ptr;
-    queue<int> q;
-
-    Dinic(int n, int s, int t) : n(n), s(s), t(t) {
-        adj.resize(n);
-        level.resize(n);
-        ptr.resize(n);
+// O(|E|*|V|^2)
+struct edge { ll v, cap, inv, flow; };
+struct network {
+  ll n, s, t;
+  vector<ll> lvl;
+  vector<vector<edge>> g;
+  network(ll n) : n(n), lvl(n), g(n) {}
+  void add_edge(int u, int v, ll c) {
+    g[u].push_back({v, c, g[v].size(), 0});
+    g[v].push_back({u, 0, g[u].size()-1, c});
+  }
+  bool bfs() {
+    fill(lvl.begin(), lvl.end(), -1);
+    queue<ll> q;
+    lvl[s] = 0;
+    for(q.push(s); q.size(); q.pop()) {
+      ll u = q.front();
+      for(auto &e : g[u]) {
+        if(e.cap > 0 && lvl[e.v] == -1) {
+          lvl[e.v] = lvl[u]+1;
+          q.push(e.v);
+        }
+      }
     }
-
-    void add_edge(int v, int u, ll cap) {
-        edges.emplace_back(v, u, cap);
-        edges.emplace_back(u, v, 0);
-        adj[v].push_back(m);
-        adj[u].push_back(m + 1);
-        m += 2;
+    return lvl[t] != -1;
+  }
+ 
+  void min_cut(){
+    queue<ll> q;
+    vector<bool> vis(n, 0);
+    vis[s] = 1;
+    for(q.push(s); q.size(); q.pop()) {
+      ll u = q.front();
+      for(auto &e : g[u]) {
+        if(e.cap > 0 && !vis[e.v]) {
+          q.push(e.v);
+          vis[e.v] = 1;
+        }
+      }
     }
-
-    bool bfs() {
-        while (!q.empty()) {
-            int v = q.front();
-            q.pop();
-            for (int id : adj[v]) {
-                if (edges[id].cap - edges[id].flow < 1)
-                    continue;
-                if (level[edges[id].u] != -1)
-                    continue;
-                level[edges[id].u] = level[v] + 1;
-                q.push(edges[id].u);
+    set<ii> ans;
+    for (int i = 0; i<n; i++){
+        for (auto &e : g[i]){
+            if (vis[i] && !vis[e.v]){
+                ans.insert({i+1, e.v+1});
             }
         }
-        return level[t] != -1;
     }
-
-    ll dfs(int v, ll pushed) {
-        if (pushed == 0)
-            return 0;
-        if (v == t)
-            return pushed;
-        for (int& cid = ptr[v]; cid < (int)adj[v].size(); cid++) {
-            int id = adj[v][cid];
-            int u = edges[id].u;
-            if (level[v] + 1 != level[u] || edges[id].cap - edges[id].flow < 1)
-                continue;
-            ll tr = dfs(u, min(pushed, edges[id].cap - edges[id].flow));
-            if (tr == 0)
-                continue;
-            edges[id].flow += tr;
-            edges[id ^ 1].flow -= tr;
-            return tr;
-        }
-        return 0;
+    for (auto [x, y] : ans) cout << x << ' ' << y << ln;
+  }
+  ll dfs(ll u, ll nf) {
+    if(u == t) return nf;
+    ll res = 0;
+    for(auto &e : g[u]) {
+      if(e.cap > 0 && lvl[e.v] == lvl[u]+1) {
+        ll tf = dfs(e.v, min(nf, e.cap));
+        res += tf; nf -= tf; e.cap -= tf;
+        g[e.v][e.inv].cap += tf;
+        g[e.v][e.inv].flow -= tf;
+        e.flow += tf;
+        if(nf == 0) return res;
+      }
     }
-
-    ll flow() {
-        ll f = 0;
-        while (true) {
-            fill(all(level), -1);
-            level[s] = 0;
-            q.push(s);
-            if (!bfs())
-                break;
-            fill(all(ptr), 0);
-            while (ll pushed = dfs(s, flow_inf)) {
-                f += pushed;
-            }
-        }
-        return f;
-    }
+    if(!res) lvl[u] = -1;
+    return res;
+  }
+  ll max_flow(ll so, ll si, ll res = 0) {
+    s = so; t = si;
+    while(bfs()) res += dfs(s, LONG_LONG_MAX);
+    return res;
+  }
 };
