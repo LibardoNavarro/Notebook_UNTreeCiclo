@@ -7,13 +7,13 @@ struct pt {
     lf x, y;   
     pt(){}
     pt(lf a, lf b): x(a), y(b){}
-    pt operator - (const pt &q ) const { return {x - q.x , y - q.y }; }
-    pt operator + (const pt &q ) const { return {x + q.x , y + q.y }; }
-    pt operator * (const lf &t ) const { return {x * t , y * t }; }
-    pt operator / (const lf &t ) const { return {x / t , y / t }; }
+    pt operator - (const pt &q) const { return {x - q.x , y - q.y }; }
+    pt operator + (const pt &q) const { return {x + q.x , y + q.y }; }
+    pt operator * (const lf &t) const { return {x * t , y * t }; }
+    pt operator / (const lf &t) const { return {x / t , y / t }; }
     bool operator == (pt p){ return abs(x - p.x) <= EPS && abs(y - p.y) <= EPS; }
     bool operator != (pt p){ return !operator==(p); }
-    bool operator < ( const pt & q ) const {
+    bool operator < (const pt & q) const {
         if(fabsl(x - q.x) > E0) return x < q.x;
         return y < q.y;
     }
