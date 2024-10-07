@@ -4,7 +4,7 @@ struct SuffixArray{
 	string s;int n;
 	vi sa,rnk,lcp;
 
-	void build(string& _s){
+	SuffixArray(string& _s){
 		s=_s;s.push_back('$'); // check
 		n=sz(s);
 		sa.assign(n, 0);

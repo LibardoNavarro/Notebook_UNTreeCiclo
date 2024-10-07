@@ -1,7 +1,8 @@
 // O(n*log(alpha))
 struct SuffixAutomaton{
 	vector<map<char,int>> to;
-	vector<bool> end;vi suf,len; // len, longest string
+	vector<bool> end;
+	vi suf,len; // len, longest string
 	int last;
 
 	SuffixAutomaton(string& s){
