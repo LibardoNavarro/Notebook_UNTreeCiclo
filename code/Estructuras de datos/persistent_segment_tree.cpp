@@ -2,9 +2,8 @@ typedef long long T;
 struct Node{T val;int l,r;};
 struct SegTree{ 
 	vector<Node> ns;
+	int act=0,size;
 	vi roots;
-	int act=0;
-	int size;
 
 	T null=0;
 	T oper(T a, T b);
