@@ -1,9 +1,8 @@
 const int maxn = 2e5+5, maxlog = 20+5; 
-int up[maxn][maxlog],dep[maxn]; // memset -1, 0
+int up[maxn][maxlog], dep[maxn]; // memset -1 (up)
 vi adj[maxn];
-int n; // <-
 
-void dfs(int v, int p=-1){
+void dfs(int v=0, int p=-1){
 	up[v][0]=p;
 	for(int u:adj[v]){
 		if(u!=p){
@@ -13,11 +12,12 @@ void dfs(int v, int p=-1){
 	}
 }
 
-void build(){
+void build(int n){
 	for(int l=1;l<maxlog;++l){
 		for(int i=0;i<n;++i){
-			if(up[i][l-1]==-1)continue;
-			up[i][l]=up[up[i][l-1]][l-1];
+			if(up[i][l-1]!=-1){
+				up[i][l]=up[up[i][l-1]][l-1];
+			}
 		}
 	} 
 }

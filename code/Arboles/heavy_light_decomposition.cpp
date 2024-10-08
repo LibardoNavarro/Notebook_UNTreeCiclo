@@ -1,13 +1,13 @@
-ll null=LLONG_MIN;
-ll oper(ll a, ll b){return max(a,b);}
-// segtree build, set, upd, get
-
-const int maxn=1e5+1; 
-bool VALS_IN_EDGES=false; // arista padre
-struct HLD{
+typedef long long T;
+T null;
+T oper(T a, T b);
+// Segment tree
+const int maxn=1e5+1; // >= 2e5, remove struct
+bool edges=false; // arista padre
+struct HLD{ 
 	int par[maxn], root[maxn], dep[maxn];
 	int sz[maxn], pos[maxn], ti;
-	vi adj[maxn];
+	vector<int> adj[maxn];
 	SegTree st;
 	void addEdge(int x, int y){adj[x].push_back(y);adj[y].push_back(x);}
 	void dfsSz(int x){ 
@@ -23,9 +23,9 @@ struct HLD{
 	void dfsHld(int x){
 		pos[x]=ti++;
 		for(int y:adj[x]){
-		if(y==par[x])continue;
-		root[y]=(y==adj[x][0]?root[x]:y);
-		dfsHld(y);
+			if(y==par[x])continue;
+			root[y]=(y==adj[x][0]?root[x]:y);
+			dfsHld(y);
 		}
 	}
 	void build(int n,int v=0){ 
@@ -38,29 +38,30 @@ struct HLD{
 		// st.build(palst, n);
 		st.build(n);
 	}
-	template <class Oper>
+	// O(log^2(n))
+	template <class Oper> 
 	void processPath(int x, int y, Oper op){
 		for(;root[x]!=root[y];y=par[root[y]]){
 			if(dep[root[x]]>dep[root[y]])swap(x,y);
 			op(pos[root[y]],pos[y]); 
 		}
 		if(dep[x]>dep[y])swap(x,y);
-		op(pos[x]+VALS_IN_EDGES,pos[y]); 
+		op(pos[x]+edges,pos[y]); 
 	}
 	void modifyPath(int x, int y, int v){ 
 		processPath(x,y,[this,&v](int l, int r){ 
 			st.upd(l,r,v);
 		}); 
 	}
-	ll queryPath(int x, int y){ 
-		ll res=null;
+	T queryPath(int x, int y){ 
+		T res=null;
 		processPath(x,y,[this,&res](int l, int r){ 
 			res=oper(res, st.get(l,r));
 		});
 		return res; 
 	}
-	void modifySubtree(int x, int v){st.upd(pos[x]+VALS_IN_EDGES,pos[x]+sz[x],v);}
-	int querySubtree(int x){return st.get(pos[x]+VALS_IN_EDGES,pos[x]+sz[x]);}
+	void modifySubtree(int x, int v){st.upd(pos[x]+edges,pos[x]+sz[x],v);}
+	int querySubtree(int x){return st.get(pos[x]+edges,pos[x]+sz[x]);}
 	void modify(int x, int v){st.set(pos[x],v);} 
 	void modifyEdge(int x, int y, int v){
 		if(dep[x]<dep[y])swap(x,y);

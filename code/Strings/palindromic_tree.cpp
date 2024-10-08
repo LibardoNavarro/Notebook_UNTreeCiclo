@@ -57,13 +57,18 @@ struct PalindromicTree{
 		return true;
 	}
 
-	PalindromicTree(string& _s, int n){
+	PalindromicTree(string& s2, int n){
 		tree.assign(n+4,Node());
 		tree[1].len=-1;tree[1].suf=1;
 		tree[2].len=0;tree[2].suf=1;
-		size=2;last=2;s=_s;
+		size=2;last=2;s=s2;
 
-		for(int i=0;i<n;i++)addLetter(i);
-		for(int i=size;i>=3;i--)tree[tree[i].suf].cnt+=tree[i].cnt;
+		for(int i=0;i<n;i++){
+			addLetter(i);
+		}
+
+		for(int i=size;i>=3;i--){
+			tree[tree[i].suf].cnt+=tree[i].cnt;
+		}
 	}
 };

@@ -1,29 +1,27 @@
-// O(n/sqrt(n)+sqrt(n)) query
-struct Sqrt {
-	int block_size;
-	vl nums,blocks;
-
-	Sqrt(vi &arr){
-		block_size=(int)ceil(sqrt(sz(arr)));
-		blocks.assign(block_size, 0);
-		nums=arr;
-		for(int i=0;i<sz(nums);++i){
-			blocks[i/block_size]+=nums[i];
+typedef long long T;
+struct Sqrt { // O(n/b+b)
+	int b; // check b
+	vector<T> nums,blocks;
+	void build(vector<T>& arr, int n){
+		b=(int)ceil(sqrt(n));nums=arr;
+		blocks.assign(b, 0);
+		for(int i=0;i<n;++i){
+			blocks[i/b]+=nums[i];
 		}
 	}
 
-	void update(int x, int v){
-		blocks[x/block_size]-=nums[x];
+	void set(int x, int v){
+		blocks[x/b]-=nums[x];
 		nums[x]=v;
-		blocks[x/block_size]+=nums[x];
+		blocks[x/b]+=nums[x];
 	}
 
-	ll query(int r){
-		ll res=0;
-		for(int i=0;i<r/block_size;++i){res+=blocks[i];}
-		for(int i=(r/block_size)*block_size;i<r;++i){res+=nums[i];}
+	T get(int r){
+		T res=0;
+		for(int i=0;i<r/b;++i){res+=blocks[i];}
+		for(int i=(r/b)*b;i<r;++i){res+=nums[i];}
 		return res;
 	}
-	
-	ll query(int l, int r){return query(r)-query(l-1);}
+
+	T get(int l, int r){return get(r+1)-get(l);}
 };

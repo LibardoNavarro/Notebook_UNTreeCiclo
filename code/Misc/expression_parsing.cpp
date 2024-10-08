@@ -1,4 +1,4 @@
-// En python es eval()
+// O(n) - En python es eval()
 bool delim(char c){return c==' ';}
 bool is_op(char c){return c=='+' || c=='-' || c=='*' || c=='/';}
 bool is_unary(char c){return c=='+' || c=='-';}
