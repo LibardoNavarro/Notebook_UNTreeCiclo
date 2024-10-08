@@ -21,14 +21,14 @@ struct line {
     bool has(pt p){ return abs(cross(v, p) - c) <= E0; }; // pt on line
     
     lf evalx(lf x){
-        assert(fabsl(v.x) > E0);
+        assert(fabsl(v.x) > EPS);
         return (c + v.y * x) / v.x;
     }
 
 };
 
 pt inter_ll(line l1, line l2) {
-    if (abs(cross(l1.v, l2.v)) <= E0) return {INF, INF}; // parallel
+    if (abs(cross(l1.v, l2.v)) <= EPS) return {INF, INF}; // parallel
     return (l2.v * l1.c - l1.v * l2.c) / cross(l1.v, l2.v); // floating points
 }
 
