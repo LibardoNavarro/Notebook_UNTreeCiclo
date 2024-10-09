@@ -3,7 +3,7 @@ struct mbm {
   int l, r;
   vector<vector<int>> g;
   vector<int> match, seen;
-  mbm(int l, int r) : l(l), r(r), seen(r), match(r), g(l) {}
+  mbm(int l, int r) : l(l), r(r), g(l), match(r), seen(r){}
   void add_edge(int l, int r) { g[l].push_back(r); }
   bool dfs(int u) {
     for(auto v : g[u]) {
