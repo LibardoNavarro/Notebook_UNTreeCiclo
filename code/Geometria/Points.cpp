@@ -10,6 +10,7 @@ struct pt {
     pt(lf ang): x(cos(ang)), y(sin(ang)){}  // Polar unit point: ang(RAD)
     pt operator - (const pt &q) const { return {x - q.x , y - q.y }; }
     pt operator + (const pt &q) const { return {x + q.x , y + q.y }; }
+    pt operator * (pt p){ return {x * p.x - y * p.y, x * p.y + y * p.x}; }
     pt operator * (const lf &t) const { return {x * t , y * t }; }
     pt operator / (const lf &t) const { return {x / t , y / t }; }
     bool operator == (pt p){ return abs(x - p.x) <= EPS && abs(y - p.y) <= EPS; }
@@ -46,7 +47,7 @@ lf cross(pt a, pt b){ return a.x * b.y - a.y * b.x; } // x = 180 -> sin = 0
 lf orient(pt a, pt b, pt c){ return cross(b - a, c - a); } // AB clockwise = -
 int sign(lf x){ return (EPS < x) - (x < -EPS); }
 
-// x inside angle abc (center in a)
+// p inside angle abc (center in a)
 bool in_angle(pt a, pt b, pt c, pt p) {
     //assert(fabsl(orient(a, b, c)) > E0);
     if(orient(a, b, c) < -E0)
@@ -54,7 +55,7 @@ bool in_angle(pt a, pt b, pt c, pt p) {
     return orient(a, b, p) >= -E0 && orient(a, c, p) <= E0;
 }
 
-// lf angle(pt a, pt b){ return acos(max((lf)-1.0, min((lf)1.0, dot(a, b)/norm(a)/norm(b)))); } // min ang(RAD)
+lf min_angle(pt a, pt b){ return acos(max((lf)-1.0, min((lf)1.0, dot(a, b)/norm(a)/norm(b)))); } // ang(RAD)
 lf angle(pt a, pt b){ return atan2(cross(a, b), dot(a, b)); } // ang(RAD)
 lf angle(pt a, pt b, pt c){ // ang(RAD) AB AC ccw
     lf ang = angle(b - a, c - a);
@@ -81,3 +82,16 @@ void polar_sort(vector<pt> &v, pt o){ // sort points in counterclockwise with re
         return make_tuple(half(a - o), 0.0, norm2((a - o))) < make_tuple(half(b - o), cross(a - o, b - o), norm2((b - o)));
     });
 }
+
+int cuad(pt p){ // REVISAR
+    if(p.x > 0 && p.y >= 0) return 0;
+    if(p.x <= 0 && p.y > 0) return 1;
+    if(p.x < 0 && p.y <= 0) return 2;
+    if(p.x >= 0 && p.y < 0) return 3;
+    return -1; // x == 0 && y == 0
+}
+
+bool cmp(pt p1, pt p2){
+  int c1 = cuad(p1), c2 = cuad(p2);
+  return c1 == c2 ? p1.y * p2.x < p1.x * p2.y : c1 < c2; 
+} 

@@ -174,7 +174,7 @@ lf callipers(vector<pt>& p){
 
 // O(n + m) max_dist between 2 points (pa, pb) of 2 Convex polygons (a, b)
 lf rotating_callipers(vector<pt>& a, vector<pt>& b){ // REVISAR
-    if (a.size() > b.size()) swap(a, b);
+    if (a.size() > b.size()) swap(a, b); // <- del or add
     pair<ll, int> start = {-1, -1};
     if(a.size() == 1) swap(a, b);
     for(int i = 0; i < a.size(); i++) start = max(start, {norm2(b[0] - a[i]), i});
@@ -190,12 +190,12 @@ lf rotating_callipers(vector<pt>& a, vector<pt>& b){ // REVISAR
     return r;
 }
 
-lf intercircle(vector<pt>& p, circle c){ // area of intersection with circle // REVISAR
+lf intercircle(vector<pt>& p, circle c){ // area of intersection with circle
     lf r=0.;
     for(int i = 0, n = p.size(); i < n; i++){
         int j = (i + 1) % n;
-        lf w = c.intertriangle(p[i],p[j]);
-        if(cross((p[j] - c.o), (p[i] - c.o)) > 0) r += w;
+        lf w = intertriangle(c, p[i], p[j]);
+        if(cross((p[j] - c.center), (p[i] - c.center)) > 0) r += w;
         else r -= w;
     }
     return abs(r);
