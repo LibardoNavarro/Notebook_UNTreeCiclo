@@ -4,8 +4,8 @@ struct mbm {
   vector<int> d, match;
   int nil, l, r;
   /// u -> 0 to l, v -> 0 to r
-  mbm(int l, int r) : l(l), r(r), nil(l+r), g(l+r),
-                      d(1+l+r, INF), match(l+r, l+r) {}
+  mbm(int l, int r) : g(l+r), d(1+l+r, INF), match(l+r, l+r),
+                      nil(l+r), l(l), r(r) {}
   void add_edge(int a, int b) {
     g[a].push_back(l+b);
     g[l+b].push_back(a);
