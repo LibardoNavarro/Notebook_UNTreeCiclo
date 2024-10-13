@@ -76,10 +76,10 @@ pt centroid(vector<pt>& p){
     bottom = 0;
 }
 
-void remove_col(vector<pt>& p){ // REVISAR
+void remove_col(vector<pt>& p){
     vector<pt> s;
     for(int i = 0, n = p.size(); i < n; i++){
-        if(!on_segment(p[(i-1+n) % n], p[(i+1) % n], p[i])) s.push_back(p[i]);
+        if(!on_segment(p[(i - 1 + n) % n], p[(i + 1) % n], p[i])) s.push_back(p[i]);
     }
     p.swap(s);
 }
