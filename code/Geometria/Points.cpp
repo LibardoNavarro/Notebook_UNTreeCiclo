@@ -15,7 +15,7 @@ struct pt {
     pt operator / (const lf &t) const { return {x / t , y / t }; }
     bool operator == (pt p){ return abs(x - p.x) <= EPS && abs(y - p.y) <= EPS; }
     bool operator != (pt p){ return !operator==(p); }
-    bool operator < (const pt & q) const {
+    bool operator < (const pt & q) const { // set / sort
         if(fabsl(x - q.x) > E0) return x < q.x;
         return y < q.y;
     }

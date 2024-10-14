@@ -48,3 +48,21 @@ lf seg_to_seg(pt a, pt b, pt c, pt d) {
     if (proper_inter(a, b, c, d, dummy)) return 0; // ab intersects cd
     return min({pt_to_seg(a, b, c), pt_to_seg(a, b, d), pt_to_seg(c, d, a), pt_to_seg(c, d, b)}); // try the 4 pts
 }
+
+int length_union(vector<pt>& a){ // REVISAR
+    int n = a.size();
+    vector<pair<int, bool>> x(n * 2);
+    for (int i = 0; i < n; i++) {
+        x[i * 2] = {a[i].x, false};
+        x[i * 2 + 1] = {a[i].y, true};
+    }
+    sort(x.begin(), x.end());
+    int result = 0;
+    int c = 0;
+    for (int i = 0; i < n * 2; i++) {
+        if (i > 0 && x[i].first > x[i - 1].first && c > 0) result += x[i].first - x[i - 1].first;
+        if (x[i].second) c--;
+        else c++;
+    }
+    return result;
+}
