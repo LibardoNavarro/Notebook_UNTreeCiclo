@@ -15,6 +15,7 @@ Varios de los algoritmos aquí planteados son implementados/adaptados gracias a 
 * Notebook de la Universidad de Francisco de Paula Santander: [notebook_ufps](https://github.com/ProgramacionCompetitivaUFPS/notebook)
 * Notebook del equipo "DescomUNAL": [notebook_descomUNAL](https://github.com/ahoraSoyPeor/notebook_descomUNAL).
 * Notebook del equipo "Fast and Fourier": [notebook_eafit](https://github.com/scanof/Competitive-Programming-Notebook)
+* Notebook del equipo "UNC - Gracias Demetrio": [notebook_el_vasito](https://github.com/mhunicken/icpc-team-notebook-el-vasito)
 
 ## Licencia
 
