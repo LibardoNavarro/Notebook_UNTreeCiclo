@@ -1,6 +1,3 @@
-using namespace std;
-#include <bits/stdc++.h>
-
 typedef double lf;
 struct p3 {
     lf x, y, z;
