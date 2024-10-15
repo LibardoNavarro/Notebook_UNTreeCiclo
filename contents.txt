@@ -104,6 +104,7 @@ Programacion dinamica/Knuth_clasico.cpp	Knuth Clasico
 Programacion dinamica/Edit_Distances.cpp	Edit Distances
 Programacion dinamica/Divide_Conquer_Base.cpp	Divide Conquer
 Programacion dinamica/Knuth_Base.cpp	Knuth
+Programacion dinamica/SOS.cpp	SOS
 
 [Strings]
 Strings/hashing.cpp	Hashing
