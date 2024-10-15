@@ -4,8 +4,6 @@ Notebook de programación competitiva del equipo UNTreeCiclo de la Universidad N
 
 Este repositorio contiene implementaciones de algoritmos de programación competitiva en C++. Los algoritmos están divididos por categorías y se encuentran en la carpeta `code`.
 
-Las categorías que abarca este notebook son: Estructuras de datos, Flujos, Geometría, Grafos, Matemáticas, Programación dinámica y Strings.
-
 ## Agradecimientos y créditos:
 
 Varios de los algoritmos aquí planteados son implementados/adaptados gracias a los libros y materiales de:
@@ -17,6 +15,7 @@ Varios de los algoritmos aquí planteados son implementados/adaptados gracias a 
 * Notebook de la Universidad de Francisco de Paula Santander: [notebook_ufps](https://github.com/ProgramacionCompetitivaUFPS/notebook)
 * Notebook del equipo "DescomUNAL": [notebook_descomUNAL](https://github.com/ahoraSoyPeor/notebook_descomUNAL).
 * Notebook del equipo "Fast and Fourier": [notebook_eafit](https://github.com/scanof/Competitive-Programming-Notebook)
+* Notebook del equipo "UNC - Gracias Demetrio": [notebook_el_vasito](https://github.com/mhunicken/icpc-team-notebook-el-vasito)
 
 ## Licencia
 

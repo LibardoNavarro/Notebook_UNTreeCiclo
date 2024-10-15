@@ -4,12 +4,12 @@
 #   [filename within code directory][tab character \t][subsection title]
 
 [C++]
-plantilla.cpp	C++ plantilla
-librerias.cpp	Librerias
-Bitmask.cpp	Bitmask
-strings.cpp	Cosas de strings
-custom_hashing.cpp	Custom Hashing
-random.cpp	Random
+C++/plantilla.cpp	C++ plantilla
+C++/librerias.cpp	Librerias
+C++/Bitmask.cpp	Bitmask
+C++/strings.cpp	Cosas de strings
+C++/custom_hashing.cpp	Custom Hashing
+C++/random.cpp	Random
 
 [Arboles]
 Arboles/centroid_decomposition.cpp	Centroid Decomposition
@@ -23,6 +23,7 @@ Estructuras de datos/Disjoint_set_union.cpp	Disjoint Set Union
 Estructuras de datos/dynamic_connectivity_offline.cpp	Dynamic Connectivity Offline
 Estructuras de datos/dynamic_segment_tree.cpp	Dynamic Segment Tree
 Estructuras de datos/fenwick_tree.cpp	Fenwick Tree
+Estructuras de datos/liChao.cpp	Li Chao
 Estructuras de datos/link_cut_tree.cpp	Link Cut Tree
 Estructuras de datos/mos_algorithm.cpp	Mos Algorithm
 Estructuras de datos/ordered_set.cpp	Ordered set
@@ -38,20 +39,25 @@ Estructuras de datos/two_stacks.cpp	Two Stacks
 Estructuras de datos/wavelet_tree.cpp	Wavelet Tree
 
 [Flujos]
+Flujos/blossom.cpp	Blossom
 Flujos/dinic.cpp	Dinic
 Flujos/Edmonds_Karp_algorithm.cpp	Edmonds Karp
 Flujos/hopcroft_karp.cpp	Hopcroft Karp
 Flujos/maximum_bipartite_matching.cpp	Maximum Bipartite Matching
 Flujos/minimum_cost_maximum_flow.cpp	Minimum Cost Maximum Flow
 Flujos/weighted_matching.cpp	Weighted Matching
+Flujos/hungarian.cpp	Hungarian
 
 [Geometria]
 Geometria/Points.cpp	Puntos
-Geometria/line.cpp	Lineas
-Geometria/polygon.cpp	Poligonos
-Geometria/circle.cpp	Circulos
+Geometria/Lines.cpp	Lineas
+Geometria/Polygons.cpp	Poligonos
+Geometria/Circles.cpp	Circulos
 Geometria/halfplanes.cpp	Semiplanos
-Geometria/segment.cpp	Segmentos
+Geometria/Segments.cpp	Segmentos
+Geometria/Convex_Hull.cpp	Convex Hull
+Geometria/3D.cpp	3D
+Geometria/KDTree.cpp	KD Tree
 
 [Grafos]
 Grafos/Puentes.cpp	Puentes
@@ -91,7 +97,7 @@ Matematicas/FFT.cpp	Fast Fourier Transform
 Matematicas/NTT.cpp	Number Theoretic Transform
 
 [Programacion dinamica]
-Programacion dinamica/LIS.cpp	LIS
+Programacion dinamica/LIS_BS.cpp	LIS
 Programacion dinamica/Bin_Packing.cpp	Bin Packing
 Programacion dinamica/Algoritmo_de_Kadane_2D.cpp	Algoritmo de Kadane 2D
 Programacion dinamica/Knuth_clasico.cpp	Knuth Clasico
