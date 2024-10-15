@@ -14,9 +14,7 @@ bool spfa(vector<vii> &adj, vector<int> &d, int s, int n) {
         q.pop();
         inqueue[v] = false;
 
-        for (auto edge : adj[v]) {
-            int to = edge.first;
-            int len = edge.second;
+        for (auto& [to, len] : adj[v]) {
 
             if (d[v] + len < d[to]) {
                 d[to] = d[v] + len;
