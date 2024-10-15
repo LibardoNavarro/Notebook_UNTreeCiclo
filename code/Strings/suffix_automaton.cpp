@@ -11,7 +11,7 @@ struct SuffixAutomaton{
 		len.push_back(0);
 		last=0;
 
-		for(int i=0;i<sz(s);i++) {
+		for(int i=0;i<sz(s);i++){
 			to.push_back(map<char,int>());
 			suf.push_back(0);
 			len.push_back(i+1);
