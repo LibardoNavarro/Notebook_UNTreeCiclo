@@ -1,6 +1,5 @@
-#Condiciones
-#C(b,c)<=C(a,d)
-#C(a,c)+C(b,d)<=C(a,d)+C(b,c)
+// C[b][c] <= C[a][d] 
+// C[a][c] + C[b][d] ≤ C[a][d] + C[b][c] where a < b < c < d.
 int solve() {
     int N;
     ... // read N and input

@@ -1,3 +1,4 @@
+// C[a][c] + C[b][d] ≤ C[a][d] + C[b][c] where a < b < c < d.
 int m, n;
 vector<long long> dp_before(n), dp_cur(n);
 
