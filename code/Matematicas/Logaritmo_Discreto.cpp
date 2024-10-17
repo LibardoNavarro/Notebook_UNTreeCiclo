@@ -1,3 +1,4 @@
+// O(sqrt(m))
 // Returns minimum x for which a ^ x % m = b % m.
 int solve(int a, int b, int m) {
     a %= m, b %= m;

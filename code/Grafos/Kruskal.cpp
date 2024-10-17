@@ -1,4 +1,3 @@
-//Arbol de minima expansion
 //O(E*log V)
 vector<tuple<int,int,int>> edges;
 void kruskal(){

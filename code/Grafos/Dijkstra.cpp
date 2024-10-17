@@ -1,5 +1,3 @@
-//Camino mas cortos
-//NO USAR CON PESOS NEGATIVOS, usar Bellman Ford o SPFA(mas rapido)
 // O ((V+E)*log V)
 vi dijkstra(vector<vii> &adj, int s, int V){
     vi dist(V+1, INT_MAX); dist[s] = 0;

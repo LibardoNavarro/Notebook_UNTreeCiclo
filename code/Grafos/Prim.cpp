@@ -1,3 +1,4 @@
+// O(E * log V)
 vector<vii> adj;
 vi tomado;
 priority_queue<ii> pq;

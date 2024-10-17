@@ -33,6 +33,7 @@ Estructuras de datos/segment_tree_iterativo.cpp	Segment Tree Iterativo
 Estructuras de datos/segment_tree_recursivo.cpp	Segment Tree Recursivo
 Estructuras de datos/segment_tree_2d.cpp	Segment Tree 2D
 Estructuras de datos/segment_tree_beats.cpp	Segment Tree Beats
+Estructuras de datos/sparse_table2D.cpp	Sparse Table 2D
 Estructuras de datos/sqrt_descomposition.cpp	Sqrt Descomposition
 Estructuras de datos/treap.cpp	Treap
 Estructuras de datos/two_stacks.cpp	Two Stacks
@@ -56,6 +57,8 @@ Geometria/Circles.cpp	Circulos
 Geometria/halfplanes.cpp	Semiplanos
 Geometria/Segments.cpp	Segmentos
 Geometria/Convex_Hull.cpp	Convex Hull
+Geometria/Closest_points.cpp	Closest Points
+Geometria/Min_circle.cpp	Min Circle
 Geometria/3D.cpp	3D
 Geometria/KDTree.cpp	KD Tree
 
@@ -74,10 +77,10 @@ Grafos/Camino_mas_corto_de_longitud_fija.cpp	Camino mas corto de longitud fija
 Grafos/2sat.cpp	2sat
                                
 [Matematicas]
-Matematicas/Coeficientes_binomiales.cpp	Coeficientes binomiales
-Matematicas/Criba_modificada.cpp	Criba Modificada
+Matematicas/BruijnSeq.cpp	De Bruijn sequences
+Matematicas/crt.cpp	Chinese Remainder Theorem
+Matematicas/totient_divisors.cpp	Totient y Divisores
 Matematicas/Ecuaciones_diofanticas.cpp	Ecuaciones Diofanticas
-Matematicas/Eulerphi.cpp	Funcion Totient de Euler
 Matematicas/Exponenciacion_binaria.cpp	Exponenciacion binaria
 Matematicas/Exponenciacion_Matricial.cpp	Exponenciacion matricial
 Matematicas/Fibonacci.cpp	Fibonacci Fast Doubling
@@ -97,13 +100,14 @@ Matematicas/FFT.cpp	Fast Fourier Transform
 Matematicas/NTT.cpp	Number Theoretic Transform
 
 [Programacion dinamica]
-Programacion dinamica/LIS_BS.cpp	LIS
 Programacion dinamica/Bin_Packing.cpp	Bin Packing
-Programacion dinamica/Algoritmo_de_Kadane_2D.cpp	Algoritmo de Kadane 2D
-Programacion dinamica/Knuth_clasico.cpp	Knuth Clasico
+Programacion dinamica/CHT.cpp	CHT
+Programacion dinamica/CHT_Dynamic.cpp	CHT Dynamic
+Programacion dinamica/Divide_Conquer.cpp	Divide Conquer
 Programacion dinamica/Edit_Distances.cpp	Edit Distances
-Programacion dinamica/Divide_Conquer_Base.cpp	Divide Conquer
-Programacion dinamica/Knuth_Base.cpp	Knuth
+Programacion dinamica/Kadane_2D.cpp	Kadane 2D
+Programacion dinamica/Knuth.cpp	Knuth
+Programacion dinamica/LIS_BS.cpp	LIS
 Programacion dinamica/SOS.cpp	SOS
 
 [Strings]
@@ -121,6 +125,7 @@ Strings/z_algorithm.cpp	Z Algorithm
 
 [Misc]
 Misc/counting_sort.cpp	Counting Sort
+Misc/dates.cpp	Dates
 Misc/expression_parsing.cpp	Expression Parsing
 Misc/ternary_search.cpp	Ternary Search
 
