@@ -31,3 +31,10 @@ for (int x = mask; x; x &= x-1) {
 * Itera todas las submascaras de una mascara. (Iterar todas las submascaras de todas las mascaras es O(3^n)).
 // O(2^(#bits_encendidos))
 for (int sub = mask; sub; sub = (sub-1)&mask) {}
+
+* retorna la siguiente mask con la misma cantidad encendida
+ll nextMask(ll x){
+    ll c = x & -x;
+    ll r = x + c;
+    return (((r ^ x) >> 2) / c) | r;
+}
