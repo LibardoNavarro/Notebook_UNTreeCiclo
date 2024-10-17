@@ -1,17 +1,16 @@
 // O ((V+E)*log V)
-vi dijkstra(vector<vii> &adj, int s, int V){
-    vi dist(V+1, INT_MAX); dist[s] = 0;
-    priority_queue<ii, vii, greater<ii> > pq; pq.push(ii(0, s));
+vl dijkstra(vector<vector<pll>> &adj, int s, int n){
+    vl dist(n, INFL); dist[s] = 0;
+    priority_queue<pll, vector<pll>, greater<pll> > pq; pq.push(pll(0, s));
     while(!pq.empty()){
-        ii front = pq.top(); pq.pop();
-        int d = front.first, u = front.second;
+        pll front = pq.top(); pq.pop();
+        ll d = front.first, u = front.second;
         if (d > dist[u]) continue;
 
-        for (int j = 0; j < (int)adj[u].size(); j++){
-            ii v = adj[u][j];
-            if (dist[u] + v.second < dist[v.first]){
-                dist[v.first] = dist[u] + v.second;
-                pq.push(ii(dist[v.first], v.first));
+        for (auto &[v, w] : adj[u]){
+            if (dist[u] + w < dist[v]){
+                dist[v] = dist[u] + w;
+                pq.push(pll(dist[v], v));
             }
         }
     }

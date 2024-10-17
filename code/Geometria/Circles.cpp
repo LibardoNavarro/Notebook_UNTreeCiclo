@@ -1,10 +1,3 @@
-using namespace std;
-#include <bits/stdc++.h>
-#define all(v) v.begin(), v.end()
-const char ln = '\n';
-
-#include "Points.cpp"
-#include "Lines.cpp"
 // add Lines Points
 
 enum {OUT, IN, ON};
