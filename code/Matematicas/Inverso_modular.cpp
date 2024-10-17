@@ -15,3 +15,8 @@ ll modInverse(ll b, ll m){
 ll inv (ll a){
     return binpow(a, MOD-2, MOD);
 }
+
+//Modulo constante
+inv[1] = 1;
+for(int i = 2; i < p; ++i)
+	inv[i] = (p - (p / i) * inv[p % i] % p) % p;

@@ -66,3 +66,9 @@ ll find_all_solutions(ll a, ll b, ll c, ll minx, ll maxx, ll miny,ll maxy) {
   if (lx > rx) return 0;
   return (rx - lx) / abs(b) + 1;
 }
+
+///finds the first k | x + b * k / gcd(a, b) >= val
+ll greater_or_equal_than(ll a, ll b, ll x, ll val, ll g) {
+  ld got = 1.0 * (val - x) * g / b;
+  return b > 0 ? ceil(got) : floor(got);
+}
