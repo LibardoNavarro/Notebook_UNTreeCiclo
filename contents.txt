@@ -38,6 +38,7 @@ Estructuras de datos/sqrt_descomposition.cpp	Sqrt Descomposition
 Estructuras de datos/treap.cpp	Treap
 Estructuras de datos/two_stacks.cpp	Two Stacks
 Estructuras de datos/wavelet_tree.cpp	Wavelet Tree
+Estructuras de datos/trieBit.cpp	Trie Bit
 
 [Flujos]
 Flujos/blossom.cpp	Blossom
@@ -128,5 +129,6 @@ Misc/counting_sort.cpp	Counting Sort
 Misc/dates.cpp	Dates
 Misc/expression_parsing.cpp	Expression Parsing
 Misc/ternary_search.cpp	Ternary Search
+Misc/prefix3D.cpp	Prefix3D
 
 [Fin]
