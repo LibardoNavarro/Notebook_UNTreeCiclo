@@ -1,3 +1,4 @@
+// O(min(n, m)*n*m)
 const double EPS = 1e-9;
 const int INF = 2; // it doesn't actually have to be infinity or a big number
 

@@ -1,3 +1,4 @@
+// O(n+m)
 int n;
 vector<vector<int>> adj;
 

@@ -1,3 +1,4 @@
+// O(log(n))
 ll extended_euclid(ll a, ll b, ll &x, ll &y) {
   ll xx = y = 0;
   ll yy = x = 1;

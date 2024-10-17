@@ -1,3 +1,4 @@
+// O(n+m)
 vector<bool> visited;
 vi tin, low;
 int timer;

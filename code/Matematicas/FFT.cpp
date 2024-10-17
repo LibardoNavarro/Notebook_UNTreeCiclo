@@ -1,3 +1,4 @@
+// O(N log N)
 const double PI = acos(-1);
 struct base {
   double a, b;

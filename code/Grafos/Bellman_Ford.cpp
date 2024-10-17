@@ -1,3 +1,4 @@
+// O(V*E)
 vi bellman_ford(vector<vii> &adj, int s, int n){
     vi dist(n, INF); dist[s] = 0;
     for (int i = 0; i<n-1; i++){
