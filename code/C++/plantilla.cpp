@@ -1,13 +1,15 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define watch(x) cout<<#x<<"="<<x<<'\n'
-#define sz(arr) ((int) arr.size())
 #define all(v) v.begin(), v.end()
-typedef long long ll;
-typedef long double ld;
-typedef pair<int, int> ii;
-typedef vector<ii> vii;
+#define sz(arr) ((int) arr.size())
 typedef vector<int> vi;
+typedef long long ll;
+typedef pair<int, int> ii;
+const char ln = '\n';
+
+#define watch(x) cout<<#x<<"="<<x<<'\n'
+typedef long double ld;
+typedef vector<ii> vii;
 typedef vector<long long> vl;
 typedef pair<ll, ll> pll;
 typedef vector<pll> vll;
@@ -21,7 +23,6 @@ int diry[4] = {-1,0,0,1};
 int dr[] = {1, 1, 0, -1, -1, -1, 0, 1};
 int dc[] = {0, 1, 1, 1, 0, -1, -1, -1};
 const string ABC = "abcdefghijklmnopqrstuvwxyz";
-const char ln = '\n';
 
 int main() {
 	ios::sync_with_stdio(false);

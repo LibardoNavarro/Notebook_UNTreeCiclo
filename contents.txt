@@ -130,5 +130,6 @@ Misc/dates.cpp	Dates
 Misc/expression_parsing.cpp	Expression Parsing
 Misc/ternary_search.cpp	Ternary Search
 Misc/prefix3D.cpp	Prefix3D
+Misc/Hanoi.cpp	Hanoi
 
 [Fin]
