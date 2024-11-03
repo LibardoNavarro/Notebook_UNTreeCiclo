@@ -27,6 +27,7 @@ struct dsu{
 	}
 };
 
+// O(n*log(n)^2)
 enum { ADD, DEL, QUERY };
 struct Query{int type, u, v;};
 struct DynCon{
