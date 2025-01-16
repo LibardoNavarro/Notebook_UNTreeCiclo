@@ -1,25 +1,26 @@
 typedef long long T;
-struct Sqrt { // O(n/b+b)
+// build O(n) - get O(n/b+b)
+struct SQRT{ 
 	int b; // check b
-	vector<T> nums,blocks;
-	void build(vector<T>& arr, int n){
-		b=(int)ceil(sqrt(n));nums=arr;
-		blocks.assign(b, 0);
+	vector<T> a,bls;
+	SQRT(vector<T>& arr, int n){
+		b=ceil(sqrt(n));a=arr;
+		bls.assign(b, 0);
 		for(int i=0;i<n;++i){
-			blocks[i/b]+=nums[i];
+			bls[i/b]+=a[i];
 		}
 	}
 
 	void set(int x, int v){
-		blocks[x/b]-=nums[x];
-		nums[x]=v;
-		blocks[x/b]+=nums[x];
+		bls[x/b]-=a[x];
+		a[x]=v;
+		bls[x/b]+=a[x];
 	}
 
 	T get(int r){
 		T res=0;
-		for(int i=0;i<r/b;++i){res+=blocks[i];}
-		for(int i=(r/b)*b;i<r;++i){res+=nums[i];}
+		for(int i=0;i<r/b;++i){res+=bls[i];}
+		for(int i=(r/b)*b;i<r;++i){res+=a[i];}
 		return res;
 	}
 

@@ -1,5 +1,6 @@
+// indexed 1, build O(nlog(n)) - get O(log(n))
 const int maxn = 1e5+5, maxv = 1e9, minv = -1e9; 
-struct WaveletTree{ // indexed 1 - O(nlogn)
+struct WaveletTree {
 	int lo, hi;
 	WaveletTree *l, *r;
 	int *b, bsz, csz;
@@ -76,7 +77,7 @@ struct WaveletTree{ // indexed 1 - O(nlogn)
 	}
 };
 
-// int a[maxn];
-// WaveletTree wt;
-// for(int i=1;i<=n;++i)cin>>a[i];
-// wt.build(a+1, a+n+1, minv, maxv);
+int a[maxn];
+WaveletTree wt;
+for(int i=1;i<=n;++i)cin>>a[i];
+wt.build(a+1, a+n+1, minv, maxv);

@@ -7,7 +7,9 @@ struct Node{
 	T min1,min2,minc;
 };
 struct SegTree{
-	vector<Node> vals;int size;
+	vector<Node> vals;
+	int size;
+
 	void oper(int a, int b, int c); // node c, left a, right b;
 	Node single(T x){
 		Node tmp;
@@ -53,6 +55,7 @@ struct SegTree{
 			propagateAdd(vals[x].lazy, 2*x+2, m, rx);
 			vals[x].lazy=noVal;
 		}
+		
 		propagateMin(vals[x].max1, 2*x+1, lx, m);
 		propagateMin(vals[x].max1, 2*x+2, m, rx);
 	}

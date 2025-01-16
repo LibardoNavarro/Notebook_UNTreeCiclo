@@ -6,12 +6,12 @@ T null = 0;
 struct Treap{
 	Treap *l,*r,*dad;
 	u64 prior;
-	T sz,val;
+	T sz,val,sum,lz;
 	Treap(T v){
 		l=r=nullptr;
 		prior=rng();
-		val=v;
-		sz=1;
+		val=sum=v;
+		lz=0;sz=1;
 	}
 	~Treap(){
 		delete l;
@@ -21,24 +21,47 @@ struct Treap{
 
 typedef Treap* PTreap;
 T cnt(PTreap x){return (!x?0:x->sz);}
+T sum(PTreap x){return (!x?0:x->sum);}
 
-void update(PTreap x){
+void update(PTreap x, T v){
+    // lz, val, sum ...
+}
+
+void push(PTreap x){
+	if(x && x->lz){
+		if(x->l)update(x->l, 1);
+		if(x->r)update(x->r, 1);
+		x->lz=0;
+	}
+}
+
+void pull(PTreap x){
+	push(x->l);
+	push(x->r);
 	x->sz=cnt(x->l)+cnt(x->r)+1;
+	x->sum=sum(x->l)+sum(x->r)+x->val;
 	if(x->l)x->l->dad=x;
 	if(x->r)x->r->dad=x;
 }
 
-pair<PTreap, PTreap> split(PTreap x, T key){ // f <= key < s
+void upd(PTreap x, T v){
+	if(!x)return;
+	pull(x);
+    update(x,v);
+}
+
+pair<PTreap, PTreap> split(PTreap x, int left){ // cnt(f) == left
 	if(!x)return {nullptr, nullptr};
-	if(x->val>key){
-		auto got=split(x->l, key);
+	push(x);
+	if(cnt(x->l)>=left){ 
+		auto got=split(x->l, left); 
 		x->l=got.second;
-		update(x);
+		pull(x);
 		return {got.first, x};
 	}else{
-		auto got=split(x->r, key);
+		auto got=split(x->r, left-cnt(x->l)-1);
 		x->r=got.first;
-		update(x);
+		pull(x);
 		return {x, got.second};
 	}
 }
@@ -46,48 +69,21 @@ pair<PTreap, PTreap> split(PTreap x, T key){ // f <= key < s
 PTreap merge(PTreap x, PTreap y){
 	if(!x)return y;
 	if(!y)return x;
+	push(x);push(y);
 	if(x->prior<=y->prior){
 		x->r=merge(x->r, y);
-		update(x);
+		pull(x);
 		return x;
 	}else{
 		y->l=merge(x, y->l);
-		update(y);
+		pull(y);
 		return y;
 	}
-}
-
-PTreap combine(PTreap x, PTreap y){
-	if(!x)return y;
-	if(!y)return x;
-	if(x->prior<y->prior)swap(x, y);
-	auto z=split(y, x->val);
-	x->r=combine(x->r, z.second);
-	x->l=combine(z.first, x->l);
-	return x;
-}
-
-T kth(PTreap& x, int k){ // indexed 0
-	if(!x)return null;
-	if(k==cnt(x->l))return x->val;
-	if(k<cnt(x->l))return kth(x->l, k);
-	return kth(x->r, k-cnt(x->l)-1);
-}
-
-pair<int, T> lower_bound(PTreap x, T key){ // index, val
-	if(!x)return {0, null};
-	if(x->val<key){
-		auto y=lower_bound(x->r, key);
-		y.first+=cnt(x->l)+1;
-		return y;
-	}
-	auto y=lower_bound(x->l, key);
-	if(y.first==cnt(x->l))y.second=x->val;
-	return y;
 }
 
 void dfs(PTreap x){
 	if(!x)return;
+	push(x);
 	dfs(x->l);
 	cout<<x->val<<" ";
 	dfs(x->r);
