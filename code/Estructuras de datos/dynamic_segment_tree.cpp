@@ -2,9 +2,9 @@ typedef long long T;
 T null=0, noVal=0;
 T oper(T a, T b){return a+b;}
 struct Node{
+	Node *pl,*pr;
 	T val,lz;
 	int l,r;
-	Node *pl,*pr;
 	Node(int ll, int rr){
 		val=null;lz=noVal;
 		pl=pr=nullptr;

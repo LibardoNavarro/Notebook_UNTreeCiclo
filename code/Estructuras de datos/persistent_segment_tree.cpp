@@ -3,10 +3,9 @@ struct Node{T val;int l,r;};
 struct SegTree{ 
 	vector<Node> ns;
 	vector<int> roots;
-	int act=0;
-	int size;
-
 	T null=0;
+	int act=0,size;
+
 	T oper(T a, T b){return a+b;}
 	SegTree(vector<T>& a, int n){
 		size=n;
