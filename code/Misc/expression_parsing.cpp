@@ -1,4 +1,4 @@
-// O(n) - En python es eval()
+// O(n) - eval() de python 
 bool delim(char c){return c==' ';}
 bool is_op(char c){return c=='+' || c=='-' || c=='*' || c=='/';}
 bool is_unary(char c){return c=='+' || c=='-';}
@@ -62,6 +62,7 @@ int evaluate(string& s){
 			may_be_unary=false;
 		}
 	}
+
 	while(!op.empty()){
 		process_op(st, op.top());
 		op.pop();

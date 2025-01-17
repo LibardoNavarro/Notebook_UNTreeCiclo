@@ -1,7 +1,18 @@
 const int maxn = 1e5+5;
+vector<int> adj[maxn];
+int len[maxn], pos=0;
 int st[maxn], ft[maxn], ver[2*maxn];
-int len[maxn], n, q, pos=0;
-vi adj[maxn];
+
+void dfs0(int v=0, int p=-1){
+	ver[pos]=v;
+	st[v]=pos++;
+	for(int u:adj[v]){
+		if(u==p)continue;
+		dfs0(u,v);
+	}
+	ver[pos]=v;
+	ft[v]=pos++;
+}
 
 bool vis[maxn];
 void ask(int v, bool add){
@@ -15,7 +26,7 @@ void ask(int v, bool add){
 }
 
 // O(nlogn)
-void dfs(int v=0, int p=-1, bool keep=true){
+void dfs1(int v=0, int p=-1, bool keep=true){
 	int mx=0,id=-1;
 	for(int u:adj[v]){
 		if(u==p)continue;
@@ -26,9 +37,9 @@ void dfs(int v=0, int p=-1, bool keep=true){
 	}
 	for(int u:adj[v]){
 		if(u!=p && u!=id)
-			dfs(u,v,0); 
+			dfs1(u,v,0); 
 	}
-	if(id!=-1)dfs(id,v,1); 
+	if(id!=-1)dfs1(id,v,1); 
 	for(int u:adj[v]){
 		if(u==p || u==id)continue;
 		for(int p=st[u];p<ft[u];++p)

@@ -1,6 +1,6 @@
 const int maxn = 2e5+5, maxlog = 20+5; 
-int up[maxn][maxlog], dep[maxn]; // memset -1 (up)
-vi adj[maxn];
+int up[maxn][maxlog], dep[maxn]; // memset -1 up
+vector<int> adj[maxn];
 
 void dfs(int v=0, int p=-1){
 	up[v][0]=p;

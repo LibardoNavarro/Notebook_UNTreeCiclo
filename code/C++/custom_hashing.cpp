@@ -23,5 +23,7 @@ struct custom_hash {
 	}
 };
 
-unordered_map<long long, int, custom_hash> safe_map;
-gp_hash_table<int, int, custom_hash> table;
+unordered_map<long long, int, custom_hash> safe_map; // unordered_map or gp_hash_table
+
+safe_map.max_load_factor(0.25);
+safe_map.reserve(500); potencia de 2 más cercana

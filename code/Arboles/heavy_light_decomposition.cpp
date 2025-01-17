@@ -1,7 +1,13 @@
 typedef long long T;
-T null;
-T oper(T a, T b);
-// Segment tree
+T null=LLONG_MIN;
+T oper(T a, T b){return max(a,b);}
+struct SegTree{
+	void build(int n){}
+	void set(int i, T val){}
+	void upd(int l, int r, T v){}
+	T get(int l, int r){return null;}
+};
+
 const int maxn=1e5+1; // >= 2e5, remove struct
 bool edges=false; // arista padre
 struct HLD{ 
@@ -9,6 +15,7 @@ struct HLD{
 	int sz[maxn], pos[maxn], ti;
 	vector<int> adj[maxn];
 	SegTree st;
+
 	void addEdge(int x, int y){adj[x].push_back(y);adj[y].push_back(x);}
 	void dfsSz(int x){ 
 		sz[x]=0; 
@@ -38,6 +45,7 @@ struct HLD{
 		// st.build(palst, n);
 		st.build(n);
 	}
+
 	// O(log^2(n))
 	template <class Oper> 
 	void processPath(int x, int y, Oper op){

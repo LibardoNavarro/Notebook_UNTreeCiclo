@@ -25,16 +25,25 @@ int lg2(const int &x) { return 31-__builtin_clz(x); }
 * Itera, con indices, los bits encendidos de una mascara.
 // O(#bits_encendidos)
 for (int x = mask; x; x &= x-1) {
-    int i = __builtin_ctz(x);
+	int i = __builtin_ctz(x);
 }
 
 * Itera todas las submascaras de una mascara. (Iterar todas las submascaras de todas las mascaras es O(3^n)).
 // O(2^(#bits_encendidos))
-for (int sub = mask; sub; sub = (sub-1)&mask) {}
+for (int sub = mask; ; sub = (sub-1)&mask) {
+	// ... 
+	if (sub == 0) break;
+}
+
+// Ascendente
+for(int sub = 0; ; sub = (sub-mask)&mask) { 
+	// ...
+	if (sub == mask) break;
+}
 
 * retorna la siguiente mask con la misma cantidad encendida
 ll nextMask(ll x){
-    ll c = x & -x;
-    ll r = x + c;
-    return (((r ^ x) >> 2) / c) | r;
+	ll c = x & -x;
+	ll r = x + c;
+	return (((r ^ x) >> 2) / c) | r;
 }

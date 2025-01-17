@@ -1,4 +1,5 @@
 // O(nlog(n))
+const int maxn = 1e5+1;
 struct CentroidDecomposition{
 	int dad[maxn],sz[maxn];
 	set<int> adj[maxn]; // check, proc
@@ -35,4 +36,5 @@ struct CentroidDecomposition{
 		return v;
 	}
 };
+
 // for(int b=a;b!=-1;b=cd[b])
