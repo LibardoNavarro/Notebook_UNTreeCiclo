@@ -2,8 +2,7 @@
 struct SuffixTree{
 	vector<map<char,int>> to;
 	vector<int> pos,len,link; 
-	const int inf = 1e9;
-	int size=0;
+	int size=0,inf=1e9;
 	string s; 
 
 	int make(int _pos, int _len){
@@ -13,7 +12,7 @@ struct SuffixTree{
 		link.push_back(-1);
 		return size++;
 	}
-
+	
 	void add(int& p, int& lef, char c){ 
 		s+=c;++lef;int lst=0;
 		for(;lef;p?p=link[p]:lef--){ 
@@ -37,7 +36,7 @@ struct SuffixTree{
 		}
 	}
 
-	void build(string& _s){
+	SuffixTree(string& _s){
 		make(-1,0);int p=0,lef=0;
 		for(char c:_s)add(p,lef,c);
 		add(p,lef,'$');

@@ -28,7 +28,7 @@ void update(int i, int v, int l, int r){
 void solve(){
 	s=ceil(pow(n,2.0/3.0));
 	sort(all(queries), cmp);
-    ans.resize(sz(queries));
+	ans.resize(sz(queries));
 	int l=0,r=-1,t=0;
 	for(auto [li,ri,ti,i]:queries){
 		while(t<ti)update(upds[t].i,upds[t].cur,l,r),++t;

@@ -40,9 +40,9 @@ void ask(int u){
 void solve(){
 	s=ceil(sqrt(n));
 	sort(all(queries), cmp);
-    ans.resize(sz(queries));
+	ans.resize(sz(queries));
 	int l=0,r=-1;
-    for(auto [li,ri,i]:queries){
+	for(auto [li,ri,i]:queries){
 		while(r<ri)ask(ver[++r]);
 		while(l>li)ask(ver[--l]);
 		while(r>ri)ask(ver[r--]);

@@ -21,7 +21,7 @@ struct CHT : multiset<Line, less<>> {
 		return x->p >= y->p;
 	}
 	void add(ll m, ll b){
-        if (mini){ m *= -1, b *= -1; }
+		if (mini){ m *= -1, b *= -1; }
 		auto z = insert({m, b, 0}), y = z++, x = y;
 		while (isect(y, z)) z = erase(z);
 		if (x != begin() && isect(--x, y)) isect(x, y = erase(y));
@@ -31,7 +31,7 @@ struct CHT : multiset<Line, less<>> {
 	ll query(ll x) {
 		assert(!empty());
 		auto l = *lower_bound(x);
-        if (mini) return -l.m * x + -l.b;
+		if (mini) return -l.m * x + -l.b;
 		else return l.m * x + l.b;
 	}
 };

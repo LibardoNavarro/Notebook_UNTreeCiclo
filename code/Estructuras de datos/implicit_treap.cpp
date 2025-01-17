@@ -24,7 +24,7 @@ T cnt(PTreap x){return (!x?0:x->sz);}
 T sum(PTreap x){return (!x?0:x->sum);}
 
 void update(PTreap x, T v){
-    // lz, val, sum ...
+	// lz, val, sum ...
 }
 
 void push(PTreap x){
@@ -47,7 +47,7 @@ void pull(PTreap x){
 void upd(PTreap x, T v){
 	if(!x)return;
 	pull(x);
-    update(x,v);
+	update(x,v);
 }
 
 pair<PTreap, PTreap> split(PTreap x, int left){ // cnt(f) == left

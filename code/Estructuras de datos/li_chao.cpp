@@ -2,12 +2,12 @@
 typedef long long ty;
 
 struct Line {
-  ty m, b;
+ty m, b;
 
-  Line(){}
-  Line(ty m, ty b): m(m), b(b){}
-  
-  ty eval(ty x){return m * x + b;}
+Line(){}
+Line(ty m, ty b): m(m), b(b){}
+
+ty eval(ty x){return m * x + b;}
 
 };
 
@@ -26,13 +26,13 @@ struct nLiChao{
 	void addLine(Line nline){
 		ty m = (l + r) >> 1;
 		bool lef = nline.eval(l) > line.eval(l); // change > to <
-    	bool mid = nline.eval(m) > line.eval(m); // change > to <
+		bool mid = nline.eval(m) > line.eval(m); // change > to <
 
 		if (mid) swap(nline, line);
 
 		if (r == l) return;
 
-    	if (lef != mid){
+		if (lef != mid){
 			if (!left){
 				left = new nLiChao(l, m);
 				left -> line = nline;
@@ -40,7 +40,7 @@ struct nLiChao{
 
 			else left -> addLine(nline);
 		}
-    	else{
+		else{
 			if (!right){
 				right = new nLiChao(m + 1, r);
 				right -> line = nline;
@@ -64,7 +64,7 @@ struct nLiChao{
 			if (right) op2 = right -> get(x);
 			return max(line.eval(x), op2); // change max to min
 		}
-  	}
+	}
 };
 
 

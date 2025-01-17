@@ -1,5 +1,7 @@
-const int maxn = 1e5+5, alpha = 26;
+const int maxn = 1e5+5;
+const int alpha = 26;
 int to[maxn][alpha];
+int conv(char ch){return ((ch>='a' && ch<='z')?ch-'a':ch-'A'+26);} 
 
 // O(n*alpha)
 void build(string& s){
