@@ -3,7 +3,7 @@ struct segtree{
 
 	ll op(ll a, ll b) {return a + b;}
 
-	segtree(int n) : n(n), v(2*n, nulo){}
+	segtree(int n) : n(n) {v = vl(2*n, nulo);}
 
 	segtree(vl &a) : n(sz(a)), v(2*n){
 		for(int i = 0; i<n; i++) v[n + i] = a[i];
