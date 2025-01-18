@@ -1,11 +1,11 @@
 // O(n+m)
 // l=(x1 or y1) and (x2 or y2) and ... and (xn or yn)
-struct sat2 {
-	int n;
+struct sat2{
 	vector<vector<vi>> g;
 	vector<bool> vis, val;
-	vi comp;
 	stack<int> st;
+	vi comp;
+	int n;
 	
 	sat2(int n):n(n),g(2, vector<vi>(2*n)),vis(2*n),val(2*n),comp(2*n){}
 	
@@ -24,8 +24,8 @@ struct sat2 {
 	}
 	
 	void add_edge(int u, int v){
-		g[0][u].PB(v);
-		g[1][v].PB(u);
+		g[0][u].push_back(v);
+		g[1][v].push_back(u);
 	}
 	
 	void dfs(int id, int u, int t=0){
@@ -59,7 +59,6 @@ struct sat2 {
 	}
 };
 
-int m,n;
 sat2 s(n);
 char c1,c2;
 for(int a,b,i=0;i<m;++i){

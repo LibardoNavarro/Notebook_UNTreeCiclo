@@ -1,5 +1,5 @@
 //O(E*log V)
-vector<tuple<int,int,int>> edges;
+vector<tuple<int,int,int>> edges; // peso, nodo a, nodo b
 void kruskal(){
 	ll ans=0;
 	dsu uf(n);
