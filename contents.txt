@@ -13,110 +13,121 @@ C++/random.cpp	Random
 
 [Arboles]
 Arboles/centroid_decomposition.cpp	Centroid Decomposition
+Arboles/hash_tree.cpp	Hash Tree
 Arboles/heavy_light_decomposition.cpp	Heavy Light Decomposition
 Arboles/lca.cpp	LCA
 Arboles/sack.cpp	Sack
 Arboles/virtual_tree.cpp	Virtual Tree
 
 [Estructuras de Datos]
-Estructuras de datos/Disjoint_set_union.cpp	Disjoint Set Union
+Estructuras de datos/bit.cpp	Bit
+Estructuras de datos/bit_2d.cpp	Bit 2D
+Estructuras de datos/cartesian_tree.cpp	Cartesian Tree
+Estructuras de datos/disjoint_set_union.cpp	Disjoint Set Union
 Estructuras de datos/dynamic_connectivity_offline.cpp	Dynamic Connectivity Offline
 Estructuras de datos/dynamic_segment_tree.cpp	Dynamic Segment Tree
-Estructuras de datos/fenwick_tree.cpp	Fenwick Tree
-Estructuras de datos/liChao.cpp	Li Chao
+Estructuras de datos/implicit_treap.cpp	Implicit Treap
+Estructuras de datos/li_chao.cpp	Li Chao
 Estructuras de datos/link_cut_tree.cpp	Link Cut Tree
-Estructuras de datos/mos_algorithm.cpp	Mos Algorithm
+Estructuras de datos/mos_algorithm.cpp	MOs Algorithm
+Estructuras de datos/mos_tree.cpp	MOs Tree
+Estructuras de datos/mos_updates.cpp	MOs Updates
 Estructuras de datos/ordered_set.cpp	Ordered set
 Estructuras de datos/persistent_segment_tree.cpp	Persistent Segment Tree
-Estructuras de datos/rmq.cpp	RMQ
 Estructuras de datos/segment_tree_iterativo.cpp	Segment Tree Iterativo
 Estructuras de datos/segment_tree_recursivo.cpp	Segment Tree Recursivo
 Estructuras de datos/segment_tree_2d.cpp	Segment Tree 2D
 Estructuras de datos/segment_tree_beats.cpp	Segment Tree Beats
-Estructuras de datos/sparse_table2D.cpp	Sparse Table 2D
+Estructuras de datos/sparse_table.cpp	Sparse Table
+Estructuras de datos/sparse_table_2d.cpp	Sparse Table 2D
 Estructuras de datos/sqrt_descomposition.cpp	Sqrt Descomposition
 Estructuras de datos/treap.cpp	Treap
+Estructuras de datos/trie_bit.cpp	Trie Bit
 Estructuras de datos/two_stacks.cpp	Two Stacks
 Estructuras de datos/wavelet_tree.cpp	Wavelet Tree
-Estructuras de datos/trieBit.cpp	Trie Bit
 
 [Flujos]
 Flujos/blossom.cpp	Blossom
 Flujos/dinic.cpp	Dinic
-Flujos/Edmonds_Karp_algorithm.cpp	Edmonds Karp
+Flujos/edmonds_karp.cpp	Edmonds Karp
 Flujos/hopcroft_karp.cpp	Hopcroft Karp
+Flujos/hungarian.cpp	Hungarian
 Flujos/maximum_bipartite_matching.cpp	Maximum Bipartite Matching
 Flujos/minimum_cost_maximum_flow.cpp	Minimum Cost Maximum Flow
 Flujos/weighted_matching.cpp	Weighted Matching
-Flujos/hungarian.cpp	Hungarian
 
 [Geometria]
 Geometria/Points.cpp	Puntos
-Geometria/Lines.cpp	Lineas
-Geometria/Polygons.cpp	Poligonos
-Geometria/Circles.cpp	Circulos
+Geometria/lines.cpp	Lineas
+Geometria/polygons.cpp	Poligonos
+Geometria/circles.cpp	Circulos
 Geometria/halfplanes.cpp	Semiplanos
-Geometria/Segments.cpp	Segmentos
-Geometria/Convex_Hull.cpp	Convex Hull
-Geometria/Closest_points.cpp	Closest Points
-Geometria/Min_circle.cpp	Min Circle
-Geometria/3D.cpp	3D
-Geometria/KDTree.cpp	KD Tree
+Geometria/segments.cpp	Segmentos
+Geometria/convex_Hull.cpp	Convex Hull
+Geometria/closest_points.cpp	Closest Points
+Geometria/min_circle.cpp	Min Circle
+Geometria/3d.cpp	3D
+Geometria/kd_tree.cpp	KD Tree
 
 [Grafos]
-Grafos/Puentes.cpp	Puentes
-Grafos/Puntos_de_Articulacion.cpp	Puntos de Articulacion
-Grafos/Kosaraju.cpp	Kosajaru
-Grafos/Tarjan.cpp	Tarjan
-Grafos/Dijkstra.cpp	Dijkstra
-Grafos/Bellman_Ford.cpp	Bellman Ford
-Grafos/Floyd_Warshall.cpp	Floyd Warshall
-Grafos/Kruskal.cpp	MST Kruskal
-Grafos/Prim.cpp	MST Prim
-Grafos/Shortest_Path_Faster_Algorithm.cpp	Shortest Path Faster Algorithm
-Grafos/Camino_mas_corto_de_longitud_fija.cpp	Camino mas corto de longitud fija
+Grafos/puentes.cpp	Puentes
+Grafos/puntos_de_articulacion.cpp	Puntos de Articulacion
+Grafos/kosaraju.cpp	Kosajaru
+Grafos/tarjan.cpp	Tarjan
+Grafos/dijkstra.cpp	Dijkstra
+Grafos/bellman_ford.cpp	Bellman Ford
+Grafos/floyd_warshall.cpp	Floyd Warshall
+Grafos/kruskal.cpp	MST Kruskal
+Grafos/prim.cpp	MST Prim
+Grafos/shortest_path_faster_algorithm.cpp	Shortest Path Faster Algorithm
+Grafos/camino_mas_corto_de_longitud_fija.cpp	Camino mas corto de longitud fija
 Grafos/2sat.cpp	2sat
                                
 [Matematicas]
-Matematicas/BruijnSeq.cpp	De Bruijn sequences
+Matematicas/bruijn_seq.cpp	Bruijn sequences
 Matematicas/crt.cpp	Chinese Remainder Theorem
-Matematicas/totient_divisors.cpp	Totient y Divisores
-Matematicas/Ecuaciones_diofanticas.cpp	Ecuaciones Diofanticas
-Matematicas/Exponenciacion_binaria.cpp	Exponenciacion binaria
-Matematicas/Exponenciacion_Matricial.cpp	Exponenciacion matricial
-Matematicas/Fibonacci.cpp	Fibonacci Fast Doubling
-Matematicas/Freivalds_algorithm.cpp	Freivalds algorithm
-Matematicas/Gauss_Jordan.cpp	Gauss Jordan
-Matematicas/Gauss_xor.cpp	Gauss Jordan mod 2
-Matematicas/gcd_y_lcm.cpp	GCD y LCM
-Matematicas/Integral_Definida.cpp	Integral Definida
-Matematicas/Inverso_modular.cpp	Inverso modular
-Matematicas/Logaritmo_Discreto.cpp	Logaritmo Discreto
-Matematicas/Miller_Rabin.cpp	Miller Rabin
+Matematicas/ecuaciones_diofanticas.cpp	Ecuaciones Diofanticas
+Matematicas/exponenciacion_binaria.cpp	Exponenciacion binaria
+Matematicas/exponenciacion_Matricial.cpp	Exponenciacion matricial
+Matematicas/fft.cpp	Fast Fourier Transform
+Matematicas/fibonacci.cpp	Fibonacci Fast Doubling
+Matematicas/fraction.cpp	Fraction
+Matematicas/freivalds_algorithm.cpp	Freivalds algorithm
+Matematicas/gauss_jordan.cpp	Gauss Jordan
+Matematicas/gauss_xor.cpp	Gauss Jordan mod 2
+Matematicas/gcd_lcm.cpp	GCD y LCM
+Matematicas/integral_definida.cpp	Integral Definida
+Matematicas/inverso_modular.cpp	Inverso modular
+Matematicas/logaritmo_discreto.cpp	Logaritmo Discreto
+Matematicas/miller_rabin.cpp	Miller Rabin
 Matematicas/miller_rabin_prob.cpp	Miller Rabin Probabilistico
 Matematicas/mobius.cpp	Mobius
+Matematicas/ntt.cpp	Number Theoretic Transform
 Matematicas/pollard_rho.cpp	Pollard	Rho
 Matematicas/simplex.cpp	Simplex
-Matematicas/FFT.cpp	Fast Fourier Transform
-Matematicas/NTT.cpp	Number Theoretic Transform
+Matematicas/simplex_int.cpp	Simplex Int
+Matematicas/totient_divisors.cpp	Totient y Divisores
 
 [Programacion dinamica]
-Programacion dinamica/Bin_Packing.cpp	Bin Packing
-Programacion dinamica/CHT.cpp	CHT
-Programacion dinamica/CHT_Dynamic.cpp	CHT Dynamic
-Programacion dinamica/Divide_Conquer.cpp	Divide Conquer
-Programacion dinamica/Edit_Distances.cpp	Edit Distances
-Programacion dinamica/Kadane_2D.cpp	Kadane 2D
-Programacion dinamica/Knuth.cpp	Knuth
-Programacion dinamica/LIS_BS.cpp	LIS
-Programacion dinamica/SOS.cpp	SOS
+Programacion dinamica/bin_packing.cpp	Bin Packing
+Programacion dinamica/cht.cpp	Convex Hull Trick
+Programacion dinamica/cht_dynamic.cpp	CHT Dynamic
+Programacion dinamica/digit.cpp	Digit DP
+Programacion dinamica/divide_conquer.cpp	Divide Conquer
+Programacion dinamica/edit_distances.cpp	Edit Distances
+Programacion dinamica/kadane_2d.cpp	Kadane 2D
+Programacion dinamica/knuth.cpp	Knuth
+Programacion dinamica/lis.cpp	LIS
+Programacion dinamica/sos.cpp	SOS
 
 [Strings]
+Strings/aho-corasick.cpp	Aho Corasick
 Strings/hashing.cpp	Hashing
 Strings/kmp.cpp	KMP
 Strings/kmp_automaton.cpp	KMP Automaton
 Strings/manacher.cpp	Manacher
 Strings/minimum_expression.cpp	Minimum Expression
+Strings/next_permutation.cpp	Next Permutation
 Strings/palindromic_tree.cpp	Palindromic Tree
 Strings/suffix_array.cpp	Suffix Array
 Strings/suffix_automaton.cpp	Suffix Automaton
@@ -128,8 +139,9 @@ Strings/z_algorithm.cpp	Z Algorithm
 Misc/counting_sort.cpp	Counting Sort
 Misc/dates.cpp	Dates
 Misc/expression_parsing.cpp	Expression Parsing
-Misc/ternary_search.cpp	Ternary Search
-Misc/prefix3D.cpp	Prefix3D
 Misc/Hanoi.cpp	Hanoi
+Misc/polynomial_updates.cpp	Polynomial Updates
+Misc/prefix_3d.cpp	Prefix3D
+Misc/ternary_search.cpp	Ternary Search
 
 [Fin]
