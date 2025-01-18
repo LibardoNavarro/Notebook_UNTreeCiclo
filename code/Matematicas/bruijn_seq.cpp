@@ -8,7 +8,7 @@ vi deBruijnSeq(int k, int n, int lim){
 		if (t > n){
 			if (n % p == 0) for(int i = 1; i < p + 1; i++){
 				if (cont >= lim) return;
-				seq.pb(aux[i]);
+				seq.push_back(aux[i]);
 				cont++;
 			} 
 		} else {
@@ -20,6 +20,7 @@ vi deBruijnSeq(int k, int n, int lim){
 			}
 		}
 	};
-	gen(1, 1); 
+	gen(1, 1);
+    // for (int i = 0; i<n-1; i++) seq.push_back(0);
 	return seq;
 }
