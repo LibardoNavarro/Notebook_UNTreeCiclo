@@ -68,6 +68,7 @@ Geometria/closest_points.cpp	Closest Points
 Geometria/min_circle.cpp	Min Circle
 Geometria/3d.cpp	3D
 Geometria/kd_tree.cpp	KD Tree
+Geometria/delaunay.cpp	Delaunay
 
 [Grafos]
 Grafos/puentes.cpp	Puentes
@@ -82,6 +83,7 @@ Grafos/prim.cpp	MST Prim
 Grafos/shortest_path_faster_algorithm.cpp	Shortest Path Faster Algorithm
 Grafos/camino_mas_corto_de_longitud_fija.cpp	Camino mas corto de longitud fija
 Grafos/2sat.cpp	2sat
+Grafos/clique.cpp	Max Clique and MIS
                                
 [Matematicas]
 Matematicas/bruijn_seq.cpp	Bruijn sequences

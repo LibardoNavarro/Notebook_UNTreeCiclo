@@ -1,47 +1,46 @@
-// O(N log N)
-const double PI = acos(-1);
-struct base {
-	double a, b;
-	base(double a = 0, double b = 0) : a(a), b(b) {}
-	const base operator + (const base &c) const
-		{ return base(a + c.a, b + c.b); }
-	const base operator - (const base &c) const
-		{ return base(a - c.a, b - c.b); }
-	const base operator * (const base &c) const
-		{ return base(a * c.a - b * c.b, a * c.b + b * c.a); }
-};
-void fft(vector<base> &p, bool inv = 0) {
-	int n = p.size(), i = 0;
-	for(int j = 1; j < n - 1; ++j) {
-		for(int k = n >> 1; k > (i ^= k); k >>= 1);
-		if(j < i) swap(p[i], p[j]);
+///Complexity: O(N log N)
+///tested: https://codeforces.com/gym/104373/problem/E 
+#define rep(i, a, b) for(int i = a; i < (b); ++i)
+#define sz(v) ((int)v.size())
+#define trav(a, x) for(auto& a : x)
+#define all(v) v.begin(),v.end()
+typedef vector<ll> vl;
+typedef vector<int> vi;
+typedef complex<double> C;
+typedef vector<double> vd;
+void fft(vector<C>& a) {
+	int n = sz(a), L = 31 - __builtin_clz(n);
+	static vector<complex<long double>> R(2, 1);
+	static vector<C> rt(2, 1);  // (^ 10% faster if double)
+	for (static int k = 2; k < n; k *= 2) {
+		R.resize(n); rt.resize(n);
+		auto x = polar(1.0L, acos(-1.0L) / k);
+		rep(i,k,2*k) rt[i] = R[i] = i&1 ? R[i/2] * x : R[i/2];
 	}
-	for(int l = 1, m; (m = l << 1) <= n; l <<= 1) {
-		double ang = 2 * PI / m;
-		base wn = base(cos(ang), (inv ? 1. : -1.) * sin(ang)), w;
-		for(int i = 0, j, k; i < n; i += m) {
-			for(w = base(1, 0), j = i, k = i + l; j < k; ++j, w = w * wn) {
-				base t = w * p[j + l];
-				p[j + l] = p[j] - t;
-				p[j] = p[j] + t;
-			}
+	vi rev(n);
+	rep(i,0,n) rev[i] = (rev[i / 2] | (i & 1) << L) / 2;
+	rep(i,0,n) if (i < rev[i]) swap(a[i], a[rev[i]]);
+	for (int k = 1; k < n; k *= 2)
+		for (int i = 0; i < n; i += 2 * k) rep(j,0,k) {
+			// C z = rt[j+k] * a[i+j+k]; // (25% faster if hand-rolled)  /// include-line
+			auto x = (double *)&rt[j+k], y = (double *)&a[i+j+k];        /// exclude-line
+			C z(x[0]*y[0] - x[1]*y[1], x[0]*y[1] + x[1]*y[0]);           /// exclude-line
+			a[i + j + k] = a[i + j] - z;
+			a[i + j] += z;
 		}
-	}
-	if(inv) for(int i = 0; i < n; ++i) p[i].a /= n, p[i].b /= n;
 }
-vector<long long> multiply(vector<int> &a, vector<int> &b) {
-	int n = a.size(), m = b.size(), t = n + m - 1, sz = 1;
-	while(sz < t) sz <<= 1;
-	vector<base> x(sz), y(sz), z(sz);
-	for(int i = 0 ; i < sz; ++i) {
-		x[i] = i < (int)a.size() ? base(a[i], 0) : base(0, 0);
-		y[i] = i < (int)b.size() ? base(b[i], 0) : base(0, 0);
-	}
-	fft(x), fft(y);
-	for(int i = 0; i < sz; ++i) z[i] = x[i] * y[i];
-	fft(z, 1);
-	vector<long long> ret(sz);
-	for(int i = 0; i < sz; ++i) ret[i] = (long long) round(z[i].a);
-//   while((int)ret.size() > 1 && ret.back() == 0) ret.pop_back();
-	return ret;
+vl conv(const vl& a, const vl& b) {
+	if (a.empty() || b.empty()) return {};
+	vd res(sz(a) + sz(b) - 1);
+	int L = 32 - __builtin_clz(sz(res)), n = 1 << L;
+	vector<C> in(n), out(n);
+	copy(all(a), begin(in));
+	rep(i,0,sz(b)) in[i].imag(b[i]);
+	fft(in);
+	trav(x, in) x *= x;
+	rep(i,0,n) out[i] = in[-i & (n - 1)] - conj(in[i]);
+	fft(out);
+    	vector<ll> resp(sz(res));
+	rep(i,0,sz(res)) resp[i] = round(imag(out[i]) / (4.0 * n));
+	return resp;
 }

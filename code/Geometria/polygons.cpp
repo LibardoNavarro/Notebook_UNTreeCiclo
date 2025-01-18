@@ -228,3 +228,162 @@ ll pick(vector<pt>& p){
 	}
 	return abs(area(p)) + 1 - boundary / 2;
 }
+
+// minimum distance between two parallel lines (non necessarily axis parallel)
+// such that the polygon can be put between the lines
+// O(n) CCW polygon 
+lf width(vector<pt> &p) {
+    int n = (int)p.size();
+    if (n <= 2) return 0;
+    lf ans = inf;
+    int i = 0, j = 1;
+    while (i < n){
+        while (cross(p[(i + 1) % n] - p[i], p[(j + 1) % n] - p[j]) >= 0) j = (j + 1) % n;
+        line l1(p[i], p[(i + 1) % n]);
+        ans = min(ans, l1.dist(p[j]));
+        i++;
+    }
+    return ans;
+}
+
+// O(n) {minimum perimeter, minimum area} CCW polygon
+pair<ld, ld> minimum_enclosing_rectangle(vector<pt> &p) {
+	int n = p.size();
+	if (n <= 2) return {perimeter(p), 0};
+	int mndot = 0; 
+    lf tmp = dot(p[1] - p[0], p[0]);
+	for (int i = 1; i < n; i++) {
+		if (dot(p[1] - p[0], p[i]) <= tmp) {
+			tmp = dot(p[1] - p[0], p[i]);
+			mndot = i;
+		}
+	}
+	ld ansP = inf;
+	ld ansA = inf;
+	int i = 0, j = 1, mxdot = 1;
+	while (i < n) {
+		pt cur = p[(i + 1) % n] - p[i];
+        while (cross(cur, p[(j + 1) % n] - p[j]) >= 0) j = (j + 1) % n;
+        while (dot(p[(mxdot + 1) % n], cur) >= dot(p[mxdot], cur)) mxdot = (mxdot + 1) % n;
+        while (dot(p[(mndot + 1) % n], cur) <= dot(p[mndot], cur)) mndot = (mndot + 1) % n;
+        line l1(p[i], p[(i + 1) % n]);
+
+        // minimum perimeter
+        ansP = min(ansP, 2.0 * ((dot(p[mxdot], cur) / norm(cur) - dot(p[mndot], cur) / norm(cur)) + l1.dist(p[j])));
+        // minimum area
+        ansA = min(ansA, (dot(p[mxdot], cur) / norm(cur) - dot(p[mndot], cur) / norm(cur)) * l1.dist(p[j]));
+        i++;
+    }
+
+    return {ansP, ansA};
+}
+
+// maximum distance from a convex polygon to another convex polygon
+lf maximum_dist_from_polygon_to_polygon(vector<pt> &u, vector<pt> &v){ //O(n)
+    int n = (int)u.size(), m = (int)v.size();
+    lf ans = 0;
+    if (n < 3 || m < 3) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) ans = max(ans, dis2(u[i], v[j]));
+        }
+        return sqrt(ans);
+    }
+    if (u[0].x > v[0].x) swap(n, m), swap(u, v);
+    int i = 0, j = 0, step = n + m + 10;
+    while (j + 1 < m && v[j].x < v[j + 1].x) j++ ;
+    while (step--) {
+        if (cross(u[(i + 1) % n] - u[i], v[(j + 1) % m] - v[j]) >= 0) j = (j + 1) % m;
+        else i = (i + 1) % n;
+        ans = max(ans, dis2(u[i], v[j]));
+    }
+    return sqrt(ans);
+}
+
+// -----------------------------------------------------------
+
+pt project_from_point_to_seg(pt a, pt b, pt c) {
+    double r = dis2(a, b);
+    if (sign(r) == 0) return a;
+    r = dot(c - a, b - a) / r;
+    if (r < 0) return a;
+    if (r > 1) return b;
+    return a + (b - a) * r;
+}
+// minimum distance from point c to segment ab
+lf pt_to_seg(pt a, pt b, pt c) {
+    return dis(c, project_from_point_to_seg(a, b, c));
+}
+
+pair<pt, int> point_poly_tangent(vector<pt> &p, pt Q, int dir, int l, int r) {
+    while (r - l > 1) {
+        int mid = (l + r) >> 1;
+        bool pvs = sign(orient(Q, p[mid], p[mid - 1])) != -dir;
+        bool nxt = sign(orient(Q, p[mid], p[mid + 1])) != -dir;
+        if (pvs && nxt) return {p[mid], mid};
+        if (!(pvs || nxt)) {
+            auto p1 = point_poly_tangent(p, Q, dir, mid + 1, r);
+            auto p2 = point_poly_tangent(p, Q, dir, l, mid - 1);
+            return sign(orient(Q, p1.first, p2.first)) == dir ? p1 : p2;
+        }
+        if (!pvs) {
+            if (sign(orient(Q, p[mid], p[l]) == dir))  r = mid - 1;
+            else if (sign(orient(Q, p[l], p[r]) == dir)) r = mid - 1;
+            else l = mid + 1;
+        }
+        if (!nxt) {
+            if (sign(orient(Q, p[mid], p[l]) == dir))  l = mid + 1;
+            else if (sign(orient(Q, p[l], p[r]) == dir)) r = mid - 1;
+            else l = mid + 1;
+        }
+    }
+    pair<pt, int> ret = {p[l], l};
+    for (int i = l + 1; i <= r; i++) ret = sign(orient(Q, ret.first, p[i])) != dir ? make_pair(p[i], i) : ret;
+    return ret;
+}
+// (ccw, cw) tangents from a point that is outside this convex polygon
+// returns indexes of the points
+// ccw means the tangent from Q to that point is in the same direction as the polygon ccw direction
+pair<int, int> tangents_from_point_to_polygon(vector<pt> &p, pt Q){
+    int ccw = point_poly_tangent(p, Q, 1, 0, (int)p.size() - 1).second;
+    int cw = point_poly_tangent(p, Q, -1, 0, (int)p.size() - 1).second;
+    return make_pair(ccw, cw);
+}
+
+// minimum distance from a point to a convex polygon
+// it assumes point lie strictly outside the polygon
+lf dist_from_point_to_polygon(vector<pt> &p, pt z) {
+    lf ans = inf;
+    int n = p.size();
+    if (n <= 3) {
+        for(int i = 0; i < n; i++) ans = min(ans, pt_to_seg(p[i], p[(i + 1) % n], z));
+        return ans;
+    }
+    pair<int, int> dum = tangents_from_point_to_polygon(p, z);
+    int r = dum.first;
+    int l = dum.second;
+    if(l > r) r += n;
+    while (l < r) {
+        int mid = (l + r) >> 1;
+        lf left = dis2(p[mid % n], z), right= dis2(p[(mid + 1) % n], z);
+        ans = min({ans, left, right});
+        if(left < right) r = mid;
+        else l = mid + 1;
+    }
+    ans = sqrt(ans);
+    ans = min(ans, pt_to_seg(p[l % n], p[(l + 1) % n], z));
+    ans = min(ans, pt_to_seg(p[l % n], p[(l - 1 + n) % n], z));
+    return ans;
+}
+
+// minimum distance from a convex polygon to another convex polygon
+// the polygon doesnot overlap or touch
+lf dist_from_polygon_to_polygon(vector<pt> &p1, vector<pt> &p2) { // O(n log n)
+    lf ans = inf;
+    for (int i = 0; i < p1.size(); i++) {
+        ans = min(ans, dist_from_point_to_polygon(p2, p1[i]));
+    }
+    for (int i = 0; i < p2.size(); i++) {
+        ans = min(ans, dist_from_point_to_polygon(p1, p2[i]));
+    }
+    return ans;
+}
