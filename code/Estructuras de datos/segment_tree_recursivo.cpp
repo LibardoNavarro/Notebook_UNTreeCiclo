@@ -5,9 +5,9 @@ struct SegTree{
 	int size;
 
 	T op(T a, T b){return a+b;}
-	SegTree(vector<T>& a,int n){
+	SegTree(vector<T>& a){
 		size=1;
-		while(size<n)size*=2;
+		while(size<sz(a))size*=2;
 		vals.resize(2*size);
 		lazy.assign(2*size, nolz);
 		build(a, 0, 0, size);

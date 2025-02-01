@@ -5,23 +5,73 @@ struct Node{
 	T sum,lazy;
 	T max1,max2,maxc;
 	T min1,min2,minc;
+
+	void build(T x){
+		sum=max1=min1=x;
+		maxc=minc=1;
+		lazy=noVal;
+		max2=-INF;
+		min2=INF;
+	}
+
+	void oper(Node& a, Node& b){
+		sum=a.sum+b.sum;
+
+		map<T, T, greater<T>> maxs;
+		maxs[a.max1]+=a.maxc;
+		maxs[b.max1]+=b.maxc;
+		maxs[a.max2]++;
+		maxs[b.max2]++;
+		auto it=maxs.begin();
+		max1=(*it).first,maxc=(*it).second,max2=(*next(it)).first;
+
+		map<T, T> mins;
+		mins[a.min1]+=a.minc;
+		mins[b.min1]+=b.minc;
+		mins[a.min2]++;
+		mins[b.min2]++;
+		it=mins.begin();
+		min1=(*it).first,minc=(*it).second,min2=(*next(it)).first;
+	}
 };
 struct SegTree{
 	vector<Node> vals;
 	int size;
 
-	void oper(int a, int b, int c); // node c, left a, right b;
-	Node single(T x){
-		Node tmp;
-		tmp.sum=tmp.max1=tmp.min1=x;
-		tmp.maxc=tmp.minc=1;
-		tmp.lazy=noVal;
-		tmp.max2=-INF;
-		tmp.min2=INF;
-		return tmp;
+	void build(vector<T>& a, int x, int lx, int rx){
+		if(rx-lx==1){
+			if(lx<sz(a))vals[x].build(a[lx]);
+			return;
+		}
+		int m=(lx+rx)/2;
+		build(a, 2*x+1, lx, m);
+		build(a, 2*x+2, m, rx);
+		vals[x].oper(vals[2*x+1], vals[2*x+2]);
 	}
 
-	void build(vector<T>& a,int n);
+	void build(vector<T>& a){
+		size=1;
+		while(size<sz(a))size*=2;
+		vals.resize(2*size);
+		build(a, 0, 0, size);
+	}
+
+	void propagateMax(T v, int x, int lx, int rx){
+		if(vals[x].min1>=v)return;
+		vals[x].sum-=vals[x].min1*vals[x].minc;
+		vals[x].min1=v;
+		vals[x].sum+=vals[x].min1*vals[x].minc;
+		if(rx-lx==1){
+			vals[x].max1=v;
+		}else{
+			if(v>=vals[x].max1){
+				vals[x].max1=v;
+			}else if(v>vals[x].max2){
+				vals[x].max2=v;
+			}
+		}
+	}
+
 	void propagateMin(T v, int x, int lx, int rx){
 		if(vals[x].max1<=v)return;
 		vals[x].sum-=vals[x].max1*vals[x].maxc;
@@ -58,6 +108,9 @@ struct SegTree{
 		
 		propagateMin(vals[x].max1, 2*x+1, lx, m);
 		propagateMin(vals[x].max1, 2*x+2, m, rx);
+
+		propagateMax(vals[x].min1, 2*x+1, lx, m);
+		propagateMax(vals[x].min1, 2*x+2, m, rx);
 	}
 
 	void updAdd(int l, int r, T v,int x, int lx, int rx){
@@ -70,7 +123,20 @@ struct SegTree{
 		int m=(lx+rx)/2;
 		updAdd(l,r,v,2*x+1,lx,m);
 		updAdd(l,r,v,2*x+2,m,rx);
-		oper(2*x+1, 2*x+2, x);
+		vals[x].oper(vals[2*x+1], vals[2*x+2]);
+	}
+
+	void updMax(int l, int r, T v,int x, int lx, int rx){
+		if(lx>=r || l>=rx || vals[x].min1>v)return;
+		if(lx>=l && rx<=r && vals[x].min2>v){
+			propagateMax(v, x, lx, rx);
+			return;
+		}
+		propagate(x,lx,rx);
+		int m=(lx+rx)/2;
+		updMax(l,r,v,2*x+1,lx,m);
+		updMax(l,r,v,2*x+2,m,rx);
+		vals[x].oper(vals[2*x+1], vals[2*x+2]);
 	}
 
 	void updMin(int l, int r, T v,int x, int lx, int rx){
@@ -83,9 +149,21 @@ struct SegTree{
 		int m=(lx+rx)/2;
 		updMin(l,r,v,2*x+1,lx,m);
 		updMin(l,r,v,2*x+2,m,rx);
-		oper(2*x+1, 2*x+2, x);
+		vals[x].oper(vals[2*x+1], vals[2*x+2]);
 	}
 
+	T get(int l, int r, int x, int lx, int rx){
+		if(lx>=r || l>=rx)return null;
+		if(lx>=l && rx<=r)return vals[x].sum;
+		propagate(x,lx,rx);
+		int m=(lx+rx)/2;
+		T v1=get(l,r,2*x+1,lx,m);
+		T v2=get(l,r,2*x+2,m,rx);
+		return v1+v2;
+	}
+
+	T get(int l, int r){return get(l,r+1,0,0,size);}
 	void updAdd(int l, int r, T v){updAdd(l,r+1,v,0,0,size);}
 	void updMin(int l, int r, T v){updMin(l,r+1,v,0,0,size);}
+	void updMax(int l, int r, T v){updMax(l,r+1,v,0,0,size);}
 };

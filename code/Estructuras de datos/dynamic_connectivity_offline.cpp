@@ -1,7 +1,8 @@
-struct DSU{
+typedef pair<int, int> ii;
+struct DSU {
 	vector<int> p,size,h;
 	int sets;
-	DSU(int n){
+	void build(int n){
 		sets=n;
 		p.assign(n,0);
 		size.assign(n,1);
@@ -12,66 +13,66 @@ struct DSU{
 		a=get(a);b=get(b);
 		if(a==b)return;
 		if(size[a]>size[b])swap(a,b);
-		size[b]+=size[a];
 		h.push_back(a);
+		size[b]+=size[a];
 		p[a]=b;sets--;
 	}
-	void rollback(int x){
-		int len=h.size();
-		while(len>x){
+	void rollback(int s){
+		while(sz(h)>s){
 			int a=h.back();
 			h.pop_back();
 			size[p[a]]-=size[a];
-			p[a]=a;sets++;len--;
+			p[a]=a;sets++;
 		}
 	}
 };
 
-// O(n*log(n)^2)
+// O(qlog(q)log(n))
 enum { ADD, DEL, QUERY };
-struct Query{int type, u, v;};
-struct DynCon{
-	vector<Query> q;  
-	DSU uf;
-	vector<int> mt;  
-	map<pair<int,int>, int> prv;
-	DynCon(int n): uf(n){}
-	void add(int i, int j){
-		if(i>j)swap(i, j);
-		q.push_back({ADD, i, j}); 
-		mt.push_back(-1);
-		prv[{i,j}]=sz(q)-1;
+struct Query { int type,u,v; };
+struct DynCon {
+	map<ii, int> edges;DSU uf;
+	vector<Query> q;
+	vector<int> t;
+	void add(int u, int v){
+		if(u>v)swap(u,v);
+		edges[{u,v}]=sz(q);
+		q.push_back({ADD, u, v});
+		t.push_back(-1);
 	}
-	void remove(int i, int j){
-		if(i > j) swap(i, j);
-		q.push_back({DEL, i, j});
-		int pr=prv[{i, j}];
-		mt[pr]=sz(q)-1;  
-		mt.push_back(pr);
+	void del(int u, int v){
+		if(u>v)swap(u,v);
+		int i=edges[{u,v}];
+		t[i]=sz(q);
+		q.push_back({DEL, u, v});
+		t.push_back(i);
 	}
 	void query(){
-		q.push_back({QUERY, -1, -1});  
-		mt.push_back(-1);
+		q.push_back({QUERY, -1, -1});
+		t.push_back(-1);
 	}
-	void process(){ // answers all queries in order
-		if(!sz(q)) return;
-		for(int i=0;i<sz(q);++i)
-		if(q[i].type==ADD && mt[i]<0)mt[i]=sz(q);
-		go(0, sz(q));
-	}
-	void go(int s, int e){
-		if(s+1==e){
-			if(q[s].type == QUERY)cout<<uf.sets<<"\n";
+	void dnc(int l, int r){
+		if(r-l==1){
+			if(q[l].type==QUERY)
+				cout<<uf.sets<<"\n";
 			return;
 		}
-		int k=sz(uf.h),m=(s+e)/2;
-		for(int i=e-1;i>=m;--i)
-		if(mt[i]>=0 && mt[i]<s)uf.unite(q[i].u, q[i].v);
-		go(s, m);  
+		int m=l+(r-l)/2,k=sz(uf.h);
+		for(int i=m;i<r;++i)
+			if(q[i].type==DEL && t[i]<l)
+				uf.unite(q[i].u, q[i].v);
+		dnc(l, m);
 		uf.rollback(k);
-		for(int i=m-1;i>=s;--i)
-		if(mt[i]>=e)uf.unite(q[i].u, q[i].v);
-		go(m, e);  
+		for(int i=l;i<m;++i)
+			if(q[i].type==ADD && t[i]>=r)
+				uf.unite(q[i].u, q[i].v);
+		dnc(m, r);
 		uf.rollback(k);
+	}
+	void init(int n){
+		uf.build(n);
+		if(!sz(q))return;
+		for(int& ti:t)if(ti==-1)ti=sz(q);
+		dnc(0, sz(q));
 	}
 };
