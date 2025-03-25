@@ -1,5 +1,5 @@
 const ll INF = 2e18;
-const int D = 3; // dimension
+const int D = 2; // dimension
  
 struct ptd{
 	int p[D];
@@ -37,11 +37,11 @@ struct KDTree{
 	kd_node* root;
  
 	KDTree(vector<ptd> &vptd): arr(vptd){	
-		build(root, 0, sz(vptd) - 1, 0);
+		build(root, 0, sz(vptd) - 1);
 	}
     
     // O(nlogn)
-	void build(kd_node* &node, int l, int r, int axis) {
+	void build(kd_node* &node, int l, int r){
 		if(l > r) {
 			node = nullptr;
 			return;
@@ -55,39 +55,59 @@ struct KDTree{
 			node->right = nullptr;
 			return;
 		}
+
+		ll bAxis = 0;
+		ll mRange = 0;
+		for (int axis = 0; axis < D; ++axis) {
+			ll minVal = INF, maxVal = -INF;
+			for (int i = l; i <= r; ++i){
+				minVal = min(minVal, (ll)arr[i].p[axis]);
+				maxVal = max(maxVal, (ll)arr[i].p[axis]);
+			}
+
+			if (maxVal - minVal > mRange) {
+				mRange = maxVal - minVal;
+				bAxis = axis;
+			}
+		}
 	  
 		int mid = (l + r) / 2;
 	  
-		nth_element(arr.begin() + l, arr.begin() + mid, arr.begin() + r + 1, cmp_points(axis));
+		nth_element(arr.begin() + l, arr.begin() + mid, arr.begin() + r + 1, cmp_points(bAxis));
 		node->p = arr[mid];
-		node->axis = axis;
-		build(node->left, l, mid, (axis + 1) % D);
-		build(node->right, mid + 1, r, (axis + 1) % D);
+		node->axis = bAxis;
+		build(node->left, l, mid);
+		build(node->right, mid + 1, r);
 	}
 	
-	void nearest(kd_node* node, ptd q, ll &ans) {
+	void nearest(kd_node* node, ptd q, pair<ll, ptd> &ans){
 		if(node == NULL) return;
 	
 		if(node->left == NULL && node->right == NULL) {
-			if(q != node->p) ans = min(ans, dis2(node->p, q)); // CUIDADO
+			if(!(q != node->p)) return; // avoid query point as answer
+			
+			if (ans.first > dis2(node->p, q)) ans = {dis2(node->p, q), node->p};
+			
 			return;
 		}
 		
-		int value = node->p.p[node->axis];
+		int axis = node->axis;
+		int value = node->p.p[axis];
 		
-		if(q.p[node->axis] <= value) {
+		if(q.p[axis] <= value){
 			nearest(node->left, q, ans);
-			if(q.p[node->axis] + sqrt(ans) >= value) nearest(node->right, q, ans);
-		}
-		else {
+			ll diff = value - q.p[axis];
+			if(diff * diff <= ans.ff) nearest(node->right, q, ans);
+		}else{
 			nearest(node->right, q, ans);
-			if(q.p[node->axis] - sqrt(ans) <= value) nearest(node->left, q, ans);
+			ll diff = q.p[axis] - value;
+			if(diff * diff <= ans.ff) nearest(node->left, q, ans);
 		}
 	}
     
-    // O(logn) Returns the squared distance to the nearest point
-	ll nearest(ptd q){
-		ll ans = INF;
+    // O(logn) Returns {squared distance, nearest point}
+	pair<ll, ptd> nearest(ptd q){
+		pair<ll, ptd> ans = {INF, ptd()};
 		nearest(root, q, ans);
 		return ans;
 	}
