@@ -95,3 +95,24 @@ bool cmp(pt p1, pt p2){
 	int c1 = cuad(p1), c2 = cuad(p2);
 	return c1 == c2 ? p1.y * p2.x < p1.x * p2.y : c1 < c2; 
 } 
+
+// O(n*2^d*d) 
+// Return the max manhattan distance between points with d-dimension.
+ll max_distance_manhattan(vector<vi> p, int d){
+	long long ans = 0;
+	for (int msk = 0; msk < (1 << d); msk++) {
+		long long mx = LLONG_MIN, mn = LLONG_MAX;
+		for (int i = 0; i < n; i++) {
+			long long cur = 0;
+			for (int j = 0; j < d; j++) {
+				if (msk & (1 << j)) cur += p[i][j];
+				else cur -= p[i][j];
+			}
+			mx = max(mx, cur);
+			mn = min(mn, cur);
+		}
+		ans = max(ans, mx - mn);
+	}
+
+	return ans;
+}
