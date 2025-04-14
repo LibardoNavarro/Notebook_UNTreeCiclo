@@ -47,3 +47,6 @@ ll nextMask(ll x){
 	ll r = x + c;
 	return (((r ^ x) >> 2) / c) | r;
 }
+
+// optimiza el .count de los bitsets y el popcount
+#pragma GCC target("popcnt")

@@ -2,7 +2,7 @@ const int maxn = 2e5+5;
 const int alpha = 26; 
 
 vector<int> adj[maxn]; // dad - suf
-int to[maxn][alpha],cnt[maxn],dad[maxn],suf[maxn],act;
+int to[maxn][alpha],cnt[maxn],dad[maxn],suf[maxn],act; // no tocar
 int conv(char ch){return ((ch>='a' && ch<='z')?ch-'a':ch-'A'+26);} 
 
 void init(){ 
