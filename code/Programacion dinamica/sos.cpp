@@ -5,7 +5,7 @@ int dp[1<<bits];
 void SOS(){
 	for(int i = 0; i < (1 << bits); ++i) dp[i] = A[i];
 
-	// top - down
+	// top - down (informacion de las submascaras)
 	for(int i = 0; i < bits; ++i){
 		for(int s = 0; s < (1 << bits); ++s){
 			if(s & (1 << i)){
@@ -14,7 +14,7 @@ void SOS(){
 		}
 	} 
 	
-	// bottom - up
+	// bottom - up (informacion de las supermascaras)
 	for(int i = 0; i < bits; ++i){
 		for(int s = (1 << bits) - 1; s >= 0; --s){
 			if(s & (1 << i)){

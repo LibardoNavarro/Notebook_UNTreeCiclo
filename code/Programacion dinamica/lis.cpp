@@ -1,4 +1,4 @@
-// O(nlogn)
+// O(n*log(n))
 int lis(vi& a){
 	int n=sz(a),last=0;
 	vi dp(n+1,INT_MAX),cnt(n,0);
