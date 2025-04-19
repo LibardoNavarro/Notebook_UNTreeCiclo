@@ -21,7 +21,8 @@ void dfs2(int v){
 }
 
 // O(n+m)
-void init(int n){
+// retorna el numero de componentes
+int init(int n){
 	for(int i=0;i<n;++i)if(!used[i])dfs1(i);
 	for(int i=0;i<n;++i)used[i]=false;
 	reverse(order.begin(), order.end());
@@ -34,4 +35,5 @@ void init(int n){
 			j++;
 		}
 	}
+	return j;
 }

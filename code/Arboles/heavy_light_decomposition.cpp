@@ -8,15 +8,22 @@ struct SegTree{
 	T get(int l, int r){return null;}
 };
 
-const int maxn=1e5+1; // >= 2e5, remove struct
-bool edges=false; // arista padre
+const int maxn=1e5+1; // si maxn >= 2e5, destruir el struct
+bool edges=false; // si los valores estan en las aristas
+
+// 1) addEdge(u,v)
+// 2) build(n,root)
 struct HLD{ 
 	int par[maxn], root[maxn], dep[maxn];
 	int sz[maxn], pos[maxn], ti;
 	vector<int> adj[maxn];
 	SegTree st;
 
-	void addEdge(int x, int y){adj[x].push_back(y);adj[y].push_back(x);}
+	void addEdge(int x, int y){
+		adj[x].push_back(y);
+		adj[y].push_back(x);
+	}
+
 	void dfsSz(int x){ 
 		sz[x]=0; 
 		for(int& y:adj[x]){
@@ -46,7 +53,7 @@ struct HLD{
 		st.build(n);
 	}
 
-	// O(log^2(n))
+	// O(log(n)^2)
 	template <class Oper> 
 	void processPath(int x, int y, Oper op){
 		for(;root[x]!=root[y];y=par[root[y]]){
@@ -68,6 +75,8 @@ struct HLD{
 		});
 		return res; 
 	}
+
+	// O(log(n))
 	void modifySubtree(int x, int v){st.upd(pos[x]+edges,pos[x]+sz[x],v);}
 	int querySubtree(int x){return st.get(pos[x]+edges,pos[x]+sz[x]);}
 	void modify(int x, int v){st.set(pos[x],v);} 

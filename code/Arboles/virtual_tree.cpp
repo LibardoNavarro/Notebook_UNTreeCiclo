@@ -1,22 +1,29 @@
 const int maxn = 2e5+5;
 vector<int> adjVT[maxn], adj[maxn];
-int st[maxn], ft[maxn], pos=0; 
 bool important[maxn];
+int st[maxn]; // tiempo inicial de v en euler tour
+int ft[maxn]; // tiempo final de v en euler tour
+int pos=0;
 
 void dfs(int v, int p=-1){
-    st[v]=pos++;
+	st[v]=pos++;
 	for(int u:adj[v]){
 		if(u==p)continue;
-        dfs(u, v);
+		dfs(u, v);
 	}
-    ft[v]=pos++;
+	ft[v]=pos++;
 }
 
+// anadir LCA
 int lca(int a, int b);
 bool upper(int v, int u){return st[v]<=st[u] && ft[v]>=ft[u];}
 bool cmp(int v, int u){return st[v]<st[u];}
 
-// O(klogk)
+// O(k*log(k))
+// 1) actualizar important[]
+// 2) returna root 
+// 4) DP con virtual tree
+// 3) limpiar important[]
 int virtualTree(vector<int> nodes){
 	sort(all(nodes), cmp);
 	int m=sz(nodes);
@@ -46,8 +53,3 @@ int virtualTree(vector<int> nodes){
 	}
 	return s[0];
 }
-
-vector<int> nodes(k);
-for(int& x:nodes)important[x]=true;
-int root=virtualTree(nodes);
-dp(root) - output answer - reset (important, adjvt)

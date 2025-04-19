@@ -1,5 +1,5 @@
 // dp[posicion][cantidad de d][limite]
-ll dp[20][20][2],n,m;
+ll dp[20][20][2];
 int k,d;
 
 // numeros <= c que tienen k veces el digito d
