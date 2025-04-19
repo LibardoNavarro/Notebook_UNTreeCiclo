@@ -1,8 +1,15 @@
+// 1) init() trie and add() strings
+// 2) build() aho-corasick
+// 3) process the text
+// 4) dfs to calculate dp
+
+// suf: longest proper suffix that's also in the trie
+// dad: closest suffix link that is terminal
+// cnt: number of strings that end exactly at node v
 const int maxn = 2e5+5;
 const int alpha = 26; 
-
-vector<int> adj[maxn]; // dad - suf
-int to[maxn][alpha],cnt[maxn],dad[maxn],suf[maxn],act; // no tocar
+vector<int> adj[maxn]; 
+int to[maxn][alpha],cnt[maxn],dad[maxn],suf[maxn],act; // not to change
 int conv(char ch){return ((ch>='a' && ch<='z')?ch-'a':ch-'A'+26);} 
 
 void init(){ 
@@ -25,7 +32,7 @@ int add(string& s){
 	return u;
 }
 
-// O(sum(n)*alpha)
+// O(sum(|s|)*alpha)
 void build(){
 	queue<int> q{{0}};
 	while(!q.empty()){
