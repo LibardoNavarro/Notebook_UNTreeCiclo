@@ -14,7 +14,7 @@ ii operator - (const ii& a, const ii& b){return {sbt(a.first, b.first, mod[0]), 
 ii operator * (const ii& a, const ii& b){return {mul(a.first, b.first, mod[0]), mul(a.second, b.second, mod[1])};}
 
 ii p[maxn+1];
-void prepare(){
+void prepare(){ // remember!!!
 	p[0]={1,1};
 	for(int i=1;i<=maxn;i++)p[i]=p[i-1]*base;
 }

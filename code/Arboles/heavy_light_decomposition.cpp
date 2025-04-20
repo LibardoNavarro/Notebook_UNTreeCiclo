@@ -78,7 +78,7 @@ struct HLD{
 
 	// O(log(n))
 	void modifySubtree(int x, int v){st.upd(pos[x]+edges,pos[x]+sz[x],v);}
-	int querySubtree(int x){return st.get(pos[x]+edges,pos[x]+sz[x]);}
+	T querySubtree(int x){return st.get(pos[x]+edges,pos[x]+sz[x]);}
 	void modify(int x, int v){st.set(pos[x],v);} 
 	void modifyEdge(int x, int y, int v){
 		if(dep[x]<dep[y])swap(x,y);

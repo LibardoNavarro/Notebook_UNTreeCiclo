@@ -12,6 +12,7 @@ struct Node{
 struct PalindromicTree{
 	vector<Node> tree; 
 	string s;
+	vector<int> palo; // longest suffix-palindrome in the position i
 	int len,n,size; 
 	int last; // max suffix palindrome
 	// node 1 = root with len -1 for odd
@@ -66,6 +67,7 @@ struct PalindromicTree{
 
 		for(int i=0;i<n;i++){
 			addLetter(i);
+			palo.push_back(tree[last].len);
 		}
 
 		// Propagate counts up the suffix links
