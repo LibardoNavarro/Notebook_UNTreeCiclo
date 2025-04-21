@@ -1,4 +1,5 @@
 vector<tuple<int,int,int>> edges;
+// peso, nodo a, node b
 
 struct DSU{
 	int sets;

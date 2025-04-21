@@ -25,7 +25,7 @@ void find_cycle(int n){
 	cy0=-1;
 	for(int v=0;v<n;++v){
 		if(!visited[v]){
-		  if(dfs(v, parent[v]))break;
+		if(dfs(v, parent[v]))break;
 		}
 	}
 	if(cy0==-1){

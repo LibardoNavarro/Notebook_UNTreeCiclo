@@ -1,8 +1,9 @@
 const int maxn = 1e5+5;
+// construir el grafo inverso
 // remember adj[a]->b, adj_rev[b]->a
 vi adj_rev[maxn],adj[maxn]; 
 bool used[maxn];
-int idx[maxn]; // the component of v
+int idx[maxn]; // componente de cada nodo
 vi order,comp;
 
 // O(n+m)
@@ -20,7 +21,7 @@ void dfs2(int v){
 		if(!used[u])dfs2(u);
 }
 
-// return the number of components
+// returna el numero de componentes
 int init(int n){ 
 	for(int i=0;i<n;++i)if(!used[i])dfs1(i);
 	for(int i=0;i<n;++i)used[i]=false;
