@@ -1,27 +1,19 @@
 // O(n*log(n))
-int lis(vi& a){
-	int n=sz(a),last=0;
-	vi dp(n+1,INT_MAX),cnt(n,0);
-	dp[0]=INT_MIN;
-	for(int i=0;i<n;++i){
-		int j=lower_bound(all(dp), a[i])-dp.begin(); // upper_bound
-		if(dp[j-1]<a[i] && a[i]<dp[j]){ // dp[j-1]<=a[i]
-			dp[j]=a[i];
-			last=max(last,j);
-		}
-		cnt[i]=j;
+// retorna los indices de un lis
+// cambiar el tipo y revisar si permite iguales
+typedef int T;
+vector<int> lis(vector<T>& a, bool equal){
+	vector<int> prev(sz(a));
+	typedef pair<T, int> p;
+	vector<p> res;
+	for(int i=0;i<sz(a);++i){
+		auto it=lower_bound(all(res), p{a[i],(equal?i:0)});
+		if(it==res.end())res.emplace_back(),it=res.end()-1;
+		*it={a[i],i};
+		prev[i]=(it==res.begin())?0:(it-1)->second;
 	}
-	int ans=0;
-	for(int i=0;i<=n;i++){
-		if(dp[i]<INT_MAX)ans=i;
-	}
-	vi LIS(ans);
-	int act=ans;
-	for(int i=n-1;i>=0;--i){
-		if(cnt[i]==act){
-			LIS[act-1]=a[i];
-			act--;
-		}
-	}
+	int l=sz(res),act=res.back().second;
+	vector<int> ans(l);
+	while(l--)ans[l]=act,act=prev[act];
 	return ans;
 }

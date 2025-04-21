@@ -2,6 +2,7 @@
 Modificar operacion * de matrix de esta forma:
 En la exponenciacion binaria inicializar matrix ans = b
 */
+const ll INFL = 2e18;
 matrix operator * (const matrix &b){
 	matrix ans(this->r, b.c, vector<vl>(this->r, vl(b.c, INFL)));
 

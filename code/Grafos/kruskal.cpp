@@ -1,16 +1,23 @@
-//O(E*log V)
-vector<tuple<int,int,int>> edges; // peso, nodo a, nodo b
-void kruskal(){
-	ll ans=0;
-	dsu uf(n);
+vector<tuple<int,int,int>> edges;
+
+struct DSU{
+	int sets;
+	DSU(int n){}
+	int get(int a);
+	void unite(int a, int b);
+};
+ 
+// O(m*log(n))
+void kruskal(int n){
 	sort(all(edges));
+	DSU dsu(n);
+	ll ans=0;
 	for(auto& [w,u,v]:edges){
-		if(uf.get(u)!=uf.get(v)){
-			uf.unite(u, v);
+		if(dsu.get(u)!=dsu.get(v)){
+			dsu.unite(u, v);
 			ans+=w;
 		}
 	}
-	if(uf.sets==1){
-		cout<<ans<<"\n";
-	}
+	if(dsu.sets!=1)cout<<"IMPOSSIBLE\n";
+	else cout<<ans<<"\n";
 }

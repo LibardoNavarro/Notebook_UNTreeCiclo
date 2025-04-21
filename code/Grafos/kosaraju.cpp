@@ -1,15 +1,15 @@
 const int maxn = 1e5+5;
+// remember adj[a]->b, adj_rev[b]->a
 vi adj_rev[maxn],adj[maxn]; 
-// construir el grafo inverso
-// adj[a]->b, adj_rev[b]->a
 bool used[maxn];
-int idx[maxn]; // componente de cada nodo
+int idx[maxn]; // the component of v
 vi order,comp;
 
+// O(n+m)
 void dfs1(int v){
 	used[v]=true;
 	for(int u:adj[v])
-	if(!used[u])dfs1(u);
+		if(!used[u])dfs1(u);
 	order.push_back(v);
 }
 
@@ -17,12 +17,11 @@ void dfs2(int v){
 	used[v]=true;
 	comp.push_back(v);
 	for(int u:adj_rev[v])
-	if(!used[u])dfs2(u);
+		if(!used[u])dfs2(u);
 }
 
-// O(n+m)
-// retorna el numero de componentes
-int init(int n){
+// return the number of components
+int init(int n){ 
 	for(int i=0;i<n;++i)if(!used[i])dfs1(i);
 	for(int i=0;i<n;++i)used[i]=false;
 	reverse(order.begin(), order.end());
