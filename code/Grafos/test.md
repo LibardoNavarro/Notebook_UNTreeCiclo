@@ -1,6 +1,3 @@
-
-FALTA TESTEAR CLIQUE @LIBARDO
-
 2sat:
 - https://cses.fi/problemset/task/1684/
 
@@ -9,6 +6,9 @@ bellman-ford:
 
 camino-mas-corto-de-longitud-fija:
 - https://cses.fi/problemset/task/1724/
+
+clique:
+- https://codeforces.com/contest/1105/problem/E
 
 cycle-directed:
 - https://cses.fi/problemset/task/1678/
