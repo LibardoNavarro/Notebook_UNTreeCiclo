@@ -19,8 +19,8 @@ vector<upd> upds;
 vector<ll> ans;
 
 ll act();
-void add(int i);
-void remove(int i);
+void add(int i); // add a[i]
+void remove(int i); // remove a[i]
 void update(int i, int v, int l, int r){
 	// check if the update is with an active element
 	if(l<=i && i<=r){

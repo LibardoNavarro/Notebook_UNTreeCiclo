@@ -31,6 +31,9 @@ persistent-segment-tree:
 polynomial-queries:
 - https://cses.fi/problemset/task/1736/
 
+segment-tree-2d:
+- https://cses.fi/problemset/task/1739/
+
 segment-tree-beats:
 - https://judge.yosupo.jp/problem/range_chmin_chmax_add_range_sum 
 
@@ -40,6 +43,9 @@ segment-tree-iterative:
 segment-tree-recursive:
 - https://cses.fi/problemset/task/1648/
 - https://cses.fi/problemset/task/1651/
+
+sparse-table-2d:
+- https://codeforces.com/contest/713/problem/D
 
 sparse-table:
 - https://cses.fi/problemset/task/1647/
@@ -52,4 +58,3 @@ two-stacks:
 
 wavelet-tree:
 - https://www.spoj.com/problems/MKTHNUM/
-

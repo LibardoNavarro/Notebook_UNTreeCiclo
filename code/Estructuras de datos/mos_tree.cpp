@@ -44,8 +44,8 @@ vector<ll> ans;
 bool vis[maxn];
 
 ll act();
-void add(int u);
-void remove(int u);
+void add(int u); // add node u
+void remove(int u); // remove node u
 void ask(int u){
 	if(!vis[u])add(u);
 	else remove(u);

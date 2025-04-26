@@ -1,11 +1,10 @@
-#include <bits/stdc++.h>
-using namespace std;
-
 const int maxn = 5e5+5;
 const int bits = 30;
 const int alpha = 2;
 
-int to[maxn*bits][alpha],cnt[maxn*bits],act;
+int to[maxn*bits][alpha]; // to[u][c]: node u edge with the letter c
+int cnt[maxn*bits]; // count of word ending in this node
+int act; // trie node cound
 int conv(int x, int i){return ((x&(1<<i))?1:0);}
 
 void init(){ 

@@ -14,8 +14,8 @@ vector<query> queries;
 vector<ll> ans;
 
 ll act();
-void add(int i);
-void remove(int i);
+void add(int i); // add a[i]
+void remove(int i); // remove a[i]
 
 void solve(int n){
 	sq=ceil(sqrt(n));
