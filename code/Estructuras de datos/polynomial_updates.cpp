@@ -1,7 +1,15 @@
 ll sum(ll x){return (x*(x+1ll))/2ll;}
-struct Node{ll sum,acum,cnt;};
+struct Node{
+	ll sum; // the nodes value
+	ll acum; //  count completed levels
+	ll cnt; // count of updates +1, +2, +3, ...
+};
+
+// check the null, oper, single, upd(l,r) remove the third parameter
 ...
+
 vector<Node> vals;
+
 void lazy(int x, int len, ll acum, ll cnt){
 	vals[x].sum+=acum*ll(len)+sum(len)*cnt;
 	vals[x].acum+=acum;

@@ -1,10 +1,15 @@
+// O(n*log(n)) build
+// O(log(n)) get, set
 typedef long long T;
-struct Node{T val;int l,r;};
+struct Node{
+	T val;
+	int l,r; // saves the range of the node [l,r]
+};
 struct SegTree{ 
 	vector<Node> ns;
-	vector<int> roots;
+	vector<int> roots; // roots of the differents versions 
 	T null=0;
-	int act=0,size;
+	int act=0,size; // act: number of nodes
 
 	T oper(T a, T b){return a+b;}
 	SegTree(vector<T>& a, int n){
