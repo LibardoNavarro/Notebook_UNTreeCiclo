@@ -4,7 +4,7 @@ typedef int T;
 const int maxn = 1000, logn = 10;
 T st[logn][maxn][logn][maxn];
 int lg2[maxn+1];
-T op(T a, T b){return max(a,b);}; // min, max, gcd...
+T op(T a, T b); // min, max, gcd...
 
 void build(int n, int m, vector<vector<T>>& a){
 	for(int i=2;i<=max(n,m);++i)lg2[i]=lg2[i/2]+1;

@@ -13,6 +13,15 @@ dsu-bipartite:
 dynamic-connectivity:
 - https://codeforces.com/edu/course/2/lesson/7/3/practice/contest/289392/problem/C
 
+implicit-treap:
+- https://cses.fi/problemset/task/2074/
+- https://cses.fi/problemset/task/1651/
+
+link-cut-tree:
+- https://dmoj.ca/problem/ds5easy
+- https://judge.yosupo.jp/problem/dynamic_tree_vertex_add_subtree_sum
+- https://www.spoj.com/problems/DYNALCA/
+
 merge-sort-tree:
 - https://www.spoj.com/problems/KQUERY/
 
@@ -52,6 +61,10 @@ sparse-table:
 
 sqrt-decomposition:
 - https://cses.fi/problemset/task/1648/
+
+treap:
+- https://codeforces.com/contest/911/problem/G
+- https://www.spoj.com/problems/ORDERSET/
 
 two-stacks:
 - https://codeforces.com/edu/course/2/lesson/9/3/practice/contest/307094/problem/I

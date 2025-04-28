@@ -1,12 +1,19 @@
+// Treap => Binary Search Tree + Binary Heap
+// 1. create a empty root (PTreap root=nullptr;)
+// 2. Append the nodes in order (left -> right)
+// PTreap tmp=new Treap(x);
+// root=merge(root, tmp);
+
 typedef long long T;
 typedef unsigned long long u64;
 mt19937_64 rng (chrono::steady_clock::now().time_since_epoch().count());
 
 T null = 0;
 struct Treap{
-	Treap *l,*r,*dad;
-	u64 prior;
-	T sz,val,sum,lz;
+	Treap *l,*r,*dad; // left child, right child
+	u64 prior; // random
+	T sz,val; // size subtree, value
+	T sum,lz; // sum subtree, lazy
 	Treap(T v){
 		l=r=nullptr;
 		prior=rng();
@@ -23,18 +30,22 @@ typedef Treap* PTreap;
 T cnt(PTreap x){return (!x?0:x->sz);}
 T sum(PTreap x){return (!x?0:x->sum);}
 
-void update(PTreap x, T v){
-	// lz, val, sum ...
+void update_helper(PTreap x, T v){
+    // lz += v
+    // val += v
+    // sum += v
 }
 
+// propagate the lazy
 void push(PTreap x){
-	if(x && x->lz){
-		if(x->l)update(x->l, 1);
-		if(x->r)update(x->r, 1);
+	if(x && x->lz){ // check x->lz
+		if(x->l)update_helper(x->l, 1);
+		if(x->r)update_helper(x->r, 1);
 		x->lz=0;
 	}
 }
 
+// updates node with its children information
 void pull(PTreap x){
 	push(x->l);
 	push(x->r);
@@ -44,13 +55,16 @@ void pull(PTreap x){
 	if(x->r)x->r->dad=x;
 }
 
+// Updates node value += v
 void upd(PTreap x, T v){
 	if(!x)return;
 	pull(x);
-	update(x,v);
+    update_helper(x,v);
 }
 
-pair<PTreap, PTreap> split(PTreap x, int left){ // cnt(f) == left
+// O(log(n)) divide the treap in two parts
+// [count nodes == left], [the rest of nodes]
+pair<PTreap, PTreap> split(PTreap x, int left){ 
 	if(!x)return {nullptr, nullptr};
 	push(x);
 	if(cnt(x->l)>=left){ 
@@ -66,6 +80,8 @@ pair<PTreap, PTreap> split(PTreap x, int left){ // cnt(f) == left
 	}
 }
 
+// O(log(n)) merge two treap 
+// [nodes treap x ... nodes treap y]
 PTreap merge(PTreap x, PTreap y){
 	if(!x)return y;
 	if(!y)return x;
@@ -81,6 +97,7 @@ PTreap merge(PTreap x, PTreap y){
 	}
 }
 
+// O(n) print the treap
 void dfs(PTreap x){
 	if(!x)return;
 	push(x);
@@ -88,7 +105,3 @@ void dfs(PTreap x){
 	cout<<x->val<<" ";
 	dfs(x->r);
 }
-
-PTreap root=nullptr;
-PTreap tmp=new Treap(x);
-root=merge(root, tmp);
