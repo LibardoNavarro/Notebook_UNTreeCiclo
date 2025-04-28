@@ -31,9 +31,9 @@ T cnt(PTreap x){return (!x?0:x->sz);}
 T sum(PTreap x){return (!x?0:x->sum);}
 
 void update_helper(PTreap x, T v){
-    // lz += v
-    // val += v
-    // sum += v
+	// lz += v
+	// val += v
+	// sum += v
 }
 
 // propagate the lazy
@@ -59,7 +59,7 @@ void pull(PTreap x){
 void upd(PTreap x, T v){
 	if(!x)return;
 	pull(x);
-    update_helper(x,v);
+	update_helper(x,v);
 }
 
 // O(log(n)) divide the treap in two parts
