@@ -51,3 +51,16 @@ ll nextMask(ll x){
 
 // optimiza el .count de los bitsets y el popcount
 #pragma GCC target("popcnt")
+
+// Formulas
+a | b = a ^ b + a & b 
+a ^ (a & b) = (a | b) ^ b
+b ^ (a & b) = (a | b) ^ a
+(a & b) ^ (a | b) = a ^ b
+a + b = a | b + a & b
+a + b = a ^ b + 2 * (a & b)
+a - b = (a ^ (a & b)) - ((a | b) ^ a)
+a - b = ((a | b) ^ b) - ((a | b) ^ a)
+a - b = (a ^ (a & b)) - (b ^ (a & b))
+a - b = ((a | b) ^ b) - (b ^ (a & b))
+a ^ b = ~(a & b) & (a | b)
