@@ -12,8 +12,8 @@ T null = 0;
 struct Treap{
 	Treap *l,*r,*dad; // left child, right child
 	u64 prior; // random
-	T sz,val; // size subtree, value
-	T sum,lz; // sum subtree, lazy
+	T val,sum,lz; // value, sum subtree, lazy
+	int sz; // size subtree
 	Treap(T v){
 		l=r=nullptr;
 		prior=rng();
@@ -27,7 +27,7 @@ struct Treap{
 };
 
 typedef Treap* PTreap;
-T cnt(PTreap x){return (!x?0:x->sz);}
+int cnt(PTreap x){return (!x?0:x->sz);}
 T sum(PTreap x){return (!x?0:x->sum);}
 
 void update_helper(PTreap x, T v){
