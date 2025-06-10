@@ -1,16 +1,18 @@
 #define rep(i, a, b) for(int i = a; i < (b); ++i)
-pair<ll, vl> hungarian(const vector<vl> &a) {
+typedef double type;
+const type INF_TYPE = LLONG_MAX;
+pair<type, vi> hungarian(const vector<vector<type>> &a) {
 	if (a.empty()) return {0, {}};
 	int n = sz(a) + 1, m = sz(a[0]) + 1;
-	vl u(n), v(m), p(m), ans(n - 1);
+	vector<type> u(n), v(m); vi p(m), ans(n - 1);
 	rep(i,1,n) {
 		p[0] = i;
 		int j0 = 0; // add "dummy" worker 0
-		vl dist(m,LLONG_MAX), pre(m, -1);
+		vector<type> dist(m,INF_TYPE);vi pre(m, -1);
 		vector<bool> done(m + 1);
 		do { // dijkstra
 			done[j0] = true;
-			int i0 = p[j0], j1;ll delta = LLONG_MAX;
+			int i0 = p[j0], j1;type delta = INF_TYPE;
 			rep(j,1,m) if (!done[j]) {
 				auto cur = a[i0 - 1][j - 1] - u[i0] - v[j];
 				if (cur < dist[j]) dist[j] = cur, pre[j] = j0;
