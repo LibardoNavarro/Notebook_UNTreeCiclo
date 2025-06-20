@@ -4,6 +4,9 @@
 bellman-ford:
 - https://cses.fi/problemset/task/1197/
 
+bridges_online:
+- https://codeforces.com/gym/104619/problem/F
+
 camino-mas-corto-de-longitud-fija:
 - https://cses.fi/problemset/task/1724/
 

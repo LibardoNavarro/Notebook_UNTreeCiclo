@@ -34,6 +34,9 @@ mos-tree:
 mos-updates:
 - https://www.spoj.com/problems/XXXXXXXX/
 
+persistent-segment-tree-lazy:
+- https://codeforces.com/gym/102433 (k)
+
 persistent-segment-tree:
 - https://cses.fi/problemset/task/1737
 

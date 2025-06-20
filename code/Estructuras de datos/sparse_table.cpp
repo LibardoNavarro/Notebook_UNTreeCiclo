@@ -6,9 +6,9 @@ struct Table{
 	vector<vector<T>> st;
 	Table(vector<T>& v){
 		int n=v.size();
-		st.assign(ceil(log2(n))+3, vector<T>(n)); 
-		for(int i=0;i<n;++i)st[0][i]=v[i];
+		st.push_back(v);
 		for(int j=1;(1<<j)<=n;++j){
+			st.push_back(vector<T>(n));
 			for(int i=0;i+(1<<(j-1))<n;++i){
 				st[j][i]=op(st[j-1][i],st[j-1][i+(1<<(j-1))]);
 			}

@@ -9,6 +9,7 @@ template<typename T> using ordered_multiset = tree<T, null_type,less_equal<T>, r
 //      Para borrar siendo multiset:
 //      int idx = st.order_of_key(value);
 //      st.erase(st.find_by_order(idx));
+//      st.swap(st2);
 // -------- METHODS --------- //
 st.find_by_order(k) // returns pointer to the k-th smallest element
 st.order_of_key(x)  // returns how many elements are smaller than x

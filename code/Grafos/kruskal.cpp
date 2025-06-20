@@ -8,7 +8,7 @@ struct DSU{
 	void unite(int a, int b);
 };
  
-// O(m*log(n))
+// O(m*log(m))
 void kruskal(int n){
 	sort(all(edges));
 	DSU dsu(n);

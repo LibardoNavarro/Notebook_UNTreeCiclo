@@ -1,5 +1,5 @@
 // O(n*log(n)) build
-// O(log(n)) get
+// O(log(n)^2) get
 typedef long long T;
 struct SegTree{
 	int size;
@@ -18,9 +18,6 @@ struct SegTree{
 	void build(vector<T>& a, int x, int lx, int rx){
 		if(rx-lx==1){
 			if(lx<sz(a))vals[x]={a[lx]};
-			if(lx<(int)a.size()){
-				vals[x]={a[lx]};
-			}
 			return;
 		}
 		int m=(lx+rx)/2;
@@ -32,7 +29,7 @@ struct SegTree{
 	int get(int l, int r,int val, int x, int lx, int rx){
 		if(lx>=r || l>=rx)return 0;
 		if(lx>=l && rx<=r){
-			return vals[x].size()-distance(vals[x].begin(),upper_bound(all(vals[x]),val));
+			return upper_bound(all(vals[x]),val)-vals[x].begin();
 		}
 		int m=(lx+rx)/2;
 		int v1=get(l,r,val,2*x+1,lx,m);

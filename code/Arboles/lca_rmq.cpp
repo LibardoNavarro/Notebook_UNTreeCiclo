@@ -1,4 +1,4 @@
-// anadir RMQ
+// anadir RMQ - Min
 typedef int T;
 struct Table{
 	void build(vector<T>& a);
