@@ -326,13 +326,13 @@ pair<pt, int> point_poly_tangent(vector<pt> &p, pt Q, int dir, int l, int r) {
             return sign(orient(Q, p1.first, p2.first)) == dir ? p1 : p2;
         }
         if (!pvs) {
-            if (sign(orient(Q, p[mid], p[l]) == dir))  r = mid - 1;
-            else if (sign(orient(Q, p[l], p[r]) == dir)) r = mid - 1;
+            if (sign(orient(Q, p[mid], p[l])) == dir)  r = mid - 1;
+            else if (sign(orient(Q, p[l], p[r])) == dir) r = mid - 1;
             else l = mid + 1;
         }
         if (!nxt) {
-            if (sign(orient(Q, p[mid], p[l]) == dir))  l = mid + 1;
-            else if (sign(orient(Q, p[l], p[r]) == dir)) r = mid - 1;
+            if (sign(orient(Q, p[mid], p[l])) == dir)  l = mid + 1;
+            else if (sign(orient(Q, p[l], p[r])) == dir) r = mid - 1;
             else l = mid + 1;
         }
     }
@@ -386,4 +386,39 @@ lf dist_from_polygon_to_polygon(vector<pt> &p1, vector<pt> &p2) { // O(n log n)
         ans = min(ans, dist_from_point_to_polygon(p1, p2[i]));
     }
     return ans;
+}
+
+
+// it returns a point such that the sum of distances
+// from that point to all points in p  is minimum
+// O(n log^2 MX)
+PT geometric_median(vector<PT> p) {
+	auto tot_dist = [&](PT z) {
+	    double res = 0;
+	    for (int i = 0; i < p.size(); i++) res += dist(p[i], z);
+	    return res;
+	};
+	auto findY = [&](double x) {
+	    double yl = -1e5, yr = 1e5;
+	    for (int i = 0; i < 60; i++) {
+	        double ym1 = yl + (yr - yl) / 3;
+	        double ym2 = yr - (yr - yl) / 3;
+	        double d1 = tot_dist(PT(x, ym1));
+	        double d2 = tot_dist(PT(x, ym2));
+	        if (d1 < d2) yr = ym2;
+	        else yl = ym1;
+	    }
+	    return pair<double, double> (yl, tot_dist(PT(x, yl)));
+	};
+    double xl = -1e5, xr = 1e5;
+    for (int i = 0; i < 60; i++) {
+        double xm1 = xl + (xr - xl) / 3;
+        double xm2 = xr - (xr - xl) / 3;
+        double y1, d1, y2, d2;
+        auto z = findY(xm1); y1 = z.first; d1 = z.second;
+        z = findY(xm2); y2 = z.first; d2 = z.second;
+        if (d1 < d2) xr = xm2;
+        else xl = xm1;
+    }
+    return {xl, findY(xl).first };
 }

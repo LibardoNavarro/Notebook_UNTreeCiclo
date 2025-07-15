@@ -25,13 +25,13 @@ bool proper_inter(pt a, pt b, pt c, pt d, pt& out) {
 // intersection bwn segments
 set<pt> inter_ss(pt a, pt b, pt c, pt d) {
 	pt out;
-	if (proper_inter(a, b, c, d, out)) return {out}; // if cross -> 1
+	if (proper_inter(a, b, c, d, out)) return {out};
 	set<pt> s;
 	if (on_segment(c, d, a)) s.insert(a); // a in cd
 	if (on_segment(c, d, b)) s.insert(b); // b in cd
 	if (on_segment(a, b, c)) s.insert(c); // c in ab
 	if (on_segment(a, b, d)) s.insert(d); // d in ab
-	return s; // 0, 2
+	return s;
 }
 
 lf pt_to_seg(pt a, pt b, pt p) { // p to ab

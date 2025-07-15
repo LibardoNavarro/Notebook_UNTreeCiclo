@@ -116,3 +116,21 @@ ll max_distance_manhattan(vector<vi> p, int d){
 
 	return ans;
 }
+
+ll sd_to_ll(string num, int canDec = 6){
+	string nnum = "";
+	bool ok = 0;
+	for(int i = 0; i < sz(num); i++){
+		if (num[i] == '.'){
+			ok = 1;
+			continue;
+		}
+
+		if (ok) canDec--;
+
+		nnum.pb(num[i]);
+	}
+
+	while(canDec--) nnum.pb('0');
+	return stoll(nnum);
+} 

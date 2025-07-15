@@ -1,5 +1,6 @@
 // Returns planar graph representing Delaunay's triangulation.
 // Edges for each vertex are in ccw order.
+// Voronoi vertices = the circumcenters of the Delaunay triangles.
 // O(nlogn)
 typedef struct QuadEdge* Q;
 struct QuadEdge {
@@ -15,12 +16,12 @@ struct QuadEdge {
 
 Q edge(pt a, pt b, int ida, int idb){
 	Q e1=new QuadEdge(ida,a);
-  Q e2=new QuadEdge(idb,b);
-  Q e3=new QuadEdge;
-  Q e4=new QuadEdge;
-  tie(e1->rot,e2->rot,e3->rot,e4->rot)={e3,e4,e2,e1};
-  tie(e1->nxt,e2->nxt,e3->nxt,e4->nxt)={e1,e2,e4,e3};
-  return e1;
+	Q e2=new QuadEdge(idb,b);
+	Q e3=new QuadEdge;
+	Q e4=new QuadEdge;
+	tie(e1->rot,e2->rot,e3->rot,e4->rot)={e3,e4,e2,e1};
+	tie(e1->nxt,e2->nxt,e3->nxt,e4->nxt)={e1,e2,e4,e3};
+	return e1;
 }
 
 void splice(Q a, Q b){
