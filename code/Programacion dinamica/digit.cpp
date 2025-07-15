@@ -1,6 +1,8 @@
+// dp[pos][count of d][limit]
 ll dp[20][20][2];
 int k,d;
 
+// count numbers <= c with k occurrences of d
 ll dfs(string& c, int x=0, int y=0, bool z=0){
 	if(dp[x][y][z]!=-1)return dp[x][y][z];
 	dp[x][y][z]=(y==k);
@@ -19,10 +21,13 @@ ll dfs(string& c, int x=0, int y=0, bool z=0){
 	return dp[x][y][z];
 }
 
-ll query(ll l, ll r){
-	string s1=to_string(l-1ll);
-	string s2=to_string(r);
-	ll ans=dfs(s2);
+// count(0,m) - count(0,n-1) = count(n,m)
+ll query(ll n, ll m){
+	string s1=to_string(m);
+	string s2=to_string(n-1ll);
 	memset(dp, -1, sizeof(dp));
-	return ans-dfs(s1);
+	ll ans=dfs(s1);
+	if(n<=0ll)return ans;
+	memset(dp, -1, sizeof(dp));
+	return ans-dfs(s2);
 }

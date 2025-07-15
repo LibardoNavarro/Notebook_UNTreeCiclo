@@ -1,10 +1,12 @@
+// 1-indexed 
+// All operations are O(log(n))
 typedef long long T;
 struct SplayTree{
 	struct Node{
 		int ch[2]={0, 0},p=0;
-		T val=0,path=0,sz=1;		// Path
-		T sub=0,vir=0,ssz=0,vsz=0;	// Subtree
-		bool flip=0;T lz=0;			// Lazy		
+		T val=0,path=0,sz=1; // values for path
+		T sub=0,vir=0,ssz=0,vsz=0; // values for subtree
+		bool flip=0;T lz=0; // values for lazy		
 	};
 	vector<Node> ns;
 
@@ -19,11 +21,13 @@ struct SplayTree{
 		int l=ns[x].ch[0],r=ns[x].ch[1];
 		if(ns[x].flip){
 			ns[l].flip^=1,ns[r].flip^=1;
-			swap(ns[x].ch[0], ns[x].ch[1]); // check with st oper
+			swap(ns[x].ch[0], ns[x].ch[1]); 
+			// if the operation is like a segment tree
+			// check swap the values
 			ns[x].flip=0;
 		}
-		if(ns[x].lz){
-			// ...
+		if(ns[x].lz){ // check the lazy
+			// propagate the lazy
 			ns[x].sub+=ns[x].lz*ns[x].ssz;
 			ns[x].vir+=ns[x].lz*ns[x].vsz;
 			// ...
@@ -62,15 +66,17 @@ struct SplayTree{
 	}
 };
 
-struct LinkCut:SplayTree{ // 1-indexed 
+struct LinkCut:SplayTree{ 
 	LinkCut(int n):SplayTree(n){}
 
+	// return the root of us tree
 	int root(int u){
 		access(u);splay(u);push(u);
 		while(ns[u].ch[0]){u=ns[u].ch[0];push(u);}
 		return splay(u),u;
 	}
 
+	// return the parent of u
 	int parent(int u){
 		access(u);splay(u);push(u);
 		u=ns[u].ch[0];push(u);
@@ -92,11 +98,13 @@ struct LinkCut:SplayTree{ // 1-indexed
 		return splay(x),v;
 	}
 
+	// reroot the tree with x as root
 	void reroot(int x){ 
 		access(x);ns[x].flip^=1;push(x); 
 	}
 	
-	void link(int u, int v){ // u->v
+	// create a edge u->v, u is the child of v
+	void link(int u, int v){ 
 		reroot(u);
 		access(v); 
 		ns[v].vir+=ns[u].sub;
@@ -104,6 +112,7 @@ struct LinkCut:SplayTree{ // 1-indexed
 		ns[u].p=v;pull(v);
 	}
 	
+	// delete the edge u->v, u is the child of v
 	void cut(int u, int v){
 		int r=root(u);
 		reroot(u);
@@ -112,7 +121,8 @@ struct LinkCut:SplayTree{ // 1-indexed
 		reroot(r);
 	}
 
-	void cut(int u){ // cut parent
+	// delete the edge u->parent(u)
+	void cut(int u){ 
 		access(u);
 		ns[ns[u].ch[0]].p=0;
 		ns[u].ch[0]=0;pull(u);
@@ -124,8 +134,10 @@ struct LinkCut:SplayTree{ // 1-indexed
 	}
 
 	int depth(int u){
+		int r=root(u);
+		reroot(r);
 		access(u);splay(u);push(u);
-		return ns[u].sz;
+		return ns[u].sz-1;
 	}
 
 	T path(int u, int v){
@@ -135,11 +147,18 @@ struct LinkCut:SplayTree{ // 1-indexed
 		return reroot(r),ans;
 	}
 	
-	void set(int u, T val){access(u);ns[u].val=val;pull(u);}
+	void set(int u, T val){
+		access(u);
+		ns[u].val=val;
+		pull(u);
+	}
+
+	// update the value of the nodes in the path u->v with += val
 	void upd(int u, int v, T val){
 		int r=root(u);
 		reroot(u);access(v);splay(v);
-		// lazy
+		// change only the lazy
+		// ns[v].val+=val;
 		reroot(r);
 	}
 
@@ -150,7 +169,7 @@ struct LinkCut:SplayTree{ // 1-indexed
 		cut(u);int ans=comp_size(u);
 		link(u,p);return ans;
 	}
-	T subtree_size(int u, int v){ 
+	T subtree_size(int u, int v){ // subtree of u with v as father
 		int r=root(u);
 		reroot(v);access(u);
 		T ans=ns[u].vsz+1; 
@@ -164,7 +183,7 @@ struct LinkCut:SplayTree{ // 1-indexed
 		cut(u);T ans=comp_sum(u);
 		link(u,p);return ans;
 	}
-	T subtree_sum(int u, int v){ // subtree of u, v father
+	T subtree_sum(int u, int v){ // subtree of u with v as father
 		int r=root(u);
 		reroot(v);access(u);
 		T ans=ns[u].vir+ns[u].val; // por el reroot

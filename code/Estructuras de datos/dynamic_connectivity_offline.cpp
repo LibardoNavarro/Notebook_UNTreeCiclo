@@ -27,7 +27,7 @@ struct DSU {
 	}
 };
 
-// O(qlog(q)log(n))
+// O(q*log(q)*log(n))
 enum { ADD, DEL, QUERY };
 struct Query { int type,u,v; };
 struct DynCon {

@@ -17,6 +17,7 @@ x = x & ~y      -> Apaga en x los bits encendidos de y
 __builtin_clz(x)      -> Cantidad de bits apagados por la izquierda
 __builtin_ctz(x)      -> Cantidad de bits apagados por la derecha. Indice del bit encendido mas a la derecha
 __builtin_popcount(x) -> Cantida de bits encendidos
+__builtin_ffs(x)	  -> Posición del primer bit prendido (lsb+1)
 
 * Logaritmo en base 2 (entero). Indice del bit encendido mas a la izquierda. Si x es ll usar 63 y clzll(x).
 // O(1)
@@ -47,3 +48,19 @@ ll nextMask(ll x){
 	ll r = x + c;
 	return (((r ^ x) >> 2) / c) | r;
 }
+
+// optimiza el .count de los bitsets y el popcount
+#pragma GCC target("popcnt")
+
+// Formulas
+a | b = a ^ b + a & b 
+a ^ (a & b) = (a | b) ^ b
+b ^ (a & b) = (a | b) ^ a
+(a & b) ^ (a | b) = a ^ b
+a + b = a | b + a & b
+a + b = a ^ b + 2 * (a & b)
+a - b = (a ^ (a & b)) - ((a | b) ^ a)
+a - b = ((a | b) ^ b) - ((a | b) ^ a)
+a - b = (a ^ (a & b)) - (b ^ (a & b))
+a - b = ((a | b) ^ b) - (b ^ (a & b))
+a ^ b = ~(a & b) & (a | b)

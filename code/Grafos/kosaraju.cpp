@@ -1,9 +1,9 @@
-//Encontrar las componentes fuertemente conexas en un grafo dirigido
-//Componente fuertemente conexa: es un grupo de nodos en el que hay 
-//un camino dirigido desde cualquier nodo hasta cualquier otro nodo dentro del grupo.
 const int maxn = 1e5+5;
-vi adj_rev[maxn],adj[maxn];
+// construir el grafo inverso
+// remember adj[a]->b, adj_rev[b]->a
+vi adj_rev[maxn],adj[maxn]; 
 bool used[maxn];
+int idx[maxn]; // componente de cada nodo
 vi order,comp;
 
 // O(n+m)
@@ -21,18 +21,19 @@ void dfs2(int v){
 		if(!used[u])dfs2(u);
 }
 
-void init(int n){
+// returna el numero de componentes
+int init(int n){ 
 	for(int i=0;i<n;++i)if(!used[i])dfs1(i);
 	for(int i=0;i<n;++i)used[i]=false;
 	reverse(order.begin(), order.end());
+	int j=0;
 	for(int v:order){
 		if(!used[v]){
 			dfs2(v);
-			// comp
+			for(int u:comp)idx[u]=j;
 			comp.clear();
+			j++;
 		}
 	}
+	return j;
 }
-
-adj[a].push_back(b);
-adj_rev[b].push_back(a);

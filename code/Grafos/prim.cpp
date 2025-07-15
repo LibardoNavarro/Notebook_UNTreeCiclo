@@ -1,4 +1,6 @@
 // O(E * log V)
+// check: primer parametro de prim
+// check: cuando no hay mst
 vector<vii> adj;
 vi tomado;
 priority_queue<ii> pq;

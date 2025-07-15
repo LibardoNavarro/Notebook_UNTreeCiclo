@@ -1,7 +1,10 @@
 // O(n*log(alpha))
+// suf: suffix link
+// len: length of the longest string in this state
+// end: if this state is terminal
 struct SuffixAutomaton{
 	vector<map<char,int>> to;
-	vector<int> suf,len; // len, longest string
+	vector<int> suf,len; 
 	vector<bool> end;
 	int last;
 

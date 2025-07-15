@@ -1,6 +1,7 @@
 // O(sqrt(m))
 // Returns minimum x for which a ^ x % m = b % m.
 int solve(int a, int b, int m) {
+	// if (a == 0) return b == 0 ? 1 : -1; Casos 0^x = b
 	a %= m, b %= m;
 	int k = 1, add = 0, g;
 	while ((g = gcd(a, m)) > 1) {

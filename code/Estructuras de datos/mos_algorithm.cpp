@@ -1,22 +1,24 @@
-// O((n+q)*s), s=n^(1/2)
-int s,n;
+// O((n+q)*sq), sq=n^(1/2)
+// 1. fill queries[]
+// 2. solve(n);
+// 3. print ans[]
+int sq;
 struct query {int l,r,idx;};
 bool cmp(query& a, query& b){
-	int x=a.l/s;
-	if(a.l/s!=b.l/s)return a.l/s<b.l/s;
+	int x=a.l/sq;
+	if(a.l/sq!=b.l/sq)return a.l/sq<b.l/sq;
 	return (x&1?a.r<b.r:a.r>b.r);
 }
 
 vector<query> queries;
 vector<ll> ans;
-vector<ll> a;
 
 ll act();
 void add(int i); // add a[i]
-void remove(int i)// remove a[i]
+void remove(int i); // remove a[i]
 
-void solve(){
-	s=ceil(sqrt(n));
+void solve(int n){
+	sq=ceil(sqrt(n));
 	sort(all(queries), cmp);
 	ans.assign(sz(queries),0);
 	int l=0,r=-1;

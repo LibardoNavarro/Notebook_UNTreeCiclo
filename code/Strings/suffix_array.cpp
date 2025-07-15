@@ -1,11 +1,14 @@
-// O(nlogn)
+// O(n*log(n))
+// sa: is the starting position of the i-th lex smallest suffix
+// rnk: is the rank (position in SA) of the suffix starting at i
+// lcp: is the longest common prefix between sa[i] and sa[i+1]
 const int alpha = 256;
 struct SuffixArray{ 
 	vector<int> sa,rnk,lcp;
 	string s;int n;
 
 	SuffixArray(string& _s){
-		s=_s;s.push_back('$'); // check
+		s=_s;s.push_back('$'); // smallest char
 		n=sz(s);
 		sa.assign(n, 0);
 		rnk.assign(n, 0);

@@ -1,9 +1,26 @@
-const int maxn=1e5+5;
-int st[maxn],ft[maxn],ver[2*maxn];
-vector<int> adj[maxn];
+// add LCA
+struct LCA{
+	void build();
+	int lca(int a, int b);
+};
 
-// O((n+q)*s), s=n^(1/2)
-int pos=0,s,n;
+vector<vector<int>> adj;
+const int maxn=1e5+5;
+int ver[2*maxn]; // node at position i in euler tour
+int st[maxn]; // start time of v
+int ft[maxn]; // finish time of v
+int pos=0;
+LCA tree;
+
+// O((n+q)*sq), sq=n^(1/2)
+// 1. build euler tour and lca
+// 2. add queries[] 
+// if(st[a]>st[b])swap(a,b);
+// queries.push_back({st[a]+1,st[b],i});
+// 3. solve(n);
+// 4. print ans[]
+int sq;
+
 void dfs(int u=0, int p=-1){
 	ver[pos]=u;
 	st[u]=pos++;
@@ -15,12 +32,10 @@ void dfs(int u=0, int p=-1){
 	ft[u]=pos++;
 }
 
-int lca(int a, int b);
-
-struct query{int l,r,idx;};
+struct query {int l,r,idx;};
 bool cmp(query& a, query& b){
-	int x=a.l/s;
-	if(a.l/s!=b.l/s)return a.l/s<b.l/s;
+	int x=a.l/sq;
+	if(a.l/sq!=b.l/sq)return a.l/sq<b.l/sq;
 	return (x&1?a.r<b.r:a.r>b.r);
 }
 
@@ -29,30 +44,28 @@ vector<ll> ans;
 bool vis[maxn];
 
 ll act();
-void add(int u); // add value of node u
-void remove(int u); // remove value of node u
+void add(int u); // add node u
+void remove(int u); // remove node u
 void ask(int u){
 	if(!vis[u])add(u);
 	else remove(u);
 	vis[u]=!vis[u];
 }
 
-void solve(){
-	s=ceil(sqrt(n));
+void solve(int n){
+	sq=ceil(sqrt(n));
 	sort(all(queries), cmp);
-	ans.resize(sz(queries));
+    ans.resize(sz(queries));
 	int l=0,r=-1;
-	for(auto [li,ri,i]:queries){
+    for(auto [li,ri,i]:queries){
 		while(r<ri)ask(ver[++r]);
 		while(l>li)ask(ver[--l]);
 		while(r>ri)ask(ver[r--]);
 		while(l<li)ask(ver[l++]);
 		int a=ver[l-1],b=ver[r];
-		int c=lca(a,b);
+		int c=tree.lca(a,b);
 		ask(c);
 		ans[i]=act();
 		ask(c);
 	}
 }
-
-// add queries {st[a]+1, st[b]}
