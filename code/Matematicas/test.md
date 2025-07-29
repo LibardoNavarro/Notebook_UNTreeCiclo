@@ -10,6 +10,6 @@ mobius:
 simplex:
 - https://codeforces.com/contest/605/problem/C
 
-xor-basis:
+xor_basis:
 - https://codeforces.com/gym/106007/problem/G
 - https://www.spoj.com/problems/XMAX/ 
