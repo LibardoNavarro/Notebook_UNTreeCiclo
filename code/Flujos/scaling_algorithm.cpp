@@ -1,3 +1,4 @@
+// O(|E|^2*log(C)) C = maximum edge weight of the graph
 struct MaxFlow {
     static const ll INF = 1e18;
     struct Edge {int u,v;ll w;};
