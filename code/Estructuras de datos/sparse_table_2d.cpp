@@ -21,6 +21,7 @@ void build(int n, int m, vector<vector<T>>& a){
 				for(int j=0;j<m;++j) 
 					st[k1][i][k2][j]=op(st[k1-1][i][k2][j], st[k1-1][i+(1<<(k1-1))][k2][j]);
 }
+
 T get(int x1, int y1, int x2, int y2){
 	x2++;y2++;
 	int a=lg2[x2-x1];

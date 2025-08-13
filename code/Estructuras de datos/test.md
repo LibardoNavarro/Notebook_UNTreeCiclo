@@ -1,76 +1,76 @@
-bit-2d:
+bit_2d:
 - https://cses.fi/problemset/task/1739/
 
 bit:
 - https://cses.fi/problemset/task/1648/
 
-cartesian-tree:
+cartesian_tree:
 - https://judge.yosupo.jp/problem/cartesian_tree
 
-dsu-bipartite:
+dsu_bipartite:
 - https://codeforces.com/edu/course/2/lesson/7/2/practice/contest/289391/problem/I
 
-dynamic-connectivity:
+dynamic_connectivity:
 - https://codeforces.com/edu/course/2/lesson/7/3/practice/contest/289392/problem/C
 
-implicit-treap:
+implicit_treap:
 - https://cses.fi/problemset/task/2074/
 - https://cses.fi/problemset/task/1651/
 
-link-cut-tree:
+link_cut_tree:
 - https://dmoj.ca/problem/ds5easy
 - https://judge.yosupo.jp/problem/dynamic_tree_vertex_add_subtree_sum
 - https://www.spoj.com/problems/DYNALCA/
 
-merge-sort-tree:
+merge_sort_tree:
 - https://www.spoj.com/problems/KQUERY/
 
-mos-algorithm:
+mos_algorithm:
 - https://www.spoj.com/problems/DQUERY/
 
-mos-tree:
+mos_tree:
 - https://www.spoj.com/problems/COT2/
 
-mos-updates:
+mos_updates:
 - https://www.spoj.com/problems/XXXXXXXX/
 
-persistent-segment-tree-lazy:
+persistent_segment_tree_lazy:
 - https://codeforces.com/gym/102433 (k)
 
-persistent-segment-tree:
+persistent_segment_tree:
 - https://cses.fi/problemset/task/1737
 
-polynomial-queries:
+polynomial_queries:
 - https://cses.fi/problemset/task/1736/
 
-segment-tree-2d:
+segment_tree_2d:
 - https://cses.fi/problemset/task/1739/
 
-segment-tree-beats:
+segment_tree_beats:
 - https://judge.yosupo.jp/problem/range_chmin_chmax_add_range_sum 
 
-segment-tree-iterative:
+segment_tree_iterative:
 - https://cses.fi/problemset/task/1648/
 
-segment-tree-recursive:
+segment_tree_recursive:
 - https://cses.fi/problemset/task/1648/
 - https://cses.fi/problemset/task/1651/
 
-sparse-table-2d:
+sparse_table_2d:
 - https://codeforces.com/contest/713/problem/D
 
-sparse-table:
+sparse_table:
 - https://cses.fi/problemset/task/1647/
 
-sqrt-decomposition:
+sqrt_decomposition:
 - https://cses.fi/problemset/task/1648/
 
 treap:
 - https://codeforces.com/contest/911/problem/G
 - https://www.spoj.com/problems/ORDERSET/
 
-two-stacks:
+two_stacks:
 - https://codeforces.com/edu/course/2/lesson/9/3/practice/contest/307094/problem/I
 
-wavelet-tree:
+wavelet_tree:
 - https://www.spoj.com/problems/MKTHNUM/
