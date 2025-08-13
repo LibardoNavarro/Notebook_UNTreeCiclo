@@ -1,4 +1,4 @@
-aho-corasick:
+aho_corasick:
 - https://cses.fi/problemset/task/2102/
 - https://cses.fi/problemset/task/2103/
 - https://cses.fi/problemset/task/2104/
@@ -8,7 +8,7 @@ hashing:
 - https://cses.fi/problemset/task/1733
 - https://cses.fi/problemset/task/2420
 
-kmp-automaton:
+kmp_automaton:
 - https://cses.fi/problemset/task/1112
 
 kmp:
@@ -16,23 +16,23 @@ kmp:
 - https://cses.fi/problemset/task/1732
 - https://cses.fi/problemset/task/2107
 
-lyndon-factorization:
+lyndon_factorization:
 - https://judge.yosupo.jp/problem/lyndon_factorization 
 
 manacher:
 - https://cses.fi/problemset/task/1111
 
-minimum-expression:
+minimum_expression:
 - https://cses.fi/problemset/task/1110
 
-next-premutation:
+next_premutation:
 - https://leetcode.com/problems/next-permutation/ 
 
-palindrome-tree:
+palindrome_tree:
 - https://cses.fi/problemset/task/1111
 - https://judge.yosupo.jp/problem/eertree 
 
-suffix-array:
+suffix_array:
 - https://cses.fi/problemset/task/2102/
 - https://cses.fi/problemset/task/2103/
 - https://cses.fi/problemset/task/2104/
@@ -41,7 +41,7 @@ suffix-array:
 - https://cses.fi/problemset/task/2108/
 - https://cses.fi/problemset/task/2110/
 
-suffix-automaton:
+suffix_automaton:
 - https://cses.fi/problemset/task/2102/
 - https://cses.fi/problemset/task/2103/
 - https://cses.fi/problemset/task/2104/
@@ -50,17 +50,17 @@ suffix-automaton:
 - https://cses.fi/problemset/task/2108/
 - https://cses.fi/problemset/task/2109
 
-suffix-tree:
+suffix_tree:
 - https://cses.fi/problemset/task/2102/
 
-trie-bit:
+trie_bit:
 - https://judge.yosupo.jp/problem/set_xor_min
 
 trie:
 - https://cses.fi/problemset/task/1731
 - https://www.spoj.com/problems/ADAINDEX/
 
-z-algorithm:
+z_algorithm:
 - https://cses.fi/problemset/task/1753
 - https://cses.fi/problemset/task/1733
 - https://cses.fi/problemset/task/2107
