@@ -1,7 +1,7 @@
 const int maxn = 1e5+5;
-vector<int> adj[maxn]; // undirected
 vector<bool> vis;
-vector<int> tin, low;
+vi adj[maxn]; // undirected
+vi tin, low;
 int timer;
 
 void dfs(int u,int p=-1){

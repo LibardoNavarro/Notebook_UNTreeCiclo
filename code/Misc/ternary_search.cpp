@@ -21,7 +21,7 @@ int ternary(){
 	while(r-l>6){
 		int m1=l+(r-l)/3;
 		int m2=r-(r-l)/3;
-		if(f(m1)<f(m2))l=m1;
+		if(f(m1)<f(m2))l=m1; // revisar desempate
 		else r=m2;
 	}
 	int ans=l,val=f(l);

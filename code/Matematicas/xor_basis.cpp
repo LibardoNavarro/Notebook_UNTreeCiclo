@@ -30,3 +30,4 @@ struct Basis {
 };
 
 // Basis<long long, 63> B;
+// Cantidad de xor diferentes es 2^sz(base)

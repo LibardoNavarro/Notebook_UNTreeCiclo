@@ -1,20 +1,20 @@
 // O(n*log(n)) build
 // O(log(n)) kth, lca, dist
 struct LCA{
-	vector<vector<int>> up;
-	vector<int> dep;
+	vector<vi> up;
+	vi dep;
 	int n,maxlog;
 
-	void build(vector<vector<int>>& adj, int root){
+	void build(vector<vi>& adj, int root){
 		n=sz(adj);
 		maxlog=ceil(log2(n))+3;
-		up.assign(n, vector<int>(maxlog, -1));
+		up.assign(n, vi(maxlog, -1));
 		dep.assign(n,0);
 		dfs(adj,root);
 		calc(n);
 	}
 
-	void dfs(vector<vector<int>>& adj, int v=0, int p=-1){
+	void dfs(vector<vi>& adj, int v=0, int p=-1){
 		up[v][0]=p;
 		for(int u:adj[v]){
 			if(u==p)continue;

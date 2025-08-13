@@ -1,13 +1,7 @@
-vector<tuple<int,int,int>> edges;
 // peso, nodo a, node b
+vector<tuple<int,int,int>> edges;
+struct DSU{};
 
-struct DSU{
-	int sets;
-	DSU(int n){}
-	int get(int a);
-	void unite(int a, int b);
-};
- 
 // O(m*log(m))
 void kruskal(int n){
 	sort(all(edges));

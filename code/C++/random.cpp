@@ -6,3 +6,5 @@ u64 xor_hash=rng();
 mt19937 rng (chrono::steady_clock::now().time_since_epoch().count());
 double rand(double l, double r){return uniform_real_distribution<double>(l, r)(rng);} 
 int rand(int l, int r){return uniform_int_distribution<int>(l, r)(rng);} 
+
+shuffle(all(vector), rng);

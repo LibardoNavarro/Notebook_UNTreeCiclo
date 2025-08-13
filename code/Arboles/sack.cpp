@@ -1,8 +1,5 @@
-#include <bits/stdc++.h>
-using namespace std;
-
 const int maxn = 1e5+5;
-vector<int> adj[maxn];
+vi adj[maxn];
 int ver[2*maxn]; // nodo en la posicion i del euler tour
 int len[maxn];	// tamano del subarbol de v
 int st[maxn]; // tiempo inicial de v

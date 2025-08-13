@@ -1,5 +1,5 @@
 const int maxn = 2e5+5;
-vector<int> adjVT[maxn], adj[maxn];
+vi adjVT[maxn], adj[maxn];
 bool important[maxn];
 int st[maxn]; // tiempo inicial de v en euler tour
 int ft[maxn]; // tiempo final de v en euler tour
@@ -24,7 +24,7 @@ bool cmp(int v, int u){return st[v]<st[u];}
 // 2) returna root 
 // 4) DP con virtual tree
 // 3) limpiar important[]
-int virtualTree(vector<int> nodes){
+int virtualTree(vi nodes){
 	sort(all(nodes), cmp);
 	int m=sz(nodes);
 	for(int i=0;i<m-1;++i){
@@ -36,7 +36,7 @@ int virtualTree(vector<int> nodes){
 	nodes.erase(unique(all(nodes)), nodes.end());
 	for(int u:nodes)adjVT[u].clear();
 
-	vector<int> s;
+	vi s;
 	s.push_back(nodes[0]);
 	m=sz(nodes);
 	for(int i=1;i<m;++i){

@@ -2,12 +2,14 @@
 using namespace std;
 #define all(v) v.begin(), v.end()
 #define sz(arr) ((int) arr.size())
+#define rep(i, a, b) for(int i = a; i < (b); ++i)
+typedef pair<int, int> ii;
 typedef vector<int> vi;
 typedef long long ll;
-typedef pair<int, int> ii;
 const char ln = '\n';
 
 #define watch(x) cout<<#x<<"="<<x<<'\n'
+#define print(arr) for(auto& x:arr)cout<<x<<" ";cout<<"\n"
 typedef long double ld;
 typedef vector<ii> vii;
 typedef vector<long long> vl;
