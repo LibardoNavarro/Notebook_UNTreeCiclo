@@ -10,6 +10,10 @@ mobius:
 simplex:
 - https://codeforces.com/contest/605/problem/C
 
+segmented_sieve:
+- https://atcoder.jp/contests/abc412/tasks/abc412_e
+- https://www.spoj.com/problems/PRINT/
+
 xor_basis:
 - https://codeforces.com/gym/106007/problem/G
 - https://www.spoj.com/problems/XMAX/ 
