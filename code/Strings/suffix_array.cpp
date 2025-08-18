@@ -1,46 +1,26 @@
-// O(n*log(n))
+// O(n*log(n)) - char in [1, lim)
 // sa: is the starting position of the i-th lex smallest suffix
 // rnk: is the rank (position in SA) of the suffix starting at i
 // lcp: is the longest common prefix between sa[i] and sa[i+1]
-const int alpha = 256;
-struct SuffixArray{ 
-	vector<int> sa,rnk,lcp;
-	string s;int n;
-
-	SuffixArray(string& _s){
-		s=_s;s.push_back('$'); // smallest char
-		n=sz(s);
-		sa.assign(n, 0);
-		rnk.assign(n, 0);
-		lcp.assign(n-1, 0);
-		buildSA();
+auto SuffixArray(string& s, int lim=256) { 
+	int n = sz(s) + 1, k = 0, a, b;
+	vi sa, lcp, x(all(s)+1), y(n), ws(max(n, lim)), rank(n);
+	sa = lcp = y, iota(all(sa), 0);
+	for (int j = 0, p = 0; p < n; j = max(1, j * 2), lim = p) {
+		p = j, iota(all(y), n - j);
+		rep(i,0,n) if (sa[i] >= j) y[p++] = sa[i] - j;
+		fill(all(ws), 0);
+		rep(i,0,n) ws[x[i]]++;
+		rep(i,1,lim) ws[i] += ws[i - 1];
+		for (int i = n; i--;) sa[--ws[x[y[i]]]] = y[i];
+		swap(x, y), p = 1, x[sa[0]] = 0;
+		rep(i,1,n) a = sa[i - 1], b = sa[i], x[b] =
+			(y[a] == y[b] && y[a + j] == y[b + j]) ? p - 1 : p++;
 	}
-
-	void buildSA() {
-		vector<int> cnt(max(alpha, n),0);
-		for(int i=0;i<n;++i)cnt[s[i]]++;
-		for(int i=1;i<max(alpha,n);++i)cnt[i]+=cnt[i-1];
-		for(int i=n-1;i>=0;--i)sa[--cnt[s[i]]]=i;
-		for(int i=1;i<n;++i)rnk[sa[i]]=rnk[sa[i-1]]+(s[sa[i]]!=s[sa[i-1]]);
-
-		for(int k=1;k<n;k*=2){
-			vector<int> nsa(n),nrnk(n),ncnt(n);
-			for(int i=0;i<n;++i)sa[i]=(sa[i]-k+n)%n;
-			for(int i=0;i<n;++i)ncnt[rnk[i]]++;
-			for(int i=1;i<n;++i)ncnt[i]+=ncnt[i-1];
-			for(int i=n-1;i>=0;--i)nsa[--ncnt[rnk[sa[i]]]]=sa[i];
-			for(int i=1;i<n;++i){
-				pair<int,int> op1={rnk[nsa[i]], rnk[(nsa[i]+k)%n]};
-				pair<int,int> op2={rnk[nsa[i-1]], rnk[(nsa[i-1]+k)%n]};
-				nrnk[nsa[i]]=nrnk[nsa[i-1]]+(op1!=op2);
-			}
-			swap(sa, nsa);swap(rnk, nrnk);
-		}
-
-		for(int i=0,k=0;i<n-1;++i){
-			while(s[i+k]==s[sa[rnk[i]-1]+k])k++;
-			lcp[rnk[i]-1]=k;
-			if(k)k--;
-		}
+	rep(i,1,n) rank[sa[i]] = i;
+	for (int i = 0, j; i < n - 1; lcp[rank[i++]] = k){
+		for (k && k--, j = sa[rank[i] - 1];s[i + k] == s[j + k]; k++);
 	}
-};
+	reverse(all(lcp));lcp.pop_back();reverse(all(lcp));
+	return tuple{sa, rank, lcp};
+}

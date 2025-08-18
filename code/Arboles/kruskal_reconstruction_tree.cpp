@@ -8,7 +8,7 @@
 
 const int maxn = 1e5+5;
 const int maxm = 2e5+5;
-vector<vector<int>> adj;
+vector<vi> adj;
 
 // sometimes it is useful
 int ver[2*(maxn+maxm)]; // node at position i in euler tour
@@ -16,7 +16,7 @@ int st[maxn+maxm]; // start time of v
 int ft[maxn+maxm]; // finish time of v
 
 struct DSU{
-	vector<int> p,size;
+	vi p,size;
 	vector<bool> roots; // if the graph is a forest
 	DSU(int n){
 		p.assign(n,0);

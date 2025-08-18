@@ -17,7 +17,7 @@ int binpow(int a, int b){
 
 // O(n), 1-indexed
 struct Tree{ 
-	vector<vector<int>> g;
+	vector<vi> g;
 	int n;
 
 	Tree(int _n):n(_n){g.resize(n+1);}
@@ -27,7 +27,7 @@ struct Tree{
 	}
 
 	ii hash(int u, int pre=0){
-		vector<vector<int>> nw(2,vector<int>());
+		vector<vi> nw(2,vi());
 		for(int v:g[u])
 			if(v!=pre){
 				ii tmp=hash(v,u);
@@ -45,19 +45,19 @@ struct Tree{
 
 	// Isomorphism
 	bool iso(Tree& t){
-		vector<int> a=get_centers();
-		vector<int> b=t.get_centers();
+		vi a=get_centers();
+		vi b=t.get_centers();
 		for(int x:a)for(int y:b)if(hash(x)==t.hash(y))return 1;
 		return 0;
 	}
 
-	vector<int> get_centers(){
+	vi get_centers(){
 		auto du=bfs(1);
 		int v=max_element(all(du))-du.begin();
 		auto dv=bfs(v);
 		int u=max_element(all(dv))-dv.begin();
 		du=bfs(u);
-		vector<int> ans;
+		vi ans;
 		for(int i=1;i<=n;++i){
 			if(du[i]+dv[i]==du[v] && du[i]>=du[v]/2 && dv[i]>=du[v]/2){
 				ans.push_back(i);
@@ -66,9 +66,9 @@ struct Tree{
 		return ans;
 	}
 
-	vector<int> bfs(int s){
+	vi bfs(int s){
 		queue<int> q;
-		vector<int> d(n+1, n*2);
+		vi d(n+1, n*2);
 		d[0]=-1;
 		q.push(s);
 		d[s]=0;

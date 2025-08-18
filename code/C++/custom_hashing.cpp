@@ -27,3 +27,5 @@ unordered_map<long long, int, custom_hash> safe_map; // unordered_map or gp_hash
 
 safe_map.max_load_factor(0.25);
 safe_map.reserve(1024); // potencia de 2 mas cercana
+
+multitest - no usar reserve (por el clear, es pesado)

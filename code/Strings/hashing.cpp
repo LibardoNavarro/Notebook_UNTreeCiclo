@@ -1,32 +1,35 @@
+// O(n) build - O(1) get
+// 1. prepare() in the main
+// 2. hashing<string> hs("hello");
+// 3. hs.get(l,r);
+
+// Chars are in [1, BASE)
+// BASE is prime or random
+// If chars are in [0, BASE) then compare the hashes for length
 // 1000234999, 1000567999, 1000111997, 1000777121, 1001265673, 1001864327, 999727999, 1070777777
-typedef pair<int, int> ii;
-const int mod[2] = { 1001864327, 1001265673 }; 
-// each char must be positive or compare hashes with same length
-const ii base(257, 367); // base => alpha => has to be prime
-const int maxn = 1e6;
+
+const ii BASE(257, 367);
+const int MOD[2] = { 1001864327, 1001265673 }; 
 
 int add(int a, int b, int m){return a+b>=m?a+b-m:a+b;}
 int sbt(int a, int b, int m){return a-b<0?a-b+m:a-b;}
 int mul(int a, int b, int m){return ll(a)*b%m;} 
-ll operator ! (const ii a){return (ll(a.first)<<32)|a.second;}
-ii operator + (const ii& a, const ii& b){return {add(a.first, b.first, mod[0]), add(a.second, b.second, mod[1])};}
-ii operator - (const ii& a, const ii& b){return {sbt(a.first, b.first, mod[0]), sbt(a.second, b.second, mod[1])};}
-ii operator * (const ii& a, const ii& b){return {mul(a.first, b.first, mod[0]), mul(a.second, b.second, mod[1])};}
 
-ii p[maxn+1];
-void prepare(){ // remember!!!
-	p[0]={1,1};
-	for(int i=1;i<=maxn;i++)p[i]=p[i-1]*base;
-}
+ll operator ! (const ii a) { return (ll(a.first) << 32) | a.second; }
+ii operator + (const ii& a, const ii& b){return {add(a.first, b.first, MOD[0]), add(a.second, b.second, MOD[1])};}
+ii operator - (const ii& a, const ii& b){return {sbt(a.first, b.first, MOD[0]), sbt(a.second, b.second, MOD[1])};}
+ii operator * (const ii& a, const ii& b){return {mul(a.first, b.first, MOD[0]), mul(a.second, b.second, MOD[1])};}
+
+const int maxn = 1e6+5;
+ii p[maxn];
+void prepare(){ p[0] = ii{1,1}; rep(i,1,maxn) p[i]=p[i-1]*BASE; } // remember!!!
 
 template <class type> 
-struct hashing{
+struct Hashing{
 	vector<ii> h;
-	hashing(type& t){
-		h.resize(sz(t)+1);
-		h[0]={0,0};
-		for(int i=1;i<sz(h);++i)
-			h[i]=h[i-1]*base + ii{t[i-1], t[i-1]};
+	Hashing(type& t){
+		h.assign(sz(t)+1, ii{0,0});
+		rep(i,1,sz(h)) h[i]=h[i-1]*BASE + ii{t[i-1], t[i-1]};
 	}
 
 	ii get(int l, int r){
@@ -34,13 +37,6 @@ struct hashing{
 	}
 };
 
-// combine two hashes
 ii combine(ii a, ii b, int lenb){
 	return a*p[lenb]+b;
 }
-
-// O(n) constructor
-// O(1) get
-// 1. prepare() in the main
-// 2. hashing<string> hs("hello");
-// 3. hs.get(l,r);

@@ -1,8 +1,5 @@
 // add LCA
-struct LCA{
-	void build();
-	int lca(int a, int b);
-};
+struct LCA{};
 
 vector<vector<int>> adj;
 const int maxn=1e5+5;

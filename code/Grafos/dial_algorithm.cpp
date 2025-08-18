@@ -1,4 +1,3 @@
-typedef pair<int, int> ii;
 const int maxn = 2e5+5;
 vector<ii> adj[maxn];
 

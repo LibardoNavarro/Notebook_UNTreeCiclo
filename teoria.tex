@@ -19,6 +19,21 @@ Para varios componentes la formula es: $V - E + F = 1 + C$, siendo C el número 
 \subsubsection{Planaridad de Grafos}
 Un grafo es planar si y solo si no contiene un subgrafo homeomorfo a $K_5$ (grafo completo con 5 vértices) ni a $K_{3,3}$ (grafo bipartito completo con 3 vértices en cada conjunto).
 
+\subsubsection{Truco del Cow Game}
+Dadas restricciones de la forma:
+\[
+x_a - x_b \leq d
+\]
+podemos transformar cada desigualdad en una arista dirigida:
+\[
+b \to a \quad \text{con peso } d
+\]
+Luego, ejecutando un algoritmo de camino más corto desde un nodo inicial \(s\), obtenemos:
+\[
+\text{dist}[i] = \max(x_i - x_s)
+\]
+\textbf{Nota:} Pueden aparecer pesos negativos, por lo que se debe usar Bellman-Ford o SPFA, no Dijkstra.
+
 \subsection{Teoría de Números}
 \subsubsection{Ecuaciones Diofánticas Lineales}
 Una ecuación diofántica lineal es una ecuación en la que se buscan soluciones enteras $x$ e $y$ que satisfagan la relación lineal $ax + by = c$, donde $a$, $b$ y $c$ son constantes dadas.

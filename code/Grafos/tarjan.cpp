@@ -1,5 +1,6 @@
-// O(n+m) (?)
-vi low, num, comp, g[nax];
+// O(n+m) build graph in g[] and callt()
+const int maxn = 2e5 + 5;
+vi low, num, comp, g[maxn];
 int scc, timer;
 stack<int> st;
 void tjn(int u) {

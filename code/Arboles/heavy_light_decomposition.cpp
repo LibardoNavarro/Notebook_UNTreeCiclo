@@ -16,7 +16,7 @@ bool edges=false; // si los valores estan en las aristas
 struct HLD{ 
 	int par[maxn], root[maxn], dep[maxn];
 	int sz[maxn], pos[maxn], ti;
-	vector<int> adj[maxn];
+	vi adj[maxn];
 	SegTree st;
 
 	void addEdge(int x, int y){
