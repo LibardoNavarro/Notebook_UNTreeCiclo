@@ -2,13 +2,12 @@
 typedef long long ty;
 
 struct Line {
-ty m, b;
+	ty m, b;
 
-Line(){}
-Line(ty m, ty b): m(m), b(b){}
+	Line(){}
+	Line(ty m, ty b): m(m), b(b){}
 
-ty eval(ty x){return m * x + b;}
-
+	ty eval(ty x){return m * x + b;}
 };
 
 struct nLiChao{

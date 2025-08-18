@@ -102,3 +102,23 @@ bool is_parallel(plane p, line3d l){ return dot(p.n, l.d) == 0; }
 bool is_perpendicular(plane p, line3d l){ return cross(p.n, l.d) == p3(0, 0, 0); }
 line3d perp_through(plane p, p3 o){ return line3d(o, o + p.n); }
 plane perp_through(line3d l, p3 o){ return plane(l.d, o); }
+
+pair<p3, lf> smallest_enclosing_sphere(vector<p3> p) {
+    int n = p.size();
+    p3 c(0, 0, 0);
+    for(int i = 0; i < n; i++) c = c + p[i];
+    c = c / n;
+
+    double ratio = 0.1;
+    int pos = 0;
+    int it = 100000;
+    while (it--) {
+        pos = 0;
+        for (int i = 1; i < n; i++) {
+            if(norm2(c - p[i]) > norm2(c - p[pos])) pos = i;
+        }
+        c = c + (p[pos] - c) * ratio;
+        ratio *= 0.998;
+    }
+    return {c, sqrt(norm2(c - p[pos]))};
+}
