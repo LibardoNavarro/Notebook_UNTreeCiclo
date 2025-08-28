@@ -13,6 +13,10 @@ dsu_bipartite:
 dynamic_connectivity:
 - https://codeforces.com/edu/course/2/lesson/7/3/practice/contest/289392/problem/C
 
+implicit_treap_father:
+- https://codeforces.com/gym/105627/problem/C 
+- https://codeforces.com/gym/102787/problem/Z 
+
 implicit_treap:
 - https://cses.fi/problemset/task/2074/
 - https://cses.fi/problemset/task/1651/
