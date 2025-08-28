@@ -4,21 +4,26 @@
 // PTreap tmp=new Treap(x);
 // root=merge(root, tmp);
 
+// si se edita un treap, se tiene que hacer un pullAll hasta la raiz
+// si no se hace esto, el treap queda con informacion pasada
+
+// si se va a modificar un treap, hacer un pushAll para bajar los lazy
+
 typedef long long T;
 typedef unsigned long long u64;
 mt19937_64 rng (chrono::steady_clock::now().time_since_epoch().count());
 
 T null = 0;
 struct Treap{
-	Treap *l,*r; // left child, right child
+	Treap *l,*r,*dad; // left child, right child
 	u64 prior; // random
-	T val,sum,lz; // value, sum subtree, lazy
+	T val,sum; // value, sum subtree
 	int sz; // size subtree
 	Treap(T v){
-		l=r=nullptr;
+		l=r=dad=nullptr;
 		prior=rng();
 		val=sum=v;
-		lz=0;sz=1;
+		sz=1;
 	}
 	~Treap(){
 		delete l;
@@ -30,49 +35,30 @@ typedef Treap* PTreap;
 int cnt(PTreap x){return (!x?0:x->sz);}
 T sum(PTreap x){return (!x?0:x->sum);}
 
-void update_helper(PTreap x, T v){
-	// lz += v
-	// val += v
-	// sum += v
-}
-
-// propagate the lazy
-void push(PTreap x){
-	if(x && x->lz){ // check x->lz
-		if(x->l)update_helper(x->l, 1);
-		if(x->r)update_helper(x->r, 1);
-		x->lz=0;
-	}
-}
-
 // updates node with its children information
 void pull(PTreap x){
-	push(x->l);
-	push(x->r);
 	x->sz=cnt(x->l)+cnt(x->r)+1;
 	x->sum=sum(x->l)+sum(x->r)+x->val;
-}
-
-// Updates node value += v
-void upd(PTreap x, T v){
-	if(!x)return;
-	pull(x);
-	update_helper(x,v);
+	if(x->l)x->l->dad=x; //
+	if(x->r)x->r->dad=x; //
 }
 
 // O(log(n)) divide the treap in two parts
 // [count nodes == left], [the rest of nodes]
 pair<PTreap, PTreap> split(PTreap x, int left){ 
 	if(!x)return {nullptr, nullptr};
-	push(x);
 	if(cnt(x->l)>=left){ 
 		auto got=split(x->l, left); 
+		if(got.first)got.first->dad=nullptr; //
 		x->l=got.second;
+		x->dad=nullptr; //
 		pull(x);
 		return {got.first, x};
 	}else{
 		auto got=split(x->r, left-cnt(x->l)-1);
+		if(got.second)got.second->dad=nullptr; //
 		x->r=got.first;
+		x->dad=nullptr; //
 		pull(x);
 		return {x, got.second};
 	}
@@ -83,7 +69,6 @@ pair<PTreap, PTreap> split(PTreap x, int left){
 PTreap merge(PTreap x, PTreap y){
 	if(!x)return y;
 	if(!y)return x;
-	push(x);push(y);
 	if(x->prior<=y->prior){
 		x->r=merge(x->r, y);
 		pull(x);
@@ -95,11 +80,28 @@ PTreap merge(PTreap x, PTreap y){
 	}
 }
 
-// O(n) print the treap
-void dfs(PTreap x){
+// O(log(n)) propagate the lazy [root->x]
+void pushAll(PTreap x){
 	if(!x)return;
+	pushAll(x->dad);
 	push(x);
-	dfs(x->l);
-	cout<<x->val<<" ";
-	dfs(x->r);
+}
+
+// O(log(n)) update the treap [root->x]
+void pullAll(PTreap x){
+	if(!x)return;
+	pull(x);
+	pullAll(x->dad);
+}
+
+// O(log(n)) return the root and the position of x (1-indexed)
+pair<PTreap, int> findRoot(PTreap x){
+	pushAll(x);
+	int pos=cnt(x->l);
+	while(x->dad){
+		PTreap f=x->dad;
+		if(x==f->r)pos+=cnt(f->l)+1;
+		x=f;
+	}
+	return {x,pos+1};
 }
