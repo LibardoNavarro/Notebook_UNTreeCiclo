@@ -26,12 +26,18 @@ int dr[] = {1, 1, 0, -1, -1, -1, 0, 1};
 int dc[] = {0, 1, 1, 1, 0, -1, -1, -1};
 const string ABC = "abcdefghijklmnopqrstuvwxyz";
 
+void main2(){
+	
+}
+
 int main() {
 	ios::sync_with_stdio(false);
 	cin.tie(0);
 	cout << setprecision(20) << fixed;
     // freopen("file.in", "r", stdin);
     // freopen("file.out", "w", stdout);
-
+	clock_t start = clock();
+	main2();
+	cerr<<double(clock()-start)/CLOCKS_PER_SEC<<" s\n";
 	return 0;
 }
