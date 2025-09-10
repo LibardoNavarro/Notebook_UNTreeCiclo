@@ -4,7 +4,8 @@ typedef long long T;
 T op(T a, T b); // max, min, gcd ...
 struct Table{ 
 	vector<vector<T>> st;
-	Table(vector<T>& v){ // si lo pasan a una funcion build, revisar que se limpie st
+	Table(vector<T>& v){
+		st.clear();
 		int n=v.size();
 		st.push_back(v);
 		for(int j=1;(1<<j)<=n;++j){

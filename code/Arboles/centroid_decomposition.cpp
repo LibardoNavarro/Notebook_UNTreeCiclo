@@ -1,14 +1,16 @@
 // O(n*log(n))
-const int maxn = 1e5+1;
+// 1) init(adj,n);
 struct CentroidDecomposition{
-	int dad[maxn],sz[maxn];
-	set<int> adj[maxn];
-	// si da TLE cambiar por processed
+	vector<vi> adj;
+	vi dad,sz,proc;
 
 	int operator[](int i){return dad[i];}
-	void addEdge(int x,int y){
-		adj[x].insert(y);
-		adj[y].insert(x);
+	void init(vector<vi>& adj2, int n){
+		proc.assign(n,false);
+		dad.resize(n);
+		sz.resize(n);
+		adj=adj2;
+		build();
 	}
 
 	void build(int v=0, int p=-1){
@@ -16,17 +18,17 @@ struct CentroidDecomposition{
 		int centroid=dfsCentroid(v, p, n);
 		dad[centroid]=p;
 		// anadir dfs para el conteo de caminos
+		proc[centroid]=true;
 		for(int u:adj[centroid]){
-			adj[u].erase(centroid);
+			if(u==p || proc[u])continue;
 			build(u,centroid);
 		}
-		adj[centroid].clear();
 	}
 
 	int dfsSz(int v,int p){
 		sz[v]=1;
 		for(int u:adj[v]){
-			if(u==p)continue;
+			if(u==p || proc[u])continue;
 			sz[v]+=dfsSz(u, v);
 		}
 		return sz[v];
@@ -34,7 +36,7 @@ struct CentroidDecomposition{
 
 	int dfsCentroid(int v, int p, int n){
 		for(int u:adj[v]){
-			if(u==p)continue;
+			if(u==p || proc[u])continue;
 			if(sz[u]>n/2)return dfsCentroid(u,v,n);
 		}
 		return v;

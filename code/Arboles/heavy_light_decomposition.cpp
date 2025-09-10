@@ -1,73 +1,76 @@
 typedef long long T;
-T null=LLONG_MIN;
 T oper(T a, T b){return max(a,b);}
-struct SegTree{
-	void build(int n){}
-	void set(int i, T val){}
-	void upd(int l, int r, T v){}
-	T get(int l, int r){return null;}
-};
+T null=-1e18;
+struct SegTree{}; // Add Segment tree
 
-const int maxn=1e5+1; // si maxn >= 2e5, destruir el struct
-bool edges=false; // si los valores estan en las aristas
+// O(nlog(n)) build
+// O(log(n)^2) (query - update) path
+// O(log(n)) (query - update) subtree, node
 
-// 1) addEdge(u,v)
-// 2) build(n,root)
-struct HLD{ 
-	int par[maxn], root[maxn], dep[maxn];
-	int sz[maxn], pos[maxn], ti;
-	vi adj[maxn];
+// 1) call build(adj,n,root)
+struct HLD{
 	SegTree st;
+	vector<vi> adj;
+	vi dad,root,dep,sz,pos;
+	int time;
+	bool edges=false; // if the values are on edges instead of nodes
 
-	void addEdge(int x, int y){
-		adj[x].push_back(y);
-		adj[y].push_back(x);
+	void build(vector<vi>& adj2, int n, int v=0){ // v is the root
+		adj=adj2;
+		dad.resize(n);
+		root.resize(n);
+		dep.resize(n);
+		sz.resize(n);
+		pos.resize(n);
+
+		root[v]=dad[v]=v;
+		dep[v]=time=0; 
+
+		dfsSz(v); 
+		dfsHld(v);
+		// vector<T> palst(n);
+		// for(int i=0;i<n;++i)palst[pos[i]]=vals[i];
+		// st.build(palst);
+		st.build(n);
 	}
 
 	void dfsSz(int x){ 
 		sz[x]=0; 
 		for(int& y:adj[x]){
-			if(y==par[x])continue;
-			par[y]=x;dep[y]=dep[x]+1;
+			if(y==dad[x])continue;
+			dad[y]=x;dep[y]=dep[x]+1;
 			dfsSz(y); 
 			sz[x]+=sz[y]+1;
 			if(sz[y]>sz[adj[x][0]])swap(y,adj[x][0]);
 		}
 	}
+
 	void dfsHld(int x){
-		pos[x]=ti++;
+		pos[x]=time++;
 		for(int y:adj[x]){
-			if(y==par[x])continue;
+			if(y==dad[x])continue;
 			root[y]=(y==adj[x][0]?root[x]:y);
 			dfsHld(y);
 		}
-	}
-	void build(int n,int v=0){ 
-		root[v]=par[v]=v;
-		dep[v]=ti=0; 
-		dfsSz(v); 
-		dfsHld(v);
-		// vl palst(n);
-		// for(int i=0;i<n;++i)palst[pos[i]]=a[i];
-		// st.build(palst, n);
-		st.build(n);
 	}
 
 	// O(log(n)^2)
 	template <class Oper> 
 	void processPath(int x, int y, Oper op){
-		for(;root[x]!=root[y];y=par[root[y]]){
+		for(;root[x]!=root[y];y=dad[root[y]]){
 			if(dep[root[x]]>dep[root[y]])swap(x,y);
 			op(pos[root[y]],pos[y]); 
 		}
 		if(dep[x]>dep[y])swap(x,y);
 		op(pos[x]+edges,pos[y]); 
 	}
+
 	void modifyPath(int x, int y, int v){ 
 		processPath(x,y,[this,&v](int l, int r){ 
 			st.upd(l,r,v);
 		}); 
 	}
+
 	T queryPath(int x, int y){ 
 		T res=null;
 		processPath(x,y,[this,&res](int l, int r){ 
@@ -77,8 +80,14 @@ struct HLD{
 	}
 
 	// O(log(n))
-	void modifySubtree(int x, int v){st.upd(pos[x]+edges,pos[x]+sz[x],v);}
-	T querySubtree(int x){return st.get(pos[x]+edges,pos[x]+sz[x]);}
+	void modifySubtree(int x, int v){
+		st.upd(pos[x]+edges,pos[x]+sz[x],v);
+	}
+
+	T querySubtree(int x){
+		return st.get(pos[x]+edges,pos[x]+sz[x]);
+	}
+	
 	void modify(int x, int v){st.set(pos[x],v);} 
 	void modifyEdge(int x, int y, int v){
 		if(dep[x]<dep[y])swap(x,y);

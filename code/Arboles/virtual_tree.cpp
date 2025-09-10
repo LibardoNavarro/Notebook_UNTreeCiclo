@@ -1,55 +1,82 @@
-const int maxn = 2e5+5;
-vi adjVT[maxn], adj[maxn];
-bool important[maxn];
-int st[maxn]; // tiempo inicial de v en euler tour
-int ft[maxn]; // tiempo final de v en euler tour
-int pos=0;
-
-void dfs(int v, int p=-1){
-	st[v]=pos++;
-	for(int u:adj[v]){
-		if(u==p)continue;
-		dfs(u, v);
-	}
-	ft[v]=pos++;
-}
-
-// anadir LCA
-int lca(int a, int b);
-bool upper(int v, int u){return st[v]<=st[u] && ft[v]>=ft[u];}
-bool cmp(int v, int u){return st[v]<st[u];}
-
 // O(k*log(k))
-// 1) actualizar important[]
-// 2) returna root 
-// 4) DP con virtual tree
-// 3) limpiar important[]
-int virtualTree(vi nodes){
-	sort(all(nodes), cmp);
-	int m=sz(nodes);
-	for(int i=0;i<m-1;++i){
-		int v=lca(nodes[i], nodes[i+1]);
-		nodes.push_back(v);
+// 1) build(n,root,adj);
+// 2) query(nodes);
+
+LCA g; // Add LCA
+int lca(int a, int b){return g.lca(a,b);};
+struct VirtualTree{
+	vector<vi> adj,adjVT;
+	vector<int> st,ft;
+	vector<bool> important;
+	int pos=0;
+
+	void build(int n, int root, vector<vi>& adj2){
+		important.assign(n,false);
+		adjVT.assign(n,vi());
+		st.resize(n);
+		ft.resize(n);
+		adj=adj2;pos=0;
+		dfs(root);
 	}
 
-	sort(all(nodes), cmp);
-	nodes.erase(unique(all(nodes)), nodes.end());
-	for(int u:nodes)adjVT[u].clear();
+	void dfs(int v, int p=-1){
+		st[v]=pos++;
+		for(int u:adj[v]){
+			if(u==p)continue;
+			dfs(u, v);
+		}
+		ft[v]=pos++;
+	}
 
-	vi s;
-	s.push_back(nodes[0]);
-	m=sz(nodes);
-	for(int i=1;i<m;++i){
-		int v=nodes[i];
-		while(sz(s)>=2 && !upper(s.back(), v)){
+	bool upper(int v, int u){return st[v]<=st[u] && ft[v]>=ft[u];}
+
+	int getRootVirtualTree(vi nodes){
+		sort(all(nodes), [&](int v, int u){ return st[v] < st[u]; });
+		int m=sz(nodes);
+		for(int i=0;i<m-1;++i){
+			int v=lca(nodes[i], nodes[i+1]);
+			nodes.push_back(v);
+		}
+		
+		sort(all(nodes), [&](int v, int u){ return st[v] < st[u]; });
+		nodes.erase(unique(all(nodes)), nodes.end());
+		for(int u:nodes)adjVT[u].clear();
+
+		vi s;
+		s.push_back(nodes[0]);
+		m=sz(nodes);
+		for(int i=1;i<m;++i){
+			int v=nodes[i];
+			while(sz(s)>=2 && !upper(s.back(), v)){
+				adjVT[s[sz(s)-2]].push_back(s.back()); 
+				s.pop_back();
+			}
+			s.push_back(v);
+		}
+		while(sz(s)>=2){
 			adjVT[s[sz(s)-2]].push_back(s.back()); 
 			s.pop_back();
 		}
-		s.push_back(v);
+		return s[0];
 	}
-	while(sz(s)>=2){
-		adjVT[s[sz(s)-2]].push_back(s.back()); 
-		s.pop_back();
+
+	void dfs2(int u, int p=-1){
+		if(important[u]){
+			// pass
+		}else{
+			// pass
+		}
+		for(int v:adjVT[u]){
+			if(v==p)continue;
+			dfs2(v,u);
+		}
 	}
-	return s[0];
-}
+
+	void query(vi& nodes){
+		for(int u:nodes)important[u]=true;
+		int root=getRootVirtualTree(nodes);
+		dfs2(root);
+		// cout ans
+		for(int u:nodes)important[u]=false;
+	}
+};
