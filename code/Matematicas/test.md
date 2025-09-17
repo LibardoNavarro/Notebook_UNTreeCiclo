@@ -1,3 +1,9 @@
+convolution:
+- https://judge.yosupo.jp/problem/bitwise_and_convolution
+- https://judge.yosupo.jp/problem/bitwise_xor_convolution
+- https://judge.yosupo.jp/problem/gcd_convolution
+- https://judge.yosupo.jp/problem/lcm_convolution 
+
 divisors:
 - https://cses.fi/problemset/task/2182/
 
