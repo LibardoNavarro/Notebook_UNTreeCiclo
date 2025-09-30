@@ -7,6 +7,9 @@ bit:
 cartesian_tree:
 - https://judge.yosupo.jp/problem/cartesian_tree
 
+disjoint_sparse_table:
+- https://codeforces.com/edu/course/3/lesson/18/3/practice/contest/619579/problem/A 
+
 dsu_bipartite:
 - https://codeforces.com/edu/course/2/lesson/7/2/practice/contest/289391/problem/I
 

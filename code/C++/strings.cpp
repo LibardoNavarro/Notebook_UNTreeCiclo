@@ -17,3 +17,7 @@ int n=stoi(s, nullptr, 2); // bin string -> int
 double d=stod(s); // string -> double
 string s=to_string(n); // int -> string
 cout<<"\U0001F600"; // emojis
+
+Quitar repetidos (lo pongo aca porque no se donde mas ponerlo)
+sort(all(bs));
+bs.resize(unique(all(bs)) - bs.begin());
