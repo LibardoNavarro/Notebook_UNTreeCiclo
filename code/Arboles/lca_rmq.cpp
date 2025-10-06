@@ -1,4 +1,4 @@
-// anadir RMQ - Min
+// Add RMQ - Min
 typedef int T;
 struct Table{
 	void build(vector<T>& a);
@@ -13,6 +13,7 @@ struct LCA{
 	int n,ti;
 
 	void build(vector<vi>& adj, int root){
+		path.clear();tmp.clear();
 		n=sz(adj);ti=0;
 		time.resize(n);
 		dfs(adj, root);
@@ -29,7 +30,7 @@ struct LCA{
 		}
 	}
 
-	int lca(int a, int b){
+	int lca(int a, int b){ // check forest
 		if(a==b)return a;
 		a=time[a],b=time[b];
 		if(a>b)swap(a,b);

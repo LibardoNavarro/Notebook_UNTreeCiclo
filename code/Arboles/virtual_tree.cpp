@@ -10,7 +10,7 @@ struct VirtualTree{
 	vector<bool> important;
 	int pos=0;
 
-	void build(int n, int root, vector<vi>& adj2){
+	void build(vector<vi>& adj2, int n, int root){
 		important.assign(n,false);
 		adjVT.assign(n,vi());
 		st.resize(n);

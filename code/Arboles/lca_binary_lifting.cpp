@@ -33,7 +33,7 @@ struct LCA{
 		} 
 	}
 
-	// kth ancestor, retorna -1 si no existe
+	// kth ancestor, return -1 if it doesnt exits
 	int kth(int u, int k){ 
 		for(int l=maxlog-1;l>=0;--l){
 			if(u!=-1 && k&(1<<l)){
@@ -44,6 +44,7 @@ struct LCA{
 	}
 
 	int lca(int a, int b){
+		// if(kth(a, dep[a])!=kth(b, dep[b]))return -1; // forest
 		a=kth(a, dep[a]-min(dep[a], dep[b]));
 		b=kth(b, dep[b]-min(dep[a], dep[b]));
 		if(a==b)return a;
@@ -56,7 +57,7 @@ struct LCA{
 		return up[a][0];
 	}
 
-	int dist(int a, int b){
-		return dep[a]+dep[b]-2*dep[lca(a,b)];
-	}
+    int dist(int a, int b){
+        return dep[a]+dep[b]-2*dep[lca(a,b)];
+    }
 };

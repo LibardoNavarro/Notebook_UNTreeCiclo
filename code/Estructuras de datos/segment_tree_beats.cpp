@@ -23,21 +23,33 @@ struct Node{
 	void oper(Node& a, Node& b){
 		sum=a.sum+b.sum;
 
-		map<T, T, greater<T>> maxs;
-		maxs[a.max1]+=a.maxc;
-		maxs[b.max1]+=b.maxc;
-		maxs[a.max2]++;
-		maxs[b.max2]++;
-		auto it=maxs.begin();
-		max1=(*it).first,maxc=(*it).second,max2=(*next(it)).first;
+		if(a.max1>b.max1){
+			max1=a.max1;
+			maxc=a.maxc;
+			max2=max(a.max2, b.max1);
+		}else if(a.max1<b.max1){
+			max1=b.max1;
+			maxc=b.maxc;
+			max2=max(b.max2, a.max1);
+		}else{
+			max1=a.max1;
+			maxc=a.maxc+b.maxc;
+			max2=max(a.max2, b.max2);
+		}
 
-		map<T, T> mins;
-		mins[a.min1]+=a.minc;
-		mins[b.min1]+=b.minc;
-		mins[a.min2]++;
-		mins[b.min2]++;
-		it=mins.begin();
-		min1=(*it).first,minc=(*it).second,min2=(*next(it)).first;
+		if(a.min1<b.min1){
+			min1=a.min1;
+			minc=a.minc;
+			min2=min(a.min2, b.min1);
+		}else if(a.min1>b.min1){
+			min1=b.min1;
+			minc=b.minc;
+			min2=min(b.min2, a.min1);
+		}else{
+			min1=a.min1;
+			minc=a.minc+b.minc;
+			min2=min(a.min2, b.min2);
+		}
 	}
 };
 struct SegTree{
