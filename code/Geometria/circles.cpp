@@ -75,6 +75,19 @@ vector<pt> inter_cc(circle c1, circle c2) {
 	return {p + dir_h, p - dir_h}; 
 }
 
+//compute intersection of line through points a and b with
+//circle centered at c with radius r > 0
+vector<pt> circle_line_intersection(pt c, lf r, pt a, pt b) {
+    vector<pt> ret;
+    b = b - a; a = a - c;
+    lf A = dot(b, b), B = dot(a, b);
+    lf C = dot(a, a) - r * r, D = B * B - A * C;
+    if (D < -EPS) return ret;
+    ret.push_back(c + a + b * (-B + sqrt(D + EPS)) / A);
+    if (D > EPS) ret.push_back(c + a + b * (-B - sqrt(D)) / A);
+    return ret;
+}
+
 // circle-line inter = 1, inner: 1 = oxo 0 = o=o 
 vector<pair<pt, pt>> tangents(circle c1, circle c2, bool inner){
 	vector<pair<pt, pt>> out;
