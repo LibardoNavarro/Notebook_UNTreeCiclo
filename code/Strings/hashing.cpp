@@ -7,6 +7,7 @@
 // BASE is prime or random(lim, MOD-lim)
 // If chars are in [0, BASE) then compare the hashes for length
 // 1000234999, 1000567999, 1000111997, 1000777121, 1001265673, 1001864327, 999727999, 1070777777
+// if hash(multiset 1)==hash(multiset 2) then (r+a1)*(r+a2)...(r+an)==(r+b1)*(r+b2)...(r+bn) // (Collision n/MOD)
 
 const ii BASE(257, 367);
 const int MOD[2] = { 1001864327, 1001265673 }; 
