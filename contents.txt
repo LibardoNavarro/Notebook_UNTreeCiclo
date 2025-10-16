@@ -168,6 +168,7 @@ Strings/suffix_tree.cpp	Suffix Tree
 Strings/trie.cpp	Trie
 Strings/trie_bit.cpp	Trie Bit
 Strings/z_algorithm.cpp	Z Algorithm
+Strings/el-especial.cpp	El especial
 
 [Misc]
 Misc/counting_sort.cpp	Counting Sort
