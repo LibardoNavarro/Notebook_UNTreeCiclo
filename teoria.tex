@@ -158,11 +158,35 @@ con \(x_i' \ge 0\). Así que hemos reducido el problema al caso más simple con 
 	Knuth & $dp[i][j] = min_{i<k<j} \{dp[i][k] + dp[k][j] \} + C[i][j] $ & $A[i, j -1] \leq A[i, j] \leq A[i+1, j]$ & $O(n^3)$ & $O(n^2)$ \\ 
 	\hline
 \end{tabular} 
-
 Notes:
-
 \begin{itemize}
 	\item $A[i][j]$ - the smallest k that gives the optimal answer, for example in $dp[i][j] = dp[i-1][k] + C[k][j]$
 	\item $C[i][j]$ - some given cost function
 	\item We can generalize a bit in the following way $dp[i] = \min_{j<i}\{F[j]+b[j] * a[i]\}$, where $F[j]$ is computed from $dp[j]$ in constant time
 \end{itemize}
+
+\subsection{Lista de números con mayor cantidad de divisores hasta $10^n$}
+\begin{center}
+\begin{tabular}{|c|l|c|}
+\hline
+$n$ & Número & \# divisores \\ \hline
+1  & $6$                      & $4$     \\ \hline
+2  & $60$                     & $12$    \\ \hline
+3  & $840$                    & $32$    \\ \hline
+4  & $7560$                   & $64$    \\ \hline
+5  & $83160$                  & $128$   \\ \hline
+6  & $720720$                 & $240$   \\ \hline
+7  & $8648640$                & $448$   \\ \hline
+8  & $73513440$               & $768$   \\ \hline
+9  & $735134400$              & $1344$  \\ \hline
+10 & $6983776800$             & $2304$  \\ \hline
+11 & $97772875200$            & $4032$  \\ \hline
+12 & $963761198400$           & $6720$  \\ \hline
+13 & $9316358251200$          & $10752$ \\ \hline
+14 & $97821761637600$         & $17280$ \\ \hline
+15 & $866421317361600$        & $26880$ \\ \hline
+16 & $8086598962041600$       & $41472$ \\ \hline
+17 & $74801040398884800$      & $64512$ \\ \hline
+18 & $897612484786617600$     & $103680$\\ \hline
+\end{tabular}
+\end{center}
