@@ -30,7 +30,6 @@ Estructuras de datos/disjoint_set_union.cpp	Disjoint Set Union
 Estructuras de datos/disjoint_sparse_table.cpp	Disjoint Sparse Table
 Estructuras de datos/dynamic_connectivity_offline.cpp	Dynamic Connectivity Offline
 Estructuras de datos/dsu_bipartite.cpp	DSU Bipartite
-Estructuras de datos/dynamic_connectivity_offline.cpp	Dynamic Connectivity Offline
 Estructuras de datos/dynamic_segment_tree.cpp	Dynamic Segment Tree
 Estructuras de datos/implicit_treap.cpp	Implicit Treap
 Estructuras de datos/implicit_treap_father.cpp	Implicit Treap Father
