@@ -45,7 +45,6 @@ struct CHT {
 								[&](const pair<Line, int> &a, const pair<Line, int> &b) {
 									return a.second > b.second;
 								});
-
 		return qry.first.val(x);
 	}
 };
