@@ -1,4 +1,6 @@
 // O(log n) muy rapido
+// F(2n+1) = F(n)^2 + F(n+1)^2
+// F(2n) = F(n+1)^2 - F(n-1)^2
 pair<int, int> fib (int n) {
 	if (n == 0)
 		return {0, 1};
