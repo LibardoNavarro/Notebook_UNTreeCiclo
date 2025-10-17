@@ -10,7 +10,7 @@ struct pt {
 	pt(lf ang): x(cos(ang)), y(sin(ang)){}  // Polar unit point: ang(RAD)
 	pt operator - (const pt &q) const { return {x - q.x , y - q.y }; }
 	pt operator + (const pt &q) const { return {x + q.x , y + q.y }; }
-	pt operator * (pt p){ return {x * p.x - y * p.y, x * p.y + y * p.x}; }
+	// pt operator * (pt p){ return {x * p.x - y * p.y, x * p.y + y * p.x}; }
 	pt operator * (const lf &t) const { return {x * t , y * t }; }
 	pt operator / (const lf &t) const { return {x / t , y / t }; }
 	bool operator == (pt p){ return abs(x - p.x) <= EPS && abs(y - p.y) <= EPS; }

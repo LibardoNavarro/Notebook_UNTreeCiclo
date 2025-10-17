@@ -1,9 +1,10 @@
 // add points operators
 struct line {
-	pt v; lf c; // v: dir, c: mov y
+	pt v; lf c; // v: dir, c: mov y, cross(v, p) = c
 	line(pt v, lf c) : v(v), c(c) {}
 	line(lf a, lf b, lf c) : v({b, -a}), c(c) {} // ax + by = c
 	line(pt p, pt q) : v(q - p), c(cross(v, p)) {}
+	line(lf m, lf b): v({1, m}), c(b) {} 
 	
 	bool operator < (line l){ return cross(v, l.v) > 0; } 
 	bool operator == (line l){ return (abs(cross(v, l.v)) <= E0) && c == l.c; } // abs(c) == abs(l.c)
