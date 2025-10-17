@@ -59,12 +59,14 @@ Estructuras de datos/wavelet_tree.cpp	Wavelet Tree
 [Flujos]
 Flujos/blossom.cpp	Blossom
 Flujos/dinic.cpp	Dinic
+Flujos/dinic_lr.cpp	L-R Flow
 Flujos/edmonds_karp.cpp	Edmonds Karp
 Flujos/hopcroft_karp.cpp	Hopcroft Karp
 Flujos/hungarian.cpp	Hungarian
 Flujos/maximum_bipartite_matching.cpp	Maximum Bipartite Matching
 Flujos/minimum_cost_maximum_flow.cpp	Minimum Cost Maximum Flow
 Flujos/mcmf_vasito.cpp	MCMF Vasito
+Flujos/mcmf_lr.cpp	L-R MCMF
 Flujos/scaling_algorithm.cpp	Scaling Algorithm
 Flujos/weighted_matching.cpp	Weighted Matching
 
@@ -74,6 +76,7 @@ Geometria/3d.cpp	3D
 Geometria/circles.cpp	Circulos
 Geometria/closest_points.cpp	Closest Points
 Geometria/convex_hull.cpp	Convex Hull
+Geometria/dynamic_convex_hull.cpp	Dynamic Convex Hull
 Geometria/delaunay.cpp	Delaunay
 Geometria/halfplanes.cpp	Halfplanes
 Geometria/kd_tree.cpp	KD Tree
@@ -139,6 +142,7 @@ Matematicas/totient_divisors.cpp	Totient y Divisores
 Matematicas/xor_basis.cpp	Xor Basis
 
 [Programacion dinamica]
+Programacion dinamica/aliens_trick.cpp	Aliens Trick
 Programacion dinamica/bin_packing.cpp	Bin Packing
 Programacion dinamica/cht.cpp	Convex Hull Trick
 Programacion dinamica/cht_dynamic.cpp	CHT Dynamic
