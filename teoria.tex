@@ -226,3 +226,17 @@ A position with pile sizes $a_1, a_2, \dots, a_n \ge 1$,
 not all equal to $1$, is losing iff $a_1 \oplus a_2 \oplus \dots \oplus a_n = 0$
 (like in normal nim.)
 A position with $n$ piles of size $1$ is losing iff $n$ is \emph{odd}.
+
+
+\subsection{2-SAT}
+\Topic{2-SAT} Rules \\
+$ p \rightarrow q \equiv \lnot p \lor q$ \\
+$ p \rightarrow q \equiv \lnot q \rightarrow \lnot p$ \\
+$ p \lor q \equiv \lnot p \rightarrow q$ 	\\
+$ p \land q \equiv \lnot (p \rightarrow \lnot q)$	 \\
+$ \lnot (p \rightarrow q) \equiv p \land \lnot q$ \\
+$ (p \rightarrow q) \land (p \rightarrow r) \equiv p \rightarrow (q \land r)$ \\
+$ (p \rightarrow q) \lor (p \rightarrow r) \equiv p \rightarrow (q \lor r)$ \\
+$ (p \rightarrow r) \land (q \rightarrow r) \equiv (p \land q) \rightarrow r$ \\
+$ (p \rightarrow r) \lor (q \rightarrow r) \equiv (p \lor q) \rightarrow r$ \\
+$(p \land q) \lor (r \land s) \equiv (p \lor r) \land (p \lor s) \land (q \lor r) \land (q \lor s)$ \\
