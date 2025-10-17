@@ -190,3 +190,39 @@ $n$ & Número & \# divisores \\ \hline
 18 & $897612484786617600$     & $103680$\\ \hline
 \end{tabular}
 \end{center}
+
+\subsection{Games}
+
+\Topic{Grundy numbers}.
+For a two-player, normal-play (last to move wins) game on a graph $(V,E)$:
+$G(x) = \mbox{mex}(\{ G(y) : (x, y) \in E \})$,
+where $\mbox{mex}(S) = \min \{ n \ge 0: n \not\in S \}$.
+$x$ is losing iff $G(x) = 0$.
+
+\Topic{Sums of games}.
+
+\vspace{-4mm}
+\begin{itemize}
+  \item
+    \emph{Player chooses a game and makes a move in it}.
+    Grundy number of a position is xor of grundy numbers of positions in summed games.
+  \item
+    \emph{Player chooses a non-empty subset of games (possibly, all) and makes moves in all of them}.
+    A position is losing iff each game is in a losing position.
+  \item
+    \emph{Player chooses a proper subset of games (not empty and not all),
+        and makes moves in all chosen ones.}
+    A position is losing iff grundy numbers of all games are equal.
+  \item
+    \emph{Player must move in all games, and loses if can't move in some game}.
+    A position is losing if any of the games is in a losing position.
+\end{itemize}
+% http://www.topcoder.com/tc?module=Static&d1=tutorials&d2=algorithmGames
+
+\vspace{-3mm}
+
+\Topic{Mis\`{e}re Nim}.
+A position with pile sizes $a_1, a_2, \dots, a_n \ge 1$,
+not all equal to $1$, is losing iff $a_1 \oplus a_2 \oplus \dots \oplus a_n = 0$
+(like in normal nim.)
+A position with $n$ piles of size $1$ is losing iff $n$ is \emph{odd}.
