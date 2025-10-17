@@ -461,3 +461,30 @@ sort(vecs.begin(), vecs.end(), cmp);
 for (auto [u, v] : vecs)
     for (int s = 0; s < n; s++)
         dp[s][v] += dp[s][u];
+
+// Suma del area de todos los triangulos de un poligono
+int main() { 
+	int n; cin >> n;
+ 
+	vector<pt> pts(n);
+ 
+	forx(i, n) cin >> pts[i].x >> pts[i].y;
+	
+	vector<pt> pref(n + 1);
+ 
+	for(int i = 1; i < n + 1; ++i){
+		pref[i] = pref[i - 1] + pts[i - 1]; 
+	}
+ 
+	ld totalT = 0;
+ 
+	for(ll i = 0; i < n; i++){
+		pt p1 = (pts[i] * (ld)i) - pref[i];
+		pt p2 = (pref[n] - pref[i + 1]) - (pts[i] * (ld)(n - 1 - i));
+ 
+		totalT += cross(p1, p2);
+	}
+
+	// area = totalT / 2
+	
+}
