@@ -454,3 +454,10 @@ vector<vector<pt>> triangulate(vector<pt> p) {
 	}
 	return v;
 }
+
+// CH DP
+// vecs contains all vectors u -> v that lie within the original polygon
+sort(vecs.begin(), vecs.end(), cmp);
+for (auto [u, v] : vecs)
+    for (int s = 0; s < n; s++)
+        dp[s][v] += dp[s][u];

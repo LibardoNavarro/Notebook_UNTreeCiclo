@@ -1,4 +1,4 @@
-// We binary search for A and find the highest A such that c(A) ≥ K. 
+// We binary search for A and find the highest A such that c(A) >= K. 
 // Let the optimal value be Aopt. Then our answer is v(Aopt) + AoptK
 
 int main() {
